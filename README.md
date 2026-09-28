@@ -1,6 +1,6 @@
-# demomac-website
+# screentoast-website
 
-Landing page for [Demomac](https://github.com/Himanxu1) — a native macOS
+Landing page for [ScreenToast](https://github.com/Himanxu1) — a native macOS
 product-demo studio. Record, polish, narrate, publish.
 
 A single self-contained `index.html`. No build step, no dependencies beyond
@@ -40,7 +40,7 @@ skipped entirely for visitors who prefer reduced motion.
 
 ## Before going live
 
-- [ ] Point the two **Get Demomac** buttons at the Dodo checkout URL
+- [ ] Point the two **Get ScreenToast** buttons at the Dodo checkout URL
 - [ ] Write the Changelog, Support, Privacy and Terms pages
 - [ ] Record the eleven feature clips
 - [ ] Add an `og:image` for link previews
