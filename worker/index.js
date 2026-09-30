@@ -54,12 +54,18 @@ async function seats(url, env, ctx) {
   const hit = await cache.match(key);
   if (hit) return hit;
 
-  if (!env.DODO_API_KEY || !env.DODO_DISCOUNT_ID) return json({ error: 'unavailable' }, 503);
+  if (!env.DODO_API_KEY || !env.DODO_DISCOUNT_ID) {
+    console.error('seats not configured', { key: !!env.DODO_API_KEY, discount: !!env.DODO_DISCOUNT_ID });
+    return json({ error: 'unavailable' }, 503);
+  }
   const r = await fetch(`${DODO}/discounts/${env.DODO_DISCOUNT_ID}`, {
     headers: { Authorization: `Bearer ${env.DODO_API_KEY}` },
   });
   // The page treats any failure as "no number", never as "sold out".
-  if (!r.ok) return json({ error: 'unavailable' }, 503);
+  if (!r.ok) {
+    console.error('dodo discount lookup', r.status, (await r.text()).slice(0, 300));
+    return json({ error: 'unavailable' }, 503);
+  }
   const d = await r.json();
   const total = d.usage_limit ?? Number(env.SEAT_TOTAL || 100);
   const used = d.times_used ?? 0;
