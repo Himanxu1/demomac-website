@@ -35,7 +35,7 @@ export default {
       let m = path.match(/^\/api\/requests\/(\d+)\/vote$/);
       if (m && request.method === 'POST') return await vote(request, env, Number(m[1]));
       m = path.match(/^\/api\/requests\/(\d+)\/moderate$/);
-      if (m) return await moderate(url, env, Number(m[1]));
+      if (m) return await moderate(request, url, env, Number(m[1]));
       if (path.startsWith('/api/')) return json({ error: 'not found' }, 404);
     } catch (e) {
       console.error(path, e && e.stack || e);
@@ -122,11 +122,27 @@ async function vote(request, env, id) {
   return json({ votes, counted: !!ins.meta.changes }, 200);
 }
 
-async function moderate(url, env, id) {
+// Opening the emailed link only shows a button; the change happens on the
+// POST. Mail scanners and link previewers open links on their own, and a GET
+// that approved or rejected would let them moderate before you ever read it.
+// Links also carry an expiry inside the signature, so a leaked one goes dead.
+const LINK_TTL = 14 * 86400;
+
+async function moderate(request, url, env, id) {
   const action = url.searchParams.get('action');
+  const exp = Number(url.searchParams.get('exp'));
   const status = { approve: 'approved', reject: 'rejected', planned: 'planned', shipped: 'shipped' }[action];
-  const ok = status && await verify(env, `${id}:${action}`, url.searchParams.get('sig') || '');
-  if (!ok) return page('That link is not valid.', 403);
+  const ok = status && exp > Date.now() / 1000 &&
+    await verify(env, `${id}:${action}:${exp}`, url.searchParams.get('sig') || '');
+  if (!ok) return page('That link is not valid, or it has expired.', 403);
+
+  if (request.method !== 'POST') {
+    const row = await env.DB.prepare('SELECT title, status FROM requests WHERE id = ?').bind(id).first();
+    if (!row) return page('No such request.', 404);
+    return page(`Request #${id}: <b>${esc(row.title)}</b> — currently ${esc(row.status)}.` +
+      `<form method="post" style="margin-top:18px"><button style="font:inherit;padding:10px 18px;border-radius:8px;border:0;background:#ff5b04;color:#fff;cursor:pointer">Mark as ${status}</button></form>`, 200);
+  }
+
   const r = await env.DB.prepare('UPDATE requests SET status = ? WHERE id = ?').bind(status, id).run();
   if (!r.meta.changes) return page('No such request.', 404);
   return page(`Request #${id} is now <b>${status}</b>.` +
@@ -135,7 +151,8 @@ async function moderate(url, env, id) {
 
 async function notify(env, id, title, detail, email) {
   if (!env.NOTIFY) return;
-  const link = async a => `${SITE}/api/requests/${id}/moderate?action=${a}&sig=${await sign(env, `${id}:${a}`)}`;
+  const exp = Math.floor(Date.now() / 1000) + LINK_TTL;
+  const link = async a => `${SITE}/api/requests/${id}/moderate?action=${a}&exp=${exp}&sig=${await sign(env, `${id}:${a}:${exp}`)}`;
   const text = [
     `New feature request #${id}`,
     '',
@@ -167,6 +184,10 @@ async function notify(env, id, title, detail, email) {
 }
 
 // ── helpers ─────────────────────────────────────────────────────────────────
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+}
 
 function clean(v, max) {
   return String(v ?? '').replace(/[\u0000-\u0008\u000b-\u001f\u007f]/g, '').trim().slice(0, max);
