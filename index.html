@@ -505,10 +505,14 @@
   /* ── feature rows ────────────────────────────────── */
 
   .frows { display: flex; flex-direction: column; gap: clamp(56px, 8vw, 104px); margin-top: clamp(40px, 5vw, 64px); }
-  .frow { display: grid; grid-template-columns: 1fr 1.12fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+  /* The clip is the proof, so it gets the wider column — on both sides. The
+     flipped rows swap the column widths too, or the clip lands in the narrow
+     one. minmax(0, …) stops long text from pushing the clip smaller. */
+  .frow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr); gap: clamp(28px, 4.5vw, 56px); align-items: center; }
+  .frow.flip { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); }
   .frow.flip .frow-text { order: 2; }
   @media (max-width: 900px) {
-    .frow { grid-template-columns: 1fr; gap: 26px; }
+    .frow, .frow.flip { grid-template-columns: 1fr; gap: 26px; }
     .frow.flip .frow-text { order: 0; }
   }
 
