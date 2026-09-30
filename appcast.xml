@@ -3,12 +3,15 @@
     <channel>
         <title>ScreenToast</title>
         <item>
-            <title>0.1.0</title>
-            <pubDate>Wed, 30 Sep 2026 12:20:02 +0530</pubDate>
-            <sparkle:version>1</sparkle:version>
-            <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+            <title>0.1.1</title>
+            <pubDate>Wed, 30 Sep 2026 17:42:04 +0530</pubDate>
+            <sparkle:version>2</sparkle:version>
+            <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://screentoast.com/ScreenToast-0.1.0.dmg" length="7755132" type="application/octet-stream" sparkle:edSignature="OUY7gPbgqvPDrUDv97OHMchL4hpFoodbgOCFfKbw1mh+Zk6eRPJJNm2OnD7jokgvEmZGsJwS0dGMQfa3BHPyAQ=="/>
+            <enclosure url="https://screentoast.com/ScreenToast-0.1.1.dmg" length="7795379" type="application/octet-stream" sparkle:edSignature="sRDUWgunslyp3Tt0VXhwGr7ojydcXlio507U38WKSVT6pIbh/FD77AFSuNVj3iT8b7O1mJlKvkUmQZU9w3xMBw=="/>
+            <sparkle:deltas>
+                <enclosure url="https://screentoast.com/ScreenToast2-1.delta" sparkle:deltaFrom="1" length="980414" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Pa8kNYpVX9wGpYX4zHegqvDi4hcSmgUwW8XmZftrP4GRfVtu3LCVqxZnyi4daNhxWbuKl7E7uQa4tufPkPRzBQ=="/>
+            </sparkle:deltas>
         </item>
     </channel>
 </rss>

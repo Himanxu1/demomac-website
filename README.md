@@ -7,7 +7,7 @@ and `changelog.html` are standalone pages sharing the same tokens.
 
 | File | Why it is here |
 |---|---|
-| `ScreenToast-0.1.0.dmg` | The download. Notarised and stapled. |
+| `ScreenToast-0.1.1.dmg` | The download. Notarised and stapled. |
 | `appcast.xml` | The Sparkle feed. **Must** be served at the `SUFeedURL` the app was built with — `https://screentoast.com/appcast.xml`. |
 | `og.png` | 1200×630 social card. |
 
