@@ -11,6 +11,25 @@ and `changelog.html` are standalone pages sharing the same tokens.
 | `appcast.xml` | The Sparkle feed. **Must** be served at the `SUFeedURL` the app was built with — `https://screentoast.com/appcast.xml`. |
 | `og.png` | 1200×630 social card. |
 
+## Hosting — Cloudflare Pages
+
+DNS and hosting are both on Cloudflare. Pages is connected to this repo, so a
+push to `master` deploys.
+
+**Build settings** (they matter — the defaults assume a framework):
+
+| Setting | Value |
+|---|---|
+| Framework preset | **None** |
+| Build command | *(leave empty)* |
+| Build output directory | `/` |
+
+There is no build step. The repo *is* the site.
+
+`_headers` is a Cloudflare Pages feature and only works there: it keeps
+`appcast.xml` fresh and the DMG immutable. On any other host those rules are
+ignored and the update feed will be served stale.
+
 ## Releasing a new version
 
 1. Bump `VERSION` and `BUILD_NUMBER` in `ScreenToast/build.sh`. Sparkle
