@@ -11,24 +11,20 @@ and `changelog.html` are standalone pages sharing the same tokens.
 | `appcast.xml` | The Sparkle feed. **Must** be served at the `SUFeedURL` the app was built with — `https://screentoast.com/appcast.xml`. |
 | `og.png` | 1200×630 social card. |
 
-## Hosting — Cloudflare Pages
+## Hosting — Cloudflare Workers (static assets)
 
-DNS and hosting are both on Cloudflare. Pages is connected to this repo, so a
-push to `master` deploys.
+DNS and hosting are both on Cloudflare. The site is the `screentoast-site`
+Worker, serving this folder as static assets. **Pushing to git does not
+deploy** — deploy from this folder with:
 
-**Build settings** (they matter — the defaults assume a framework):
+```sh
+wrangler deploy --name screentoast-site --assets . --compatibility-date 2026-09-26
+```
 
-| Setting | Value |
-|---|---|
-| Framework preset | **None** |
-| Build command | *(leave empty)* |
-| Build output directory | `/` |
+`.assetsignore` keeps `.git` and other local files out of the upload.
 
-There is no build step. The repo *is* the site.
-
-`_headers` is a Cloudflare Pages feature and only works there: it keeps
-`appcast.xml` fresh and the DMG immutable. On any other host those rules are
-ignored and the update feed will be served stale.
+`_headers` keeps `appcast.xml` fresh and the DMG immutable. On a host that
+does not read it, the update feed will be served stale.
 
 ## Releasing a new version
 
@@ -39,7 +35,7 @@ ignored and the update feed will be served stale.
 3. Copy the new `.dmg` and `appcast.xml` here, delete the old `.dmg`, update
    the two download links in `index.html` and add an entry to
    `changelog.html`.
-4. Deploy.
+4. Deploy (see Hosting above).
 
 The DMG lives in the repo so one deploy publishes both the site and the
 download. If releases get frequent, move the binaries to GitHub Releases and
