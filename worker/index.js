@@ -67,7 +67,7 @@ async function seats(url, env, ctx) {
     return json({ error: 'unavailable' }, 503);
   }
   const d = await r.json();
-  const total = d.usage_limit ?? Number(env.SEAT_TOTAL || 100);
+  const total = d.usage_limit ?? Number(env.SEAT_TOTAL || 92);
   const used = d.times_used ?? 0;
   const expired = d.expires_at ? Date.parse(d.expires_at) <= Date.now() : false;
 
