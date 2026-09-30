@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Changelog — ScreenToast</title>
+<meta name="description" content="What changed in each version of ScreenToast.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#08080a">
+<link rel="icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{color-scheme:dark;--ink:#08080a;--ink-2:#121216;--line:#26262e;--rec:#ff5b04;
+        --bone:#f2efe9;--bone-2:#b5b0a8;--bone-3:#8e8a84;
+        --display:'Archivo',Helvetica,Arial,sans-serif;--body:'IBM Plex Sans',-apple-system,sans-serif;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ink);color:var(--bone-2);font:16px/1.65 var(--body);
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px;margin:0 auto;padding:0 clamp(16px,5vw,32px)}
+  header{border-bottom:1px solid var(--line);padding:20px 0;position:sticky;top:0;
+         background:rgba(8,8,10,.86);backdrop-filter:blur(12px);z-index:5}
+  .mark{display:inline-flex;align-items:center;gap:9px;color:var(--bone);font-family:var(--display);
+        font-weight:800;font-size:17px;text-decoration:none;letter-spacing:-.01em}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--rec);
+       box-shadow:0 0 0 4px rgba(255,91,4,.18)}
+  main{padding:56px 0 96px}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,5vw,42px);line-height:1.1;
+     color:var(--bone);letter-spacing:-.02em;margin:0 0 10px}
+  .sub{color:var(--bone-3);font-size:14px;margin:0 0 44px}
+  h2{font-family:var(--display);font-weight:700;font-size:19px;color:var(--bone);
+     margin:40px 0 12px;letter-spacing:-.01em}
+  p,li{font-size:15.5px}
+  a{color:var(--rec)}
+  ul{padding-left:20px}li{margin:7px 0}
+  strong{color:var(--bone)}
+  .note{border:1px solid var(--line);border-left:2px solid var(--rec);background:var(--ink-2);
+        padding:16px 18px;border-radius:8px;font-size:14.5px;margin:28px 0}
+  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--bone-3);font-size:13.5px}
+  footer a{color:var(--bone-2);text-decoration:none;margin-right:16px}
+  footer a:hover{color:var(--rec)}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="mark" href="/"><span class="dot"></span>ScreenToast</a></div></header>
+<main><div class="wrap">
+<h1>Changelog</h1>
+<p class="sub">Every release, newest first</p>
+
+<h2>0.1.0 — 30 September 2026</h2>
+<p>First public release.</p>
+<ul>
+  <li><strong>Recording</strong> — full screen, a single window, or an area
+      locked to 16:9, 9:16, 1:1, 4:5, 4:3 or 21:9. Microphone, system audio
+      and camera, each optional.</li>
+  <li><strong>Auto Polish</strong> — runs on every recording: zooms driven by
+      where the cursor actually went, a smoothed cursor path, click
+      highlights, motion blur and a canvas.</li>
+  <li><strong>Editor</strong> — canvas shape and resolution as separate
+      choices, backgrounds, screen styling, zoom events, text overlays,
+      privacy blur regions, camera bubble or split, split and trim, silence
+      removal, undo and redo.</li>
+  <li><strong>Voiceover</strong> — a draft script written from what you did on
+      screen, spoken by ElevenLabs with your own API key.</li>
+  <li><strong>Export</strong> — MP4, MOV and ProRes, ten presets, resolution
+      capped at what was recorded so 4K never means an upscale.</li>
+  <li><strong>Free until you export.</strong> Record and edit as much as you
+      like; the licence is what lets you take the file out.</li>
+  <li>Universal binary — Apple silicon and Intel. macOS 14 or later.</li>
+</ul>
+
+<div class="note">Updates arrive in the app itself: <strong>ScreenToast →
+Check for Updates…</strong>, or automatically about once a day.</div>
+</div></main>
+<footer><div class="wrap"><a href="/">ScreenToast</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/changelog.html">Changelog</a><a href="mailto:hello@screentoast.com">Support</a><div style="margin-top:12px">© 2026 ScreenToast</div></div></footer>
+</body></html>

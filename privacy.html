@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Privacy — ScreenToast</title>
+<meta name="description" content="What ScreenToast does and does not collect. Your recordings never leave your Mac.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#08080a">
+<link rel="icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{color-scheme:dark;--ink:#08080a;--ink-2:#121216;--line:#26262e;--rec:#ff5b04;
+        --bone:#f2efe9;--bone-2:#b5b0a8;--bone-3:#8e8a84;
+        --display:'Archivo',Helvetica,Arial,sans-serif;--body:'IBM Plex Sans',-apple-system,sans-serif;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ink);color:var(--bone-2);font:16px/1.65 var(--body);
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px;margin:0 auto;padding:0 clamp(16px,5vw,32px)}
+  header{border-bottom:1px solid var(--line);padding:20px 0;position:sticky;top:0;
+         background:rgba(8,8,10,.86);backdrop-filter:blur(12px);z-index:5}
+  .mark{display:inline-flex;align-items:center;gap:9px;color:var(--bone);font-family:var(--display);
+        font-weight:800;font-size:17px;text-decoration:none;letter-spacing:-.01em}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--rec);
+       box-shadow:0 0 0 4px rgba(255,91,4,.18)}
+  main{padding:56px 0 96px}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,5vw,42px);line-height:1.1;
+     color:var(--bone);letter-spacing:-.02em;margin:0 0 10px}
+  .sub{color:var(--bone-3);font-size:14px;margin:0 0 44px}
+  h2{font-family:var(--display);font-weight:700;font-size:19px;color:var(--bone);
+     margin:40px 0 12px;letter-spacing:-.01em}
+  p,li{font-size:15.5px}
+  a{color:var(--rec)}
+  ul{padding-left:20px}li{margin:7px 0}
+  strong{color:var(--bone)}
+  .note{border:1px solid var(--line);border-left:2px solid var(--rec);background:var(--ink-2);
+        padding:16px 18px;border-radius:8px;font-size:14.5px;margin:28px 0}
+  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--bone-3);font-size:13.5px}
+  footer a{color:var(--bone-2);text-decoration:none;margin-right:16px}
+  footer a:hover{color:var(--rec)}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="mark" href="/"><span class="dot"></span>ScreenToast</a></div></header>
+<main><div class="wrap">
+<h1>Privacy</h1>
+<p class="sub">Last updated 30 September 2026</p>
+
+<p><strong>Your recordings never leave your Mac.</strong> ScreenToast records,
+edits and exports entirely on your computer. There is no account, no sign-in,
+no cloud, and no upload. We cannot see your recordings because they are never
+sent anywhere.</p>
+
+<h2>What we collect</h2>
+<p><strong>Nothing.</strong> ScreenToast contains no analytics, no telemetry,
+no crash reporting and no usage tracking. We do not know how many times you
+open it or what you record.</p>
+
+<h2>The three times the app talks to the internet</h2>
+<p>All three are listed here because "we don't collect anything" is only
+meaningful if we also say what does leave the machine.</p>
+
+<h2>1. Buying a licence</h2>
+<p>Payment is handled by <strong>Dodo Payments</strong>, who act as Merchant of
+Record. Checkout happens on their site, in your browser. They collect the
+billing details a payment requires — name, email, address, tax region — and
+process the card. <strong>ScreenToast never sees or stores card details.</strong>
+Dodo's privacy policy governs that data:
+<a href="https://dodopayments.com/privacy" rel="nofollow">dodopayments.com/privacy</a>.</p>
+
+<h2>2. Activating a licence</h2>
+<p>When you paste a licence key, the app sends that key and a machine name to
+Dodo so the three-Mac limit can be counted. That is the whole request. The key
+is then stored in your Mac's Keychain. Deactivating a Mac removes the seat.</p>
+
+<h2>3. Generating a voiceover — optional</h2>
+<p>Only if you use the voiceover feature, and only with an ElevenLabs API key
+you supply yourself. The <strong>text of the script you wrote</strong> is sent
+to ElevenLabs, which returns audio. <strong>Your video and your screen contents
+are never sent</strong> — only the words. Your API key is stored in your
+Keychain and used to talk to ElevenLabs directly; it never reaches us.
+ElevenLabs' privacy policy governs that text:
+<a href="https://elevenlabs.io/privacy" rel="nofollow">elevenlabs.io/privacy</a>.</p>
+
+<h2>Checking for updates</h2>
+<p>About once a day the app fetches <code>appcast.xml</code> from
+screentoast.com to see whether a newer version exists. This is an ordinary web
+request: our host records the IP address and app version, as any web server
+does. No identifier, licence key or usage data is attached, and you can turn
+the check off in the app.</p>
+
+<h2>Screen recording permission</h2>
+<p>macOS asks for Screen Recording, Microphone and Camera permission because
+a screen recorder cannot work without them. They are used only to capture what
+you asked to capture, while you are recording. You can revoke them at any time
+in System Settings → Privacy &amp; Security.</p>
+
+<h2>Your rights</h2>
+<p>Since we hold no personal data, there is nothing for us to export or delete.
+For the billing data Dodo holds, contact them, or write to us and we will pass
+it on.</p>
+
+<div class="note">Questions about any of this:
+<a href="mailto:hello@screentoast.com">hello@screentoast.com</a>.</div>
+</div></main>
+<footer><div class="wrap"><a href="/">ScreenToast</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/changelog.html">Changelog</a><a href="mailto:hello@screentoast.com">Support</a><div style="margin-top:12px">© 2026 ScreenToast</div></div></footer>
+</body></html>

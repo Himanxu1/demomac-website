@@ -1,46 +1,28 @@
-# screentoast-website
+# ScreenToast — website
 
-Landing page for [ScreenToast](https://github.com/Himanxu1) — a native macOS
-product-demo studio. Record, polish, narrate, publish.
+Static. `index.html` is the whole landing page; `privacy.html`, `terms.html`
+and `changelog.html` are standalone pages sharing the same tokens.
 
-A single self-contained `index.html`. No build step, no dependencies beyond
-Google Fonts.
+## What ships here
 
-## Run it
+| File | Why it is here |
+|---|---|
+| `ScreenToast-0.1.0.dmg` | The download. Notarised and stapled. |
+| `appcast.xml` | The Sparkle feed. **Must** be served at the `SUFeedURL` the app was built with — `https://screentoast.com/appcast.xml`. |
+| `og.png` | 1200×630 social card. |
 
-```sh
-open index.html
-```
+## Releasing a new version
 
-Or serve it, if you want to test the video slots with correct MIME types:
+1. Bump `VERSION` and `BUILD_NUMBER` in `ScreenToast/build.sh`. Sparkle
+   compares `CFBundleVersion`, so `BUILD_NUMBER` must increase or nobody sees
+   the update.
+2. `DEV_ID="Developer ID Application: …" ./release/package.sh`
+3. Copy the new `.dmg` and `appcast.xml` here, delete the old `.dmg`, update
+   the two download links in `index.html` and add an entry to
+   `changelog.html`.
+4. Deploy.
 
-```sh
-python3 -m http.server 8000
-```
-
-## Deploy
-
-Point Vercel (or Netlify, or GitHub Pages) at the repo root. There is nothing
-to build — set the framework preset to **Other** and leave the build command
-empty.
-
-## Adding the feature clips
-
-Eleven feature rows each have a video slot layered over a CSS illustration.
-The video only fades in once the file actually loads, so the page renders
-complete while `media/` is empty.
-
-Drop an MP4 into `media/` using the filenames in
-[`media/README.md`](media/README.md) and it appears automatically — no code
-change. That file also lists what each clip should show and the ffmpeg command
-to encode it.
-
-Clips load lazily as they scroll into view, play only while on screen, and are
-skipped entirely for visitors who prefer reduced motion.
-
-## Before going live
-
-- [ ] Point the two **Get ScreenToast** buttons at the Dodo checkout URL
-- [ ] Write the Changelog, Support, Privacy and Terms pages
-- [ ] Record the eleven feature clips
-- [ ] Add an `og:image` for link previews
+The DMG lives in the repo so one deploy publishes both the site and the
+download. If releases get frequent, move the binaries to GitHub Releases and
+point `appcast.xml` and the download links there instead — git is a poor place
+to keep 7MB blobs forever.
