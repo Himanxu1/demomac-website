@@ -4,7 +4,10 @@
   "name": "screentoast-site",
   "main": "worker/index.js",
   "compatibility_date": "2026-09-26",
-  "assets": { "directory": ".", "binding": "ASSETS" },
+  // run_worker_first: the Worker sees /media/* so it can answer Range
+  // requests (see ranged() in worker/index.js); everything else is served
+  // straight from the static assets.
+  "assets": { "directory": ".", "binding": "ASSETS", "run_worker_first": ["/api/*", "/media/*"] },
   "d1_databases": [
     { "binding": "DB", "database_name": "screentoast-requests",
       "database_id": "6e2fd6d8-417a-4a91-a6d5-0b13b53a571f",

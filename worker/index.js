@@ -37,6 +37,7 @@ export default {
       m = path.match(/^\/api\/requests\/(\d+)\/moderate$/);
       if (m) return await moderate(request, url, env, Number(m[1]));
       if (path.startsWith('/api/')) return json({ error: 'not found' }, 404);
+      if (path.startsWith('/media/') && request.headers.has('Range')) return await ranged(request, env);
     } catch (e) {
       console.error(path, e && e.stack || e);
       return json({ error: 'server' }, 500);
@@ -44,6 +45,35 @@ export default {
     return env.ASSETS.fetch(request);
   },
 };
+
+// ── video byte ranges ─────────────────────────────────────────────────────────
+//
+// Safari (and every iPhone) will not play a <video> unless the server answers
+// its Range requests with 206 and just those bytes. The static asset server
+// replies 200 with the whole file, so the clips play everywhere except Safari.
+// The clips are a few MB each, so slicing the full file here is cheap.
+
+async function ranged(request, env) {
+  const res = await env.ASSETS.fetch(new Request(request.url, { method: 'GET' }));
+  if (res.status !== 200) return res;
+  const m = /^bytes=(\d*)-(\d*)$/.exec(request.headers.get('Range') || '');
+  if (!m || (m[1] === '' && m[2] === '')) return res;
+
+  const body = await res.arrayBuffer();
+  const size = body.byteLength;
+  let start, end;
+  if (m[1] === '') { start = Math.max(0, size - Number(m[2])); end = size - 1; }  // last N bytes
+  else { start = Number(m[1]); end = m[2] === '' ? size - 1 : Math.min(Number(m[2]), size - 1); }
+  if (start >= size || start > end) {
+    return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${size}` } });
+  }
+
+  const headers = new Headers(res.headers);
+  headers.set('Content-Range', `bytes ${start}-${end}/${size}`);
+  headers.set('Content-Length', String(end - start + 1));
+  headers.set('Accept-Ranges', 'bytes');
+  return new Response(request.method === 'HEAD' ? null : body.slice(start, end + 1), { status: 206, headers });
+}
 
 // ── launch seats ────────────────────────────────────────────────────────────
 
