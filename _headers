@@ -1,0 +1,25 @@
+# Cloudflare Pages header rules.
+
+# The Sparkle feed must never be served stale. Cache it hard and a customer
+# keeps being told they are up to date for as long as the edge holds the old
+# copy — which is the one failure mode of auto-update nobody notices, because
+# it looks exactly like "no update available".
+/appcast.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=300, must-revalidate
+
+# The opposite: a release DMG at a versioned name never changes, so it can be
+# cached for a year. A new version means a new file name.
+/*.dmg
+  Content-Type: application/x-apple-diskimage
+  Cache-Control: public, max-age=31536000, immutable
+
+/og.png
+  Cache-Control: public, max-age=86400
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  # No framing: the checkout is a link out to Dodo, and nothing here should
+  # ever be embedded in someone else's page.
+  X-Frame-Options: DENY
