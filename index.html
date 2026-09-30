@@ -1564,7 +1564,7 @@
           <div class="amount launch-only"><b>$39</b><s>$59</s><span>one time, until 5 Oct</span></div>
           <div class="amount regular-only"><b>$59</b><span>one time, all future updates included</span></div>
           <div class="seats launch-only" hidden>
-            <div class="seats-row"><span><b class="seats-left">—</b> of <span class="seats-total">100</span> launch seats left</span><span>ends 5 Oct</span></div>
+            <div class="seats-row"><span><b class="seats-claimed">—</b> of <span class="seats-total">100</span> launch seats claimed</span><span>ends 5 Oct</span></div>
             <div class="seats-bar"><i></i></div>
           </div>
           <div class="code launch-only">
@@ -1775,12 +1775,13 @@
     fetch('/api/seats').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
       if (!d || typeof d.left !== 'number' || typeof d.total !== 'number') return;
       if (d.left <= 0 || d.expired) { root.classList.remove('launch'); return; }
-      Array.prototype.forEach.call(document.querySelectorAll('.seats-left'), function (e) { e.textContent = d.left; });
+      var claimed = d.total - d.left;
+      Array.prototype.forEach.call(document.querySelectorAll('.seats-claimed'), function (e) { e.textContent = claimed; });
       Array.prototype.forEach.call(document.querySelectorAll('.seats-total'), function (e) { e.textContent = d.total; });
-      Array.prototype.forEach.call(document.querySelectorAll('.seats-inline'), function (e) { e.textContent = ' (' + d.left + ' left)'; });
+      Array.prototype.forEach.call(document.querySelectorAll('.seats-inline'), function (e) { e.textContent = claimed ? ' — ' + claimed + ' already claimed' : ''; });
       Array.prototype.forEach.call(document.querySelectorAll('.seats'), function (e) { e.hidden = false; });
       var bar = document.querySelector('.seats-bar i');
-      if (bar) bar.style.width = Math.round((d.total - d.left) / d.total * 100) + '%';
+      if (bar) bar.style.width = Math.max(2, Math.round(claimed / d.total * 100)) + '%';
     }).catch(function () {});
   })();
 </script>
