@@ -1,0 +1,24 @@
+{
+  // screentoast.com — static files in this folder, plus worker/ for /api/seats.
+  // Deploy: `wrangler deploy` from this folder.
+  "name": "screentoast-site",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-09-26",
+  "assets": { "directory": ".", "binding": "ASSETS" },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "screentoast-requests",
+      "database_id": "6e2fd6d8-417a-4a91-a6d5-0b13b53a571f",
+      "migrations_dir": "worker/migrations" }
+  ],
+  // To get an email for each new request, add (address must be verified in
+  // Cloudflare → Email Routing → Destination addresses):
+  //   "send_email": [{ "name": "NOTIFY", "destination_address": "you@example.com" }],
+  "vars": {
+    // Fill in from Dodo → Discounts → EARLY39. Until then the page shows the
+    // launch price without a seat count.
+    "DODO_DISCOUNT_ID": "",
+    "SEAT_TOTAL": "100",
+    // Sender for request notifications — must be on screentoast.com.
+    "NOTIFY_FROM": "requests@screentoast.com"
+  }
+}

@@ -2,3 +2,5 @@
 .wrangler
 .DS_Store
 .gitignore
+worker
+wrangler.jsonc

@@ -25,6 +25,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#08080a">
+<script>
+  /* Launch price: $39 with code EARLY39 until the end of 5 Oct (anywhere on
+     earth) or until the 100 seats are gone, whichever is first. Past the date
+     the page is simply the $59 page again — no redeploy, nothing stale. */
+  window.LAUNCH_ENDS = Date.parse('2026-10-05T23:59:59-12:00');
+  if (Date.now() < window.LAUNCH_ENDS) document.documentElement.classList.add('launch');
+</script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -708,6 +715,55 @@
   .amount b { font-family: var(--display); font-weight: 800; font-size: 58px; letter-spacing: -0.045em; line-height: 1; }
   .amount span { color: var(--bone-3); font-size: 15px; }
   .price-card .btn { width: 100%; margin-top: 24px; }
+
+  /* ── feature requests ────────────────────────────── */
+  .req { margin-top: clamp(32px, 5vw, 50px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+  @media (max-width: 880px) { .req { grid-template-columns: 1fr; } }
+  .req-form { position: relative; border: 1px solid var(--line-2); border-radius: 14px; background: var(--ink-2); padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+  .req-form label { display: flex; flex-direction: column; gap: 7px; font-size: 13.5px; color: var(--bone-2); font-weight: 500; }
+  .req-form label i { font-style: normal; color: var(--bone-4); font-weight: 400; }
+  .req-form input, .req-form textarea { font: inherit; font-size: 15px; font-weight: 400; color: var(--bone); background: var(--ink); border: 1px solid var(--line-2); border-radius: 9px; padding: 11px 12px; resize: vertical; width: 100%; }
+  .req-form input:focus, .req-form textarea:focus { outline: none; border-color: var(--ember); box-shadow: 0 0 0 3px rgba(255,162,75,.15); }
+  .req-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .req-form .btn { align-self: flex-start; }
+  .req-msg { font-size: 13.5px; color: var(--bone-3); min-height: 1.3em; margin: 0; }
+  .req-msg.ok { color: var(--ember); }
+  .req-msg.err { color: #ff8a7a; }
+  .req-board-head { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--bone-4); margin: 0 0 12px; }
+  .req-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .req-list li { display: flex; gap: 14px; align-items: flex-start; border: 1px solid var(--line); border-radius: 12px; padding: 14px; background: var(--ink-2); }
+  .req-list .req-empty { color: var(--bone-4); font-size: 14px; justify-content: center; border-style: dashed; background: none; }
+  .vote { flex: none; width: 52px; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 7px 0; border-radius: 9px; border: 1px solid var(--line-2); background: var(--ink); color: var(--bone-2); font: inherit; font-family: var(--mono); font-size: 13px; font-weight: 600; cursor: pointer; }
+  .vote svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.2; }
+  .vote:hover { border-color: var(--ember); color: var(--bone); }
+  .vote.on { border-color: var(--rec); color: var(--ember); background: rgba(255,91,4,.08); cursor: default; }
+  .req-body { min-width: 0; }
+  .req-body b { display: block; font-size: 15px; color: var(--bone); font-weight: 600; overflow-wrap: anywhere; }
+  .req-body p { margin: 4px 0 0; font-size: 13.5px; color: var(--bone-3); line-height: 1.5; overflow-wrap: anywhere; }
+  .chip { display: inline-block; margin-left: 8px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; padding: 2px 7px; border-radius: 5px; border: 1px solid var(--line-2); color: var(--bone-3); vertical-align: 2px; }
+  .chip.planned { color: var(--ember); border-color: rgba(255,162,75,.4); }
+  .chip.shipped { color: #7fd6a0; border-color: rgba(127,214,160,.4); }
+
+  /* ── launch offer ────────────────────────────────── */
+  html:not(.launch) .launch-only, html.launch .regular-only, .seats[hidden] { display: none !important; }
+  .amount s { font-family: var(--display); font-weight: 700; font-size: 26px; color: var(--bone-4); letter-spacing: -0.03em; }
+  .seats { margin-top: 18px; }
+  .seats-row { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11.5px; color: var(--bone-3); letter-spacing: .04em; }
+  .seats-row b { color: var(--ember); font-weight: 600; }
+  .seats-bar { margin-top: 8px; height: 4px; border-radius: 3px; background: var(--line); overflow: hidden; }
+  .seats-bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--rec), var(--ember)); transition: width .8s ease; }
+  .code { margin-top: 18px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 11px 12px; border: 1px dashed rgba(255,162,75,.45); border-radius: 9px; background: rgba(255,91,4,.06); font-size: 13.5px; color: var(--bone-2); }
+  .code kbd { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--ember); letter-spacing: .08em; }
+  .code button { margin-left: auto; font: inherit; font-family: var(--mono); font-size: 11.5px; color: var(--bone-2); background: var(--ink-3); border: 1px solid var(--line-2); border-radius: 6px; padding: 5px 10px; cursor: pointer; }
+  .code button:hover { border-color: var(--ember); }
+  .next-up { margin-top: 16px; font-size: 13.5px; color: var(--bone-3); line-height: 1.55; }
+  .next-up b { color: var(--bone-2); font-weight: 600; }
+  .launch-bar { background: linear-gradient(90deg, #2a1204, #1a0c06 60%, #120a08); border-bottom: 1px solid rgba(255,162,75,.22); font-size: 13px; color: var(--bone-2); text-align: center; padding: 9px var(--gutter); }
+  .launch-bar b { color: var(--ember); font-weight: 600; }
+  .launch-bar a { color: var(--bone); text-decoration: underline; text-underline-offset: 3px; margin-left: 6px; white-space: nowrap; }
+  .release-line a { color: var(--bone-3); text-decoration: underline; text-underline-offset: 3px; }
+  .release-line a:hover { color: var(--bone); }
+  .human { margin-top: 16px; font-size: 13px; color: var(--bone-3); line-height: 1.55; text-align: center; }
   .incl { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-direction: column; gap: 11px; }
   .incl li { display: flex; gap: 10px; font-size: 14.5px; color: var(--bone-2); }
   .incl svg { width: 15px; height: 15px; flex: none; margin-top: 4px; stroke: var(--rec); fill: none; stroke-width: 2.2; }
@@ -760,6 +816,11 @@
 </head>
 <body>
 
+<div class="launch-bar launch-only" role="note">
+  Launch price: <b>$39</b> instead of $59, for the first 100 buyers<span class="seats-inline"></span> — until 5 Oct.
+  <a href="#download">Get it at $39</a>
+</div>
+
 <header class="nav">
   <div class="wrap nav-in">
     <a class="mark" href="#top"><span class="dot"></span>ScreenToast</a>
@@ -770,6 +831,7 @@
       <a href="#editor">Editor</a>
       <a href="#compare">Compare</a>
       <a href="#pricing">Pricing</a>
+      <a href="#requests">Requests</a>
     </nav>
     <a class="btn btn-primary btn-sm" href="/ScreenToast-0.1.0.dmg" download>Download for Mac</a>
   </div>
@@ -793,6 +855,7 @@
         <a class="btn btn-ghost" href="#how">See what it does</a>
       </div>
       <p class="cta-note">macOS 14 or later · No account · Nothing leaves your Mac</p>
+      <p class="cta-note release-line">v0.1.0 · Released 30 Sep 2026 · <a href="/changelog">What's new</a></p>
 
       <div class="stage">
         <div class="editor">
@@ -1497,15 +1560,26 @@
 
       <div class="price-wrap">
         <div class="price-card" id="download">
-          <p class="tagline">Early adopter · Lifetime</p>
-          <div class="amount"><b>$59</b><span>one time, all future updates included</span></div>
+          <p class="tagline"><span class="launch-only">Launch price · first 100 buyers</span><span class="regular-only">Lifetime licence</span></p>
+          <div class="amount launch-only"><b>$39</b><s>$59</s><span>one time, until 5 Oct</span></div>
+          <div class="amount regular-only"><b>$59</b><span>one time, all future updates included</span></div>
+          <div class="seats launch-only" hidden>
+            <div class="seats-row"><span><b class="seats-left">—</b> of <span class="seats-total">100</span> launch seats left</span><span>ends 5 Oct</span></div>
+            <div class="seats-bar"><i></i></div>
+          </div>
+          <div class="code launch-only">
+            <span>Use code <kbd>EARLY39</kbd> at checkout</span>
+            <button type="button" data-copy="EARLY39">Copy</button>
+          </div>
           <ul class="incl">
             <li><svg viewBox="0 0 24 24"><path d="M4 12.5l5.2 5L20 6.5"/></svg><span>Every feature. There is no Pro tier holding things back.</span></li>
             <li><svg viewBox="0 0 24 24"><path d="M4 12.5l5.2 5L20 6.5"/></svg><span>Use it on up to 3 Macs you own.</span></li>
             <li><svg viewBox="0 0 24 24"><path d="M4 12.5l5.2 5L20 6.5"/></svg><span>Free updates for life, not for a year.</span></li>
             <li><svg viewBox="0 0 24 24"><path d="M4 12.5l5.2 5L20 6.5"/></svg><span>14-day refund, no questions asked.</span></li>
+            <li><svg viewBox="0 0 24 24"><path d="M4 12.5l5.2 5L20 6.5"/></svg><span>Every email answered personally by the person who built it.</span></li>
           </ul>
-          <a class="btn btn-primary" href="https://checkout.dodopayments.com/buy/pdt_0NodymXnzeIYABi8tlcql?quantity=1">Get ScreenToast — $59</a>
+          <p class="next-up launch-only"><b>Captions are next</b>, as a free update — and so is everything after them. You get them at either price. The $39 is what doesn't come back.</p>
+          <a class="btn btn-primary" href="https://checkout.dodopayments.com/buy/pdt_0NodymXnzeIYABi8tlcql?quantity=1"><span class="launch-only">Get ScreenToast — $39 with EARLY39</span><span class="regular-only">Get ScreenToast — $59</span></a>
           <p class="cta-note" style="text-align:center">macOS 14 or later · Apple Silicon and Intel</p>
         </div>
 
@@ -1521,6 +1595,49 @@
             you are busy with something else.
           </p>
           <div class="cta-row"><a class="btn btn-ghost" href="/ScreenToast-0.1.0.dmg" download>Download for Mac</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ═══ feature requests ═════════════════════════ -->
+  <section id="requests">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow plain">What's next</p>
+        <h2>Tell me what to build next.</h2>
+        <p class="lede">
+          Every request is read by the person who builds ScreenToast. Vote for the
+          ones you want most — the top of this list is what gets built first.
+        </p>
+      </div>
+
+      <div class="req">
+        <form class="req-form" id="req-form" novalidate>
+          <label>
+            <span>The feature</span>
+            <input name="title" maxlength="120" required placeholder="e.g. Burned-in captions">
+          </label>
+          <label>
+            <span>Why you need it <i>optional</i></span>
+            <textarea name="detail" maxlength="1000" rows="4" placeholder="What are you trying to make, and what gets in the way today?"></textarea>
+          </label>
+          <label>
+            <span>Your email <i>optional — only to tell you when it ships</i></span>
+            <input name="email" type="email" maxlength="200" placeholder="you@company.com" autocomplete="email">
+          </label>
+          <label class="hp" aria-hidden="true">Website <input name="website" tabindex="-1" autocomplete="off"></label>
+          <button class="btn btn-primary" type="submit">Send request</button>
+          <p class="req-msg" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="req-board">
+          <p class="req-board-head">Most wanted</p>
+          <ol class="req-list" id="req-list">
+            <li class="req-empty">Loading requests…</li>
+          </ol>
         </div>
       </div>
     </div>
@@ -1586,7 +1703,7 @@
         <p class="eyebrow" style="justify-content:center">Ready when you are</p>
         <h2 style="margin-top:16px">Your next demo is about twelve seconds of recording away.</h2>
         <p class="lede" style="text-align:center">
-          Record something. Let it polish itself. Decide afterwards whether it is worth $59.
+          Record something today — it's free, and there's no account to make. Let it polish itself. Decide afterwards whether it is worth <span class="launch-only">$39</span><span class="regular-only">$59</span>.
         </p>
         <div class="cta-row"><a class="btn btn-primary" href="/ScreenToast-0.1.0.dmg" download>Create your first demo — free</a></div>
         <p class="cta-note">macOS 14 or later · No account required</p>
@@ -1594,7 +1711,7 @@
         <p class="cta-note" style="margin-top:26px">
           Questions before you buy, or trouble after?
           <a href="mailto:support@screentoast.com" style="color:var(--rec)">support@screentoast.com</a>
-          — a real person, usually the same day.<br>
+          — answered personally by the person who built ScreenToast, usually the same day.<br>
           Anything else:
           <a href="mailto:hello@screentoast.com" style="color:var(--bone-2)">hello@screentoast.com</a>
         </p>
@@ -1641,6 +1758,117 @@
     </div>
   </div>
 </footer>
+
+<script>
+  /* Launch offer. The count comes from Dodo through /api/seats; if that call
+     fails the offer still shows, just without a number — never a made-up one.
+     Sold out turns the launch price off the same way the date does. */
+  (function () {
+    var root = document.documentElement;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'), function (b) {
+      b.addEventListener('click', function () {
+        var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1600); };
+        if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.copy).then(done, function () {});
+      });
+    });
+    if (!root.classList.contains('launch') || !window.fetch) return;
+    fetch('/api/seats').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+      if (!d || typeof d.left !== 'number' || typeof d.total !== 'number') return;
+      if (d.left <= 0 || d.expired) { root.classList.remove('launch'); return; }
+      Array.prototype.forEach.call(document.querySelectorAll('.seats-left'), function (e) { e.textContent = d.left; });
+      Array.prototype.forEach.call(document.querySelectorAll('.seats-total'), function (e) { e.textContent = d.total; });
+      Array.prototype.forEach.call(document.querySelectorAll('.seats-inline'), function (e) { e.textContent = ' (' + d.left + ' left)'; });
+      Array.prototype.forEach.call(document.querySelectorAll('.seats'), function (e) { e.hidden = false; });
+      var bar = document.querySelector('.seats-bar i');
+      if (bar) bar.style.width = Math.round((d.total - d.left) / d.total * 100) + '%';
+    }).catch(function () {});
+  })();
+</script>
+
+<script>
+  /* Feature requests. Everything people type goes in through textContent,
+     never innerHTML. Votes are remembered locally only to show the button
+     state; the server is what actually stops a second vote. */
+  (function () {
+    var list = document.getElementById('req-list');
+    var form = document.getElementById('req-form');
+    if (!list || !form || !window.fetch) return;
+    var KEY = 'st-voted';
+    var voted = {};
+    try { voted = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) {}
+    function remember(id) { voted[id] = 1; try { localStorage.setItem(KEY, JSON.stringify(voted)); } catch (e) {} }
+    var arrow = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>';
+
+    function empty(text) {
+      list.textContent = '';
+      var li = document.createElement('li'); li.className = 'req-empty'; li.textContent = text;
+      list.appendChild(li);
+    }
+
+    function render(rows) {
+      if (!rows.length) return empty('No requests yet — yours could be the first.');
+      list.textContent = '';
+      rows.forEach(function (r) {
+        var li = document.createElement('li');
+        var btn = document.createElement('button');
+        btn.type = 'button'; btn.className = 'vote' + (voted[r.id] ? ' on' : '');
+        btn.innerHTML = arrow;
+        var n = document.createElement('span'); n.textContent = r.votes; btn.appendChild(n);
+        btn.setAttribute('aria-label', 'Vote for ' + r.title);
+        btn.addEventListener('click', function () {
+          if (btn.classList.contains('on')) return;
+          btn.classList.add('on');
+          fetch('/api/requests/' + r.id + '/vote', { method: 'POST' })
+            .then(function (x) { if (!x.ok) throw 0; return x.json(); })
+            .then(function (d) { if (typeof d.votes === 'number') n.textContent = d.votes; remember(r.id); })
+            .catch(function () { btn.classList.remove('on'); });
+        });
+        var body = document.createElement('div'); body.className = 'req-body';
+        var t = document.createElement('b'); t.textContent = r.title;
+        if (r.status === 'planned' || r.status === 'shipped') {
+          var c = document.createElement('span'); c.className = 'chip ' + r.status; c.textContent = r.status; t.appendChild(c);
+        }
+        body.appendChild(t);
+        if (r.detail) { var d = document.createElement('p'); d.textContent = r.detail; body.appendChild(d); }
+        li.appendChild(btn); li.appendChild(body); list.appendChild(li);
+      });
+    }
+
+    function load() {
+      fetch('/api/requests').then(function (x) { if (!x.ok) throw 0; return x.json(); })
+        .then(function (d) { render(d.requests || []); })
+        .catch(function () { empty('The board could not load just now — the form still works.'); });
+    }
+
+    // Fetch once the section is close, the same way the clips load.
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { io.disconnect(); load(); } }, { rootMargin: '400px 0px' });
+      io.observe(list);
+    } else { load(); }
+
+    var msg = form.querySelector('.req-msg');
+    var send = form.querySelector('button[type=submit]');
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var data = {
+        title: form.elements.title.value.trim(), detail: form.elements.detail.value.trim(),
+        email: form.elements.email.value.trim(), website: form.elements.website.value
+      };
+      msg.className = 'req-msg';
+      if (data.title.length < 4) { msg.classList.add('err'); msg.textContent = 'Give the feature a short name.'; form.elements.title.focus(); return; }
+      send.disabled = true; msg.textContent = 'Sending…';
+      fetch('/api/requests', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+        .then(function (x) { return x.json().then(function (d) { return { ok: x.ok, d: d }; }); })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.d && r.d.error || 'Something went wrong.');
+          form.reset(); msg.classList.add('ok');
+          msg.textContent = 'Thank you — it will appear on the board once I have read it.';
+        })
+        .catch(function (e) { msg.classList.add('err'); msg.textContent = (e && e.message) || 'Could not send — try again in a moment.'; })
+        .then(function () { send.disabled = false; });
+    });
+  })();
+</script>
 
 <script>
   /* Feature clips are optional. Each .demo ships with a CSS illustration; a

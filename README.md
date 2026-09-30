@@ -14,12 +14,17 @@ and `changelog.html` are standalone pages sharing the same tokens.
 ## Hosting — Cloudflare Workers (static assets)
 
 DNS and hosting are both on Cloudflare. The site is the `screentoast-site`
-Worker, serving this folder as static assets. **Pushing to git does not
-deploy** — deploy from this folder with:
+Worker: this folder as static assets, plus `worker/index.js` for the few
+`/api/` routes (launch seats, feature requests). Config is `wrangler.jsonc`.
+**Pushing to git does not deploy** — deploy from this folder with:
 
 ```sh
-wrangler deploy --name screentoast-site --assets . --compatibility-date 2026-09-26
+wrangler deploy
 ```
+
+Feature requests live in the `screentoast-requests` D1 database. Schema
+changes go in `worker/migrations/` and are applied with
+`wrangler d1 migrations apply screentoast-requests --remote`.
 
 `.assetsignore` keeps `.git` and other local files out of the upload.
 
