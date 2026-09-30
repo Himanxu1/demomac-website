@@ -16,7 +16,7 @@
   "vars": {
     // Fill in from Dodo → Discounts → EARLY39. Until then the page shows the
     // launch price without a seat count.
-    "DODO_DISCOUNT_ID": "",
+    "DODO_DISCOUNT_ID": "dsc_0NoiZil0lh49bLeR1hXMx",
     "SEAT_TOTAL": "100",
     // Sender for request notifications — must be on screentoast.com.
     "NOTIFY_FROM": "requests@screentoast.com"
