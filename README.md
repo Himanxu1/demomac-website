@@ -3,6 +3,21 @@
 Static. `index.html` is the whole landing page; `privacy.html`, `terms.html`
 and `changelog.html` are standalone pages sharing the same tokens.
 
+## Content pages (SEO)
+
+The comparison, feature and guide pages, plus `404.html`, are generated from
+`pages/*.html` by `pages/build.py`, which adds the shared head, header, footer,
+canonical URL, social tags and breadcrumbs. Edit the source in `pages/`, then:
+
+```sh
+python3 pages/build.py
+```
+
+The output (`screen-studio-alternative.html`, `features/*.html`, `guides/*.html`,
+`404.html`) is committed, so deploying still needs no build step. Add any new
+page's URL to `sitemap.xml`. Every claim about the app is checked against the
+code, and every claim about a competitor carries the date it was checked.
+
 ## What ships here
 
 | File | Why it is here |
@@ -38,8 +53,8 @@ does not read it, the update feed will be served stale.
    the update.
 2. `DEV_ID="Developer ID Application: …" ./release/package.sh`
 3. Copy the new `.dmg` and `appcast.xml` here, delete the old `.dmg`, update
-   the two download links in `index.html` and add an entry to
-   `changelog.html`.
+   the download links in `index.html` and `DMG` in `pages/build.py` (then run
+   it), and add an entry to `changelog.html`.
 4. Deploy (see Hosting above).
 
 The DMG lives in the repo so one deploy publishes both the site and the

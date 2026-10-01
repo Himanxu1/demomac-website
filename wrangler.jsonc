@@ -5,9 +5,14 @@
   "main": "worker/index.js",
   "compatibility_date": "2026-09-26",
   // run_worker_first: the Worker sees /media/* so it can answer Range
-  // requests (see ranged() in worker/index.js); everything else is served
-  // straight from the static assets.
-  "assets": { "directory": ".", "binding": "ASSETS", "run_worker_first": ["/api/*", "/media/*"] },
+  // requests (see ranged() in worker/index.js), and the DMG, deltas and
+  // appcast so it can count downloads and update checks (countFetch());
+  // everything else is served straight from the static assets.
+  "assets": { "directory": ".", "binding": "ASSETS", "run_worker_first": ["/api/*", "/media/*", "/*.dmg", "/*.delta", "/appcast.xml"],
+              // Unknown paths get 404.html (built from pages/404.html) with a real 404 status.
+              "not_found_handling": "404-page" },
+  // Shared with founder-dashboard (same account), which reads it back.
+  "analytics_engine_datasets": [{ "binding": "AE", "dataset": "founder_events" }],
   "d1_databases": [
     { "binding": "DB", "database_name": "screentoast-requests",
       "database_id": "6e2fd6d8-417a-4a91-a6d5-0b13b53a571f",

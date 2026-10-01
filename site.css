@@ -1,0 +1,97 @@
+/* Shared by the content pages (comparison, features, guides, 404). The
+   homepage carries its own styles; privacy/terms/changelog keep theirs inline.
+   Same palette and type as the homepage: black, bone, and orange used only
+   as a signal colour. Deliberately single-theme, like the homepage. */
+:root {
+  color-scheme: dark;
+  --ink: #08080a; --ink-2: #121216; --ink-3: #191920; --line: #26262e;
+  --rec: #ff5b04; --rec-soft: rgba(255, 91, 4, .16);
+  --bone: #f2efe9; --bone-2: #b5b0a8; --bone-3: #8e8a84;
+  --good: #3ccf7a;
+  --display: 'Archivo', Helvetica, Arial, sans-serif;
+  --body: 'IBM Plex Sans', -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ink); color: var(--bone-2); font: 16.5px/1.7 var(--body);
+       -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 clamp(16px, 5vw, 32px); }
+.wide { max-width: 1040px; }
+
+header.top { border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5;
+             background: rgba(8, 8, 10, .86); backdrop-filter: blur(12px); }
+header.top .wrap { display: flex; align-items: center; gap: 20px; height: 64px; }
+.mark { display: inline-flex; align-items: center; gap: 9px; color: var(--bone); text-decoration: none;
+        font: 800 17px var(--display); letter-spacing: -.01em; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--rec); box-shadow: 0 0 0 4px rgba(255, 91, 4, .18); }
+header.top nav { margin-left: auto; display: flex; gap: 18px; align-items: center; }
+header.top nav a { color: var(--bone-2); text-decoration: none; font-size: 14px; }
+header.top nav a:hover { color: var(--bone); }
+@media (max-width: 640px) { header.top nav a:not(.btn) { display: none; } }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 10px;
+       font: 600 15px var(--body); text-decoration: none; border: 1px solid transparent; white-space: nowrap; }
+.btn-primary { background: var(--rec); color: #160700; }
+.btn-primary:hover { background: #ff6f22; }
+.btn-ghost { border-color: var(--line); color: var(--bone); }
+.btn-ghost:hover { border-color: var(--bone-3); }
+.btn-sm { padding: 8px 14px; font-size: 14px; color: #160700 !important; }
+
+main { padding: 56px 0 40px; }
+.crumbs { font: 500 12.5px var(--mono); color: var(--bone-3); letter-spacing: .03em; margin: 0 0 18px; }
+.crumbs a { color: var(--bone-3); text-decoration: none; }
+.crumbs a:hover { color: var(--bone); }
+h1 { font: 800 clamp(32px, 5.4vw, 50px)/1.06 var(--display); color: var(--bone); letter-spacing: -.025em; margin: 0 0 18px; }
+.lede { font-size: 19px; line-height: 1.6; color: var(--bone-2); margin: 0 0 28px; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin: 0 0 12px; }
+.fine { font-size: 13.5px; color: var(--bone-3); margin: 6px 0 0; }
+h2 { font: 700 clamp(22px, 3.2vw, 28px)/1.2 var(--display); color: var(--bone); letter-spacing: -.015em; margin: 56px 0 14px; }
+h3 { font: 700 18px/1.3 var(--display); color: var(--bone); margin: 30px 0 8px; }
+p, li { font-size: 16.5px; }
+a { color: var(--rec); }
+strong { color: var(--bone); font-weight: 600; }
+ul, ol { padding-left: 22px; }
+li { margin: 8px 0; }
+code, kbd { font: 500 .9em var(--mono); color: var(--bone); background: var(--ink-3); border: 1px solid var(--line);
+            border-radius: 5px; padding: 1px 6px; }
+
+.clip { margin: 34px 0 8px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--ink-2); }
+.clip video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: var(--ink-2); }
+.clip figcaption { padding: 10px 14px; font-size: 13.5px; color: var(--bone-3); border-top: 1px solid var(--line); }
+
+.note { border: 1px solid var(--line); border-left: 2px solid var(--rec); background: var(--ink-2);
+        padding: 16px 18px; border-radius: 8px; font-size: 15px; margin: 26px 0; }
+.note p { font-size: 15px; margin: 0; }
+.note p + p { margin-top: 8px; }
+
+/* Comparison table. Scrolls inside itself on a phone, never the page. */
+.table { overflow-x: auto; margin: 22px 0; border: 1px solid var(--line); border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; min-width: 560px; font-size: 15px; }
+th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th { font: 600 13px var(--mono); letter-spacing: .03em; color: var(--bone-3); background: var(--ink-2); }
+tbody th { color: var(--bone); font-weight: 500; width: 30%; }
+tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+td.us { color: var(--bone); }
+td.yes, td.us.yes { color: var(--good); }
+
+.steps { counter-reset: step; list-style: none; padding: 0; }
+.steps > li { counter-increment: step; position: relative; padding-left: 46px; margin: 24px 0; }
+.steps > li::before { content: counter(step, decimal-leading-zero); position: absolute; left: 0; top: 2px;
+                      font: 600 13px var(--mono); color: var(--rec); border: 1px solid rgba(255, 91, 4, .4);
+                      border-radius: 7px; padding: 3px 6px; }
+
+.final { margin: 64px 0 0; padding: 30px; border: 1px solid var(--line); border-radius: 16px; background: var(--ink-2); }
+.final h2 { margin-top: 0; }
+
+.related { margin: 56px 0 0; }
+.related ul { list-style: none; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.related li { margin: 0; }
+.related a { display: block; height: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px;
+             color: var(--bone); text-decoration: none; font-size: 15px; }
+.related a:hover { border-color: var(--bone-3); }
+.related a span { display: block; color: var(--bone-3); font-size: 13.5px; margin-top: 3px; }
+
+footer.bottom { border-top: 1px solid var(--line); margin-top: 72px; padding: 30px 0 40px; color: var(--bone-3); font-size: 13.5px; }
+footer.bottom .cols { display: flex; flex-wrap: wrap; gap: 10px 22px; }
+footer.bottom a { color: var(--bone-2); text-decoration: none; }
+footer.bottom a:hover { color: var(--rec); }

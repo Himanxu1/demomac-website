@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ScreenToast — Turn your screen recording into a product demo</title>
-<meta name="description" content="Mac screen recorder that turns a raw recording into a finished product demo. Automatic zooms, smooth cursor, spoken voiceover. $59 once.">
+<title>Mac Screen Recorder for Product Demos – ScreenToast</title>
+<meta name="description" content="ScreenToast is a Mac screen recorder for product demos: auto zoom on clicks, a smooth cursor, vertical recording and drafted narration. Free until you export.">
 <meta property="og:site_name" content="ScreenToast">
-<meta property="og:title" content="ScreenToast — Turn your screen recording into a product demo">
+<meta property="og:title" content="Mac Screen Recorder for Product Demos – ScreenToast">
 <meta property="og:description" content="Turn your screen recording into a product demo. Automatically.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://screentoast.com/">
@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="ScreenToast — turn your screen recording into a product demo">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ScreenToast — Turn your screen recording into a product demo">
+<meta name="twitter:title" content="Mac Screen Recorder for Product Demos – ScreenToast">
 <meta name="twitter:description" content="Turn your screen recording into a product demo. Automatically.">
 <meta name="twitter:image" content="https://screentoast.com/og.png">
 <meta name="twitter:image:alt" content="ScreenToast — turn your screen recording into a product demo">
@@ -63,6 +63,16 @@
    }
   },
   {
+   "@type": "VideoObject",
+   "@id": "https://screentoast.com/#launch-film",
+   "name": "ScreenToast launch film",
+   "description": "One minute on what ScreenToast does: record your Mac, get automatic zooms, a smooth cursor and drafted narration, and export for every platform.",
+   "thumbnailUrl": "https://screentoast.com/media/poster-launch-film.jpg",
+   "contentUrl": "https://screentoast.com/media/launch-film.mp4",
+   "uploadDate": "2026-09-30",
+   "duration": "PT1M1S"
+  },
+  {
    "@type": "FAQPage",
    "@id": "https://screentoast.com/#faq",
    "mainEntity": [
@@ -71,7 +81,7 @@
      "name": "How is this different from Screen Studio or Screen Charm?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Three things. It's a fraction of the size — 7.7 MB against several hundred — and opens instantly. It writes and speaks your narration, which neither of them does. And it records in the shape you're posting in, so a vertical clip is filmed vertical rather than cropped out of a wide one afterwards."
+      "text": "Three things. It's a fraction of the size — 7.7 MB against several hundred — and opens instantly. It drafts your narration from what you did on screen, instead of handing you an empty script box. And it records in the shape you're posting in, so a vertical clip is filmed vertical rather than cropped out of a wide one afterwards."
      }
     },
     {
@@ -87,7 +97,7 @@
      "name": "Are there captions?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Not yet — they're what we're building next, and they'll arrive as a free update. Everything else on this page works today."
+      "text": "For AI narration, yes: when ScreenToast speaks your script, it adds captions that follow it. Captions from your own recorded voice are what we're building next, as a free update."
      }
     },
     {
@@ -103,7 +113,7 @@
      "name": "What can it export?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Video or GIF, in whatever shape you need. There are ready-made settings for YouTube, TikTok, Reels, LinkedIn, X and Product Hunt, plus a high-quality master if you're taking it into another editor — or pick your own size."
+      "text": "An MP4 in whatever shape you need. There are ready-made settings for YouTube, TikTok, Reels, LinkedIn, X and Product Hunt, plus a high-quality master if you're taking it into another editor — or pick your own size."
      }
     },
     {
@@ -852,6 +862,8 @@
   .foot-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 32px; }
   @media (max-width: 800px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
   .foot-about p { color: var(--bone-4); font-size: 13.5px; margin-top: 12px; max-width: 34ch; line-height: 1.6; }
+  .foot-badges { margin-top: 20px; }
+  .foot-badges img { display: block; max-width: 100%; height: auto; }
   .foot-col h5 { font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--bone-4); margin: 0 0 14px; font-weight: 500; }
   .foot-col a { display: block; text-decoration: none; color: var(--bone-3); font-size: 14px; padding: 4px 0; }
   .foot-col a:hover { color: var(--bone); }
@@ -871,7 +883,7 @@
 
 <div class="launch-bar launch-only" role="note">
   Launch price: <b>$39</b> instead of $59, for the first 92 buyers<span class="seats-inline"></span> — until 5 Oct.
-  <a href="#download">Get it at $39</a>
+  <a href="#download" data-event="cta-launch-banner">Get it at $39</a>
 </div>
 
 <header class="nav">
@@ -886,7 +898,7 @@
       <a href="#pricing">Pricing</a>
       <a href="#requests">Requests</a>
     </nav>
-    <a class="btn btn-primary btn-sm" href="/ScreenToast-0.1.1.dmg" download>Download for Mac</a>
+    <a class="btn btn-primary btn-sm" href="/ScreenToast-0.1.1.dmg" download data-event="download-nav">Download for Mac</a>
   </div>
 </header>
 
@@ -896,22 +908,22 @@
   <div class="hero">
     <div class="wrap hero-in">
       <p class="eyebrow">Made for Mac</p>
-      <h1>Turn your screen recording into a product demo. <em>Automatically.</em></h1>
+      <h1>Turn your Mac screen recording into a product demo. <em>Automatically.</em></h1>
       <p class="lede">
-        Record your Mac. ScreenToast adds the zooms, calms the cursor, frames your
-        camera and even writes and speaks the narration — so your demo looks
-        edited without you ever opening an editor.
+        ScreenToast is a Mac screen recorder that adds the zooms on your clicks,
+        calms the cursor, frames your camera and even drafts the narration — so
+        your demo looks edited without you ever opening an editor.
       </p>
 
       <div class="cta-row">
-        <a class="btn btn-primary" href="/ScreenToast-0.1.1.dmg" download>Create your first demo — free</a>
+        <a class="btn btn-primary" href="/ScreenToast-0.1.1.dmg" download data-event="download-hero">Create your first demo — free</a>
         <a class="btn btn-ghost" href="#how">See what it does</a>
       </div>
       <p class="cta-note">macOS 14 or later · No account · Nothing leaves your Mac</p>
       <p class="cta-note release-line">v0.1.1 · Released 30 Sep 2026 · <a href="/changelog">What's new</a></p>
 
       <div class="stage">
-        <button type="button" class="film-btn" data-film-open aria-haspopup="dialog">
+        <button type="button" class="film-btn" data-film-open data-event="cta-launch-film" aria-haspopup="dialog">
           <span class="disc"><svg width="14" height="16" viewBox="0 0 14 16" aria-hidden="true"><path d="M0 0l14 8-14 8z" fill="#150802"/></svg></span>
           <span>Watch the launch film<small>1:01 · sound on</small></span>
         </button>
@@ -951,7 +963,7 @@
 
       <div class="specs">
         <div class="spec"><b>7.7&thinsp;MB</b><span>The whole app. It downloads before you finish reading this.</span></div>
-        <div class="spec"><b>4K</b><span>Sharp enough to read every word on screen.</span></div>
+        <div class="spec"><b>Up to 4K</b><span>As sharp as your screen recorded it, so every word stays readable.</span></div>
         <div class="spec"><b>No&nbsp;lag</b><span>The cursor stays calm without falling behind your clicks.</span></div>
         <div class="spec"><b>Private</b><span>Everything stays on your Mac. Nothing is uploaded.</span></div>
       </div>
@@ -1304,7 +1316,7 @@
             <ul class="points">
               <li><span><b>Set how long each one lasts</b>, with its own colour and the way the text arrives.</span></li>
               <li><span><b>Point things out</b> with text and callouts on the recording itself, right where you put them.</span></li>
-              <li><span><b>A watermark worth keeping</b> on free exports — and none at all once you buy.</span></li>
+              <li><span><b>No watermark</b> on anything you export. The preview shows a small badge until you buy; exporting is what the licence unlocks.</span></li>
             </ul>
           </div>
           <figure class="demo">
@@ -1375,6 +1387,7 @@
             <ul class="points">
               <li><span><b>It lands on the right moment.</b> Each line sits with the thing it's describing, and they never talk over each other.</span></li>
               <li><span><b>Prefer your own voice?</b> Record it, and the music quietens itself underneath automatically.</span></li>
+              <li><span><b>AI voices come from ElevenLabs,</b> using your own API key. Drafting the script needs no key and runs on your Mac. <a href="/features/ai-voiceover">How it works</a></span></li>
               <li><span><b>Cleans up your microphone</b>, so a laptop mic stops sounding like a laptop mic.</span></li>
             </ul>
           </div>
@@ -1411,7 +1424,7 @@
             </p>
             <ul class="points">
               <li><span><b>Ready-made settings</b> for YouTube, TikTok, Reels, LinkedIn, X and Product Hunt.</span></li>
-              <li><span><b>Save as a video or a GIF</b>, including a high-quality master if you're taking it into another editor.</span></li>
+              <li><span><b>Save as an MP4</b>, or a ProRes master if you're taking it into another editor.</span></li>
               <li><span><b>Straight to your Mac.</b> No upload, no queue, no link that quietly expires.</span></li>
             </ul>
           </div>
@@ -1636,8 +1649,8 @@
             <li><svg viewBox="0 0 24 24"><path d="M4 12.5l5.2 5L20 6.5"/></svg><span>14-day refund, no questions asked.</span></li>
             <li><svg viewBox="0 0 24 24"><path d="M4 12.5l5.2 5L20 6.5"/></svg><span>Every email answered personally by the person who built it.</span></li>
           </ul>
-          <p class="next-up launch-only"><b>Captions are next</b>, as a free update — and so is everything after them. You get them at either price. The $39 is what doesn't come back.</p>
-          <a class="btn btn-primary" href="https://checkout.dodopayments.com/buy/pdt_0NodymXnzeIYABi8tlcql?quantity=1"><span class="launch-only">Get ScreenToast — $39 with EARLY39</span><span class="regular-only">Get ScreenToast — $59</span></a>
+          <p class="next-up launch-only"><b>Captions from your own voice are next</b>, as a free update — and so is everything after them. You get them at either price. The $39 is what doesn't come back.</p>
+          <a class="btn btn-primary" href="https://checkout.dodopayments.com/buy/pdt_0NodymXnzeIYABi8tlcql?quantity=1" data-event="checkout-click-pricing"><span class="launch-only">Get ScreenToast — $39 with EARLY39</span><span class="regular-only">Get ScreenToast — $59</span></a>
           <p class="cta-note" style="text-align:center">macOS 14 or later · Apple Silicon and Intel</p>
         </div>
 
@@ -1652,7 +1665,7 @@
             No account to create, no card to enter, no trial clock running down while
             you are busy with something else.
           </p>
-          <div class="cta-row"><a class="btn btn-ghost" href="/ScreenToast-0.1.1.dmg" download>Download for Mac</a></div>
+          <div class="cta-row"><a class="btn btn-ghost" href="/ScreenToast-0.1.1.dmg" download data-event="download-pricing">Download for Mac</a></div>
         </div>
       </div>
     </div>
@@ -1687,7 +1700,7 @@
             <input name="email" type="email" maxlength="200" placeholder="you@company.com" autocomplete="email">
           </label>
           <label class="hp" aria-hidden="true">Website <input name="website" tabindex="-1" autocomplete="off"></label>
-          <button class="btn btn-primary" type="submit">Send request</button>
+          <button class="btn btn-primary" type="submit" data-event="cta-feature-request">Send request</button>
           <p class="req-msg" role="status" aria-live="polite"></p>
         </form>
 
@@ -1713,7 +1726,7 @@
 
       <details open>
         <summary>How is this different from Screen Studio or Screen Charm?</summary>
-        <p>Three things. It's a fraction of the size — 7.7&thinsp;MB against several hundred — and opens instantly. It writes and speaks your narration, which neither of them does. And it records in the shape you're posting in, so a vertical clip is filmed vertical rather than cropped out of a wide one afterwards.</p>
+        <p>Three things. It's a fraction of the size — 7.7&thinsp;MB against several hundred — and opens instantly. It drafts your narration from what you did on screen, instead of handing you an empty script box. And it records in the shape you're posting in, so a vertical clip is filmed vertical rather than cropped out of a wide one afterwards.</p>
       </details>
       <details>
         <summary>Does anything I record get uploaded?</summary>
@@ -1721,7 +1734,7 @@
       </details>
       <details>
         <summary>Are there captions?</summary>
-        <p>Not yet — they're what we're building next, and they'll arrive as a free update. Everything else on this page works today.</p>
+        <p>For AI narration, yes: when ScreenToast speaks your script, it adds captions that follow it. Captions from your own recorded voice are what we're building next, as a free update.</p>
       </details>
       <details>
         <summary>Can I still edit what Auto Polish did?</summary>
@@ -1729,7 +1742,7 @@
       </details>
       <details>
         <summary>What can it export?</summary>
-        <p>Video or GIF, in whatever shape you need. There are ready-made settings for YouTube, TikTok, Reels, LinkedIn, X and Product Hunt, plus a high-quality master if you're taking it into another editor — or pick your own size.</p>
+        <p>An MP4 in whatever shape you need. There are ready-made settings for YouTube, TikTok, Reels, LinkedIn, X and Product Hunt, plus a high-quality master if you're taking it into another editor — or pick your own size.</p>
       </details>
       <details>
         <summary>Can I record system audio and my microphone at once?</summary>
@@ -1763,7 +1776,7 @@
         <p class="lede" style="text-align:center">
           Record something today — it's free, and there's no account to make. Let it polish itself. Decide afterwards whether it is worth <span class="launch-only">$39</span><span class="regular-only">$59</span>.
         </p>
-        <div class="cta-row"><a class="btn btn-primary" href="/ScreenToast-0.1.1.dmg" download>Create your first demo — free</a></div>
+        <div class="cta-row"><a class="btn btn-primary" href="/ScreenToast-0.1.1.dmg" download data-event="download-final">Create your first demo — free</a></div>
         <p class="cta-note">macOS 14 or later · No account required</p>
 
         <p class="cta-note" style="margin-top:26px">
@@ -1785,6 +1798,11 @@
       <div class="foot-about">
         <a class="mark" href="#top"><span class="dot"></span>ScreenToast</a>
         <p>A native macOS product-demo studio. Record, polish, narrate, publish — without opening an editor.</p>
+        <div class="foot-badges">
+          <a href="https://www.trymacapps.com" target="_blank" rel="noopener">
+            <img src="https://www.trymacapps.com/badge.png" alt="Featured on TryMacApps" width="200" height="67" loading="lazy">
+          </a>
+        </div>
       </div>
       <div class="foot-col">
         <h5>Product</h5>
@@ -1795,10 +1813,12 @@
         <a href="#pricing">Pricing</a>
       </div>
       <div class="foot-col">
-        <h5>Compare</h5>
-        <a href="#compare">vs other Mac apps</a>
-        <a href="#compare">vs subscription tools</a>
-        <a href="#native">vs QuickTime</a>
+        <h5>Learn</h5>
+        <a href="/screen-studio-alternative">Screen Studio alternative</a>
+        <a href="/features/auto-zoom">Auto zoom recorder</a>
+        <a href="/features/vertical-screen-recording">Vertical screen recording</a>
+        <a href="/features/ai-voiceover">AI voiceover</a>
+        <a href="/guides/how-to-make-a-product-demo-video-on-mac">Make a product demo</a>
         <a href="#faq">FAQ</a>
       </div>
       <div class="foot-col">
@@ -2012,5 +2032,6 @@
     dlg.addEventListener('close', function () { video.pause(); });
   })();
 </script>
+<script src="/analytics.js" defer></script>
 </body>
 </html>

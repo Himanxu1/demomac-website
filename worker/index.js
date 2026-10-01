@@ -6,6 +6,13 @@
 //   POST /api/requests               submit one (held for approval)
 //   POST /api/requests/:id/vote      +1, once per person
 //   GET  /api/requests/:id/moderate  approve/reject, from the link in the email
+//   POST /api/e                      the page's analytics beacon (analytics.js)
+//
+// It also counts, from the requests themselves, the three numbers a static
+// site cannot see: DMG downloads, Sparkle delta downloads (updates applied)
+// and appcast fetches (installs still in use). The app sends nothing extra —
+// these are requests it already makes. Everything lands in the founder
+// dashboard's Analytics Engine dataset (site "screentoast").
 //
 // Needs, on the Worker:
 //   DODO_API_KEY      secret  `wrangler secret put DODO_API_KEY`
@@ -15,6 +22,9 @@
 //   SEAT_TOTAL        var     used only if the discount has no usage limit
 //   DB                D1      screentoast-requests
 //   NOTIFY            email   optional; without it requests are still saved
+//   AE                Analytics Engine — dataset founder_events, shared with
+//                             founder-dashboard, which reads it back
+//   VISITOR_SALT      secret  salts the daily visitor hash; never stored
 
 import { EmailMessage } from 'cloudflare:email';
 
@@ -26,6 +36,7 @@ export default {
     const url = new URL(request.url);
     const path = url.pathname;
     try {
+      if (path === '/api/e' && request.method === 'POST') return await beacon(request, env);
       if (path === '/api/seats') return await seats(url, env, ctx);
       if (path === '/api/requests') {
         if (request.method === 'GET') return await listRequests(env);
@@ -38,6 +49,7 @@ export default {
       if (m) return await moderate(request, url, env, Number(m[1]));
       if (path.startsWith('/api/')) return json({ error: 'not found' }, 404);
       if (path.startsWith('/media/') && request.headers.has('Range')) return await ranged(request, env);
+      countFetch(request, path, env, ctx);
     } catch (e) {
       console.error(path, e && e.stack || e);
       return json({ error: 'server' }, 500);
@@ -45,6 +57,86 @@ export default {
     return env.ASSETS.fetch(request);
   },
 };
+
+// ── analytics ─────────────────────────────────────────────────────────────────
+//
+// Same row shape as founder-dashboard's own collector — the positions ARE the
+// schema there (COLUMNS in shared/metrics.mjs), so append, never reorder:
+//   index1 site · blob1 event · blob2 path · blob3 referrer host · blob4 country
+//   blob5 visitor (sha-256 of salt + UTC day + site + IP + UA, truncated)
+// The IP is never stored and the salt changes the hash every midnight, so
+// nobody can be followed from one day to the next.
+
+const AE_SITE = 'screentoast';
+const OWN_HOST = 'screentoast.com';
+
+async function visitorId(request, env) {
+  const ip = request.headers.get('cf-connecting-ip') || '';
+  const ua = request.headers.get('user-agent') || '';
+  const day = new Date().toISOString().slice(0, 10);
+  const bytes = new TextEncoder().encode(`${env.VISITOR_SALT || ''}:${day}:${AE_SITE}:${ip}:${ua}`);
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  return [...new Uint8Array(digest)].slice(0, 16).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// Bare hostname only — a full referrer can carry a search query or a private path.
+function referrerHost(raw) {
+  if (!raw) return 'direct';
+  try {
+    const host = new URL(raw).hostname.replace(/^www\./, '');
+    return !host || host === OWN_HOST ? 'direct' : host.slice(0, 80);
+  } catch { return 'direct'; }
+}
+
+async function record(request, env, event, path, referrer) {
+  if (!env.AE) return;
+  env.AE.writeDataPoint({
+    indexes: [AE_SITE],
+    blobs: [
+      String(event).slice(0, 64),
+      String(path || '/').slice(0, 120),
+      referrerHost(referrer),
+      // From the edge, not the client: the one field the network actually knows.
+      (request.cf && request.cf.country) || '??',
+      await visitorId(request, env),
+    ],
+    doubles: [1],
+  });
+}
+
+async function beacon(request, env) {
+  try {
+    // text/plain from sendBeacon, so the browser never sends a preflight.
+    const p = JSON.parse(await request.text());
+    const event = String(p.e || '').slice(0, 64);
+    if (p.s === AE_SITE && /^[a-z0-9-]+$/.test(event)) await record(request, env, event, p.p, p.r);
+  } catch {}
+  return new Response(null, { status: 204, headers: { 'cache-control': 'no-store' } });
+}
+
+// Downloads and update checks, counted from the request itself — no ad
+// blocker can hide those, unlike a click beacon.
+//   dl-dmg         a DMG download (path = the file, so versions separate)
+//   dl-delta       a Sparkle delta update downloaded
+//   update-check   Sparkle fetching the appcast (path = the app version);
+//                  distinct per day, this is "installs in use"
+// A resumed or parallel download sends several Range requests; only the one
+// that starts at byte 0 is a download.
+function countFetch(request, path, env, ctx) {
+  if (request.method !== 'GET') return;
+  const range = request.headers.get('Range');
+  const fromStart = !range || /^bytes=0-/.test(range);
+  const ua = request.headers.get('user-agent') || '';
+  let event = null, label = path;
+  if (path.endsWith('.dmg') && fromStart) event = 'dl-dmg';
+  else if (path.endsWith('.delta') && fromStart) event = 'dl-delta';
+  else if (path === '/appcast.xml' && /Sparkle/i.test(ua)) {
+    // Sparkle's agent reads "ScreenToast/0.1.1 Sparkle/2.x" — the version is all we keep.
+    const m = /ScreenToast\/([\w.]+)/.exec(ua);
+    event = 'update-check'; label = m ? m[1] : 'unknown';
+  }
+  if (event) ctx.waitUntil(record(request, env, event, label, request.headers.get('Referer')).catch(() => {}));
+}
 
 // ── video byte ranges ─────────────────────────────────────────────────────────
 //

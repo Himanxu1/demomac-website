@@ -4,3 +4,7 @@
 .gitignore
 worker
 wrangler.jsonc
+pages
+README.md
+media/*.md
+media/encode.sh
