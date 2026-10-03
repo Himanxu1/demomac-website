@@ -48,6 +48,10 @@ export default {
       m = path.match(/^\/api\/requests\/(\d+)\/moderate$/);
       if (m) return await moderate(request, url, env, Number(m[1]));
       if (path.startsWith('/api/')) return json({ error: 'not found' }, 404);
+      // The comparison page was taken down; old links land on the home page.
+      if (path === '/screen-studio-alternative' || path === '/screen-studio-alternative.html') {
+        return Response.redirect(SITE + '/', 301);
+      }
       if (path.startsWith('/media/') && request.headers.has('Range')) return await ranged(request, env);
       countFetch(request, path, env, ctx);
     } catch (e) {

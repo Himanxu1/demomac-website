@@ -8,7 +8,7 @@
   // requests (see ranged() in worker/index.js), and the DMG, deltas and
   // appcast so it can count downloads and update checks (countFetch());
   // everything else is served straight from the static assets.
-  "assets": { "directory": ".", "binding": "ASSETS", "run_worker_first": ["/api/*", "/media/*", "/*.dmg", "/*.delta", "/appcast.xml"],
+  "assets": { "directory": ".", "binding": "ASSETS", "run_worker_first": ["/api/*", "/media/*", "/screen-studio-alternative", "/screen-studio-alternative.html", "/*.dmg", "/*.delta", "/appcast.xml"],
               // Unknown paths get 404.html (built from pages/404.html) with a real 404 status.
               "not_found_handling": "404-page" },
   // Shared with founder-dashboard (same account), which reads it back.

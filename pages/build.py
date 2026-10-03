@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builds the content pages (comparison, features, guides, 404) from pages/*.html.
+"""Builds the content pages (features, guides, 404) from pages/*.html.
 
 Each source file starts with a JSON header inside an HTML comment, then the
 page body. This wraps the body in the shared head, header and footer, so the
@@ -26,7 +26,7 @@ import re
 SITE = "https://screentoast.com"
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 # Keep in step with the homepage's download links; release flow bumps both.
-DMG = "/ScreenToast-0.1.1.dmg"
+DMG = "/ScreenToast-0.2.0.dmg"
 
 HEAD = """<!doctype html>
 <html lang="en">
@@ -62,7 +62,6 @@ HEAD = """<!doctype html>
   <nav>
     <a href="/features/auto-zoom">Auto zoom</a>
     <a href="/features/vertical-screen-recording">Vertical</a>
-    <a href="/screen-studio-alternative">vs Screen Studio</a>
     <a href="/#pricing">Pricing</a>
     <a class="btn btn-primary btn-sm" href="{dmg}" download data-event="download-{slug}-nav">Download for Mac</a>
   </nav>
@@ -77,7 +76,6 @@ FOOT = """</div></main>
     <a href="/features/auto-zoom">Auto zoom</a>
     <a href="/features/vertical-screen-recording">Vertical recording</a>
     <a href="/features/ai-voiceover">AI voiceover</a>
-    <a href="/screen-studio-alternative">Screen Studio alternative</a>
     <a href="/guides/how-to-make-a-product-demo-video-on-mac">Make a product demo</a>
     <a href="/changelog">Changelog</a>
     <a href="/privacy">Privacy</a>
