@@ -7,7 +7,7 @@ still deploys cleanly.
 
 ## How to record them
 
-**Film ScreenToast with Screen Charm.** ScreenToast cannot film itself — a
+**Film ScreenToast with the Mac's own screen recorder.** ScreenToast cannot film itself — a
 release build sets `NSWindow.sharingType = .none` specifically to stop screen
 recorders, and it does not know your recorder from anyone else's.
 
@@ -20,7 +20,7 @@ back to being unrecordable.
 
 ### The one thing to get right
 
-**Turn Screen Charm's auto-zoom and cursor smoothing OFF for `auto-zoom.mp4`,
+**Use a recorder with no auto-zoom or cursor smoothing of its own for `auto-zoom.mp4`,
 `cursor-smoothing.mp4` and `follow-cursor.mp4`.**
 
 Those three clips exist to show ScreenToast doing exactly those two things.
@@ -28,7 +28,7 @@ Film them through a competitor's version of the same effect and the motion a
 buyer is watching is not the motion being sold — and it is the first thing they
 will check against the app once they download it.
 
-For the other eight, leave Screen Charm's polish on if you prefer how it looks.
+For the other eight, any recorder works.
 Those clips are about what is on screen, not how the camera moves.
 
 ### Then
@@ -81,5 +81,5 @@ ffmpeg -i raw.mov -an -vf "scale=1600:-2" -c:v libx264 -crf 24 \
 
 Once these are real, the line *"every clip on this page was recorded on a Mac
 and polished automatically"* is worth more than any feature bullet — provided
-it is true. If Screen Charm's polish is doing the work in the motion clips, do
+it is true. If another recorder's polish is doing the work in the motion clips, do
 not write it.

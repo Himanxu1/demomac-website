@@ -1,5 +1,5 @@
 #!/bin/bash
-# Turns raw Screen Charm exports into the eleven clips this page expects.
+# Turns raw screen recordings into the eleven clips this page expects.
 #
 #   media/encode.sh ~/Movies/raw
 #
