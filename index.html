@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mac Screen Recorder for Product Demos – ScreenToast</title>
-<meta name="description" content="ScreenToast is a Mac screen recorder for product demos: auto zoom on clicks, a smooth cursor, vertical recording and drafted narration. Free until you export.">
+<meta name="description" content="Show your real product working, polished automatically. ScreenToast is a Mac screen recorder for product demos: auto zoom on clicks, a smooth cursor, captions and narration. Free to record and edit.">
 <meta property="og:site_name" content="ScreenToast">
 <meta property="og:title" content="Mac Screen Recorder for Product Demos – ScreenToast">
-<meta property="og:description" content="Turn your screen recording into a product demo. Automatically.">
+<meta property="og:description" content="AI can fake the promo. Not the product. Record your real app on your Mac — ScreenToast polishes it automatically.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://screentoast.com/">
 <meta property="og:image" content="https://screentoast.com/og.png">
@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mac Screen Recorder for Product Demos – ScreenToast">
-<meta name="twitter:description" content="Turn your screen recording into a product demo. Automatically.">
+<meta name="twitter:description" content="AI can fake the promo. Not the product. Record your real app on your Mac — ScreenToast polishes it automatically.">
 <meta name="twitter:image" content="https://screentoast.com/og.png">
 <meta name="twitter:image:alt" content="ScreenToast — turn your screen recording into a product demo">
 <link rel="canonical" href="https://screentoast.com/">
@@ -25,13 +25,6 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#08080a">
-<script>
-  /* Launch price: $39 with code EARLY39 until the end of 5 Oct (anywhere on
-     earth) or until the 92 seats are gone, whichever is first. Past the date
-     the page is simply the $59 page again — no redeploy, nothing stale. */
-  window.LAUNCH_ENDS = Date.parse('2026-10-05T23:59:59-12:00');
-  if (Date.now() < window.LAUNCH_ENDS) document.documentElement.classList.add('launch');
-</script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -46,21 +39,34 @@
    "@type": "SoftwareApplication",
    "@id": "https://screentoast.com/#app",
    "name": "ScreenToast",
-   "description": "Mac screen recorder that turns a raw recording into a finished product demo, with automatic zooms, a smoothed cursor and spoken voiceover.",
+   "description": "Mac screen recorder that turns a raw recording into a finished product demo, with automatic zooms, a smoothed cursor, captions, automatic hiding of secrets and spoken voiceover.",
    "applicationCategory": "MultimediaApplication",
    "operatingSystem": "macOS 14 or later",
-   "softwareVersion": "0.2.0",
-   "fileSize": "7.7MB",
+   "softwareVersion": "0.2.2",
+   "fileSize": "9.8MB",
    "url": "https://screentoast.com/",
-   "downloadUrl": "https://screentoast.com/ScreenToast-0.2.0.dmg",
+   "downloadUrl": "https://screentoast.com/ScreenToast-0.2.2.dmg",
    "image": "https://screentoast.com/og.png",
-   "offers": {
-    "@type": "Offer",
-    "price": "59",
-    "priceCurrency": "USD",
-    "url": "https://screentoast.com/#download",
-    "availability": "https://schema.org/InStock"
-   }
+   "offers": [
+    {
+     "@type": "Offer",
+     "name": "Pro Yearly",
+     "price": "59",
+     "priceCurrency": "USD",
+     "url": "https://screentoast.com/#pricing",
+     "availability": "https://schema.org/InStock",
+     "priceSpecification": { "@type": "UnitPriceSpecification", "price": "59", "priceCurrency": "USD", "billingDuration": "P1Y" }
+    },
+    {
+     "@type": "Offer",
+     "name": "Pro Monthly",
+     "price": "7.00",
+     "priceCurrency": "USD",
+     "url": "https://screentoast.com/#pricing",
+     "availability": "https://schema.org/InStock",
+     "priceSpecification": { "@type": "UnitPriceSpecification", "price": "7.00", "priceCurrency": "USD", "billingDuration": "P1M" }
+    }
+   ]
   },
   {
    "@type": "VideoObject",
@@ -81,7 +87,7 @@
      "name": "How is this different from other screen recorders?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Three things. It's a fraction of the size — 7.7 MB against several hundred — and opens instantly. It drafts your narration from what you did on screen, instead of handing you an empty script box. And it records in the shape you're posting in, so a vertical clip is filmed vertical rather than cropped out of a wide one afterwards."
+      "text": "Three things. It's small — under 10 MB to download — and opens instantly. It drafts your narration from what you did on screen, instead of handing you an empty script box. And it records in the shape you're posting in, so a vertical clip is filmed vertical rather than cropped out of a wide one afterwards."
      }
     },
     {
@@ -113,7 +119,7 @@
      "name": "What can it export?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "An MP4 in whatever shape you need. There are ready-made settings for YouTube, TikTok, Reels, LinkedIn, X and Product Hunt, plus a high-quality master if you're taking it into another editor — or pick your own size."
+      "text": "MP4, HEVC or GIF in whatever shape you need. There are ready-made settings for YouTube, TikTok, Reels, LinkedIn, X, Product Hunt and the web, plus a ProRes master if you're taking it into another editor — or pick your own size. Captions can be saved as an .srt file too."
      }
     },
     {
@@ -150,10 +156,26 @@
     },
     {
      "@type": "Question",
-     "name": "Can I use it on more than one Mac?",
+     "name": "Can I export a test video before paying?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Up to three Macs that you own, on the one licence. If you replace a machine, deactivate the old one from the app and the seat comes back."
+      "text": "Exporting is what Pro unlocks, so the first export is the paid one. Until then you can record and edit as much as you like, and the preview shows exactly what you'll get. If it still isn't right, there's a 14-day refund, no questions asked."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What happens if I cancel?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "You keep everything. Videos you've already exported are ordinary files, and you can still record and edit in ScreenToast for free — only exporting new videos waits until you're Pro again. Cancel anytime, and Pro runs to the end of the period you've paid for."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does the voiceover cost extra?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Not from us. The voices built into macOS are free and work offline. If you want ElevenLabs voices, they use your own ElevenLabs account, so any cost is between you and them — ScreenToast adds nothing on top."
      }
     }
    ]
@@ -327,6 +349,27 @@
   .hero-in { position: relative; }
   .hero h1 { font-size: clamp(38px, 6.4vw, 76px); margin-top: 20px; max-width: 17ch; }
   .hero h1 em { font-style: normal; color: var(--rec); }
+  /* Rotating headline. Every line shares one grid cell, so the hero keeps the
+     height of the tallest and nothing below it jumps. */
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .hero h1.rot { max-width: 19ch; }
+  .rot-stack { display: grid; }
+  .rot-line { grid-area: 1 / 1; visibility: hidden; }
+  .rot-line.is-on, .rot-line.is-out { visibility: visible; }
+  .rot-line .w {
+    display: inline-block; opacity: 0; transform: translateY(.42em); filter: blur(10px);
+    transition: opacity .5s ease, transform .7s cubic-bezier(.2,.85,.25,1), filter .55s ease;
+    transition-delay: calc(var(--i) * 55ms);
+  }
+  .rot-line.is-on .w { opacity: 1; transform: none; filter: none; }
+  .rot-line.is-out .w {
+    opacity: 0; transform: translateY(-.32em); filter: blur(8px);
+    transition-duration: .35s, .4s, .35s; transition-delay: calc(var(--i) * 18ms);
+  }
+  .rot-line em .w { background: linear-gradient(90deg, var(--rec), var(--ember)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  @media (prefers-reduced-motion: reduce) {
+    .rot-line .w { transition: none; filter: none; }
+  }
   .hero .lede { margin-top: 20px; font-size: clamp(16.5px, 1.7vw, 19.5px); }
 
   .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 30px; }
@@ -744,7 +787,7 @@
   .bar-label b { font-family: var(--mono); font-weight: 600; font-size: 14px; color: var(--bone); font-variant-numeric: tabular-nums; }
   .bar { height: 26px; border-radius: 5px; background: var(--ink-2); border: 1px solid var(--line); overflow: hidden; }
   .bar span { display: block; height: 100%; }
-  .bar .ours { width: 1.7%; min-width: 4px; background: linear-gradient(90deg, var(--rec), var(--ember)); }
+  .bar .ours { width: 6.8%; min-width: 4px; background: linear-gradient(90deg, var(--rec), var(--ember)); }
   .bar .theirs { width: 100%; background: var(--line-2); }
   .weigh figcaption { font-family: var(--mono); font-size: 11.5px; color: var(--bone-4); line-height: 1.6; }
 
@@ -769,15 +812,53 @@
 
   /* ── pricing ─────────────────────────────────────── */
 
-  .price-wrap { margin-top: clamp(32px, 5vw, 50px); display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(24px, 4vw, 44px); align-items: start; }
-  @media (max-width: 880px) { .price-wrap { grid-template-columns: 1fr; } }
-  .price-card { border: 1px solid var(--line-2); border-radius: 14px; background: linear-gradient(180deg, var(--ink-2), var(--ink)); padding: 30px; position: relative; overflow: hidden; }
-  .price-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 2px; background: linear-gradient(90deg, var(--rec), var(--ember)); }
-  .tagline { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--rec); }
-  .amount { display: flex; align-items: baseline; gap: 9px; margin-top: 14px; }
-  .amount b { font-family: var(--display); font-weight: 800; font-size: 58px; letter-spacing: -0.045em; line-height: 1; }
-  .amount span { color: var(--bone-3); font-size: 15px; }
-  .price-card .btn { width: 100%; margin-top: 24px; }
+  .plans { margin-top: clamp(32px, 5vw, 50px); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2.4vw, 24px); }
+  @media (max-width: 880px) { .plans { grid-template-columns: 1fr; } }
+  .plan { border-radius: 22px; padding: 7px; border: 1px solid var(--line); background: var(--ink-2); display: flex; flex-direction: column; }
+  .plan-yearly { border-color: rgba(255,162,75,.28); background: linear-gradient(180deg, #2a1306, #170c07 55%, var(--ink-2)); box-shadow: 0 30px 80px -40px rgba(255,91,4,.45); }
+  .plan-head { padding: clamp(18px, 3vw, 26px) clamp(18px, 3vw, 26px) clamp(16px, 2.4vw, 22px); }
+  .plan-head h3 { margin: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; font-family: var(--display); font-weight: 700; font-size: clamp(23px, 3vw, 28px); letter-spacing: -0.025em; color: var(--bone); }
+  .plan-head p { margin: 8px 0 0; font-size: 15px; color: var(--bone-3); }
+  .badge { font-family: var(--body); font-size: 13px; font-weight: 600; letter-spacing: 0; padding: 4px 11px; border-radius: 999px; }
+  .plan-yearly .badge { color: #2a1204; background: linear-gradient(180deg, #ffb565, var(--ember)); }
+  .plan-monthly .badge { color: var(--bone-2); background: rgba(242,239,233,.07); box-shadow: inset 0 0 0 1px var(--line-2); }
+  .plan-body { flex: 1; border-radius: 16px; border: 1px solid var(--line); background: var(--ink); padding: clamp(22px, 3.4vw, 32px); }
+  .plan-monthly .plan-body { background: var(--ink-3); }
+  .plan-amount { display: flex; align-items: baseline; gap: 6px; }
+  .plan-amount b { font-family: var(--display); font-weight: 800; font-size: clamp(48px, 7vw, 64px); letter-spacing: -0.045em; line-height: 1; color: var(--bone); }
+  .plan-amount span { color: var(--bone-3); font-size: 16px; }
+  .plan-note { margin: 12px 0 0; font-size: 15px; color: var(--bone-3); }
+  .plan .btn { width: 100%; margin-top: 26px; }
+  .ticks { list-style: none; padding: 0; margin: 24px 0 0; display: flex; flex-direction: column; gap: 12px; }
+  .ticks li { display: flex; align-items: center; gap: 11px; font-size: 15px; color: var(--bone-2); }
+  .ticks i { flex: none; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: var(--rec); }
+  .plan-monthly .ticks i { background: rgba(255,91,4,.16); }
+  .ticks svg { width: 12px; height: 12px; fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .plan-monthly .ticks svg { stroke: var(--ember); }
+  .plans-foot { margin: 22px 0 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px; font-size: 13.5px; color: var(--bone-3); }
+  .plans-foot a { color: var(--bone); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+  .plans-foot a:hover { color: var(--ember); }
+
+  .pro-feats { margin-top: clamp(48px, 7vw, 72px); }
+  .pro-feats-head { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--bone-4); margin: 0 0 8px; }
+  .fgrid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .fgrid li { display: flex; align-items: center; gap: 13px; padding: 20px 20px; border-bottom: 1px solid var(--line); font-size: 15.5px; font-weight: 500; color: var(--bone); }
+  .fgrid li:nth-child(3n+1) { padding-left: 2px; }
+  .fgrid li:nth-child(3n+2), .fgrid li:nth-child(3n) { border-left: 1px solid var(--line); }
+  .fgrid li:nth-last-child(-n+3) { border-bottom: 0; }
+  .fgrid svg { width: 21px; height: 21px; flex: none; fill: none; stroke: var(--bone-3); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .fgrid svg .dots { stroke-width: 2.6; }
+  @media (max-width: 880px) {
+    .fgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fgrid li:nth-child(n) { padding: 17px 16px; border-left: 0; border-bottom: 1px solid var(--line); }
+    .fgrid li:nth-child(2n+1) { padding-left: 2px; }
+    .fgrid li:nth-child(2n) { border-left: 1px solid var(--line); }
+    .fgrid li:last-child { border-bottom: 0; }
+  }
+  @media (max-width: 520px) {
+    .fgrid { grid-template-columns: 1fr; }
+    .fgrid li:nth-child(n) { padding: 15px 2px; border-left: 0; font-size: 15px; }
+  }
 
   /* ── feature requests ────────────────────────────── */
   .req { margin-top: clamp(32px, 5vw, 50px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
@@ -807,29 +888,8 @@
   .chip.planned { color: var(--ember); border-color: rgba(255,162,75,.4); }
   .chip.shipped { color: #7fd6a0; border-color: rgba(127,214,160,.4); }
 
-  /* ── launch offer ────────────────────────────────── */
-  html:not(.launch) .launch-only, html.launch .regular-only, .seats[hidden] { display: none !important; }
-  .amount s { font-family: var(--display); font-weight: 700; font-size: 26px; color: var(--bone-4); letter-spacing: -0.03em; }
-  .seats { margin-top: 18px; }
-  .seats-row { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11.5px; color: var(--bone-3); letter-spacing: .04em; }
-  .seats-row b { color: var(--ember); font-weight: 600; }
-  .seats-bar { margin-top: 8px; height: 4px; border-radius: 3px; background: var(--line); overflow: hidden; }
-  .seats-bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--rec), var(--ember)); transition: width .8s ease; }
-  .code { margin-top: 18px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 11px 12px; border: 1px dashed rgba(255,162,75,.45); border-radius: 9px; background: rgba(255,91,4,.06); font-size: 13.5px; color: var(--bone-2); }
-  .code kbd { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--ember); letter-spacing: .08em; }
-  .code button { margin-left: auto; font: inherit; font-family: var(--mono); font-size: 11.5px; color: var(--bone-2); background: var(--ink-3); border: 1px solid var(--line-2); border-radius: 6px; padding: 5px 10px; cursor: pointer; }
-  .code button:hover { border-color: var(--ember); }
-  .next-up { margin-top: 16px; font-size: 13.5px; color: var(--bone-3); line-height: 1.55; }
-  .next-up b { color: var(--bone-2); font-weight: 600; }
-  .launch-bar { background: linear-gradient(90deg, #2a1204, #1a0c06 60%, #120a08); border-bottom: 1px solid rgba(255,162,75,.22); font-size: 13px; color: var(--bone-2); text-align: center; padding: 9px var(--gutter); }
-  .launch-bar b { color: var(--ember); font-weight: 600; }
-  .launch-bar a { color: var(--bone); text-decoration: underline; text-underline-offset: 3px; margin-left: 6px; white-space: nowrap; }
   .release-line a { color: var(--bone-3); text-decoration: underline; text-underline-offset: 3px; }
   .release-line a:hover { color: var(--bone); }
-  .human { margin-top: 16px; font-size: 13px; color: var(--bone-3); line-height: 1.55; text-align: center; }
-  .incl { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-direction: column; gap: 11px; }
-  .incl li { display: flex; gap: 10px; font-size: 14.5px; color: var(--bone-2); }
-  .incl svg { width: 15px; height: 15px; flex: none; margin-top: 4px; stroke: var(--rec); fill: none; stroke-width: 2.2; }
 
   /* ── faq ─────────────────────────────────────────── */
 
@@ -881,11 +941,6 @@
 </head>
 <body>
 
-<div class="launch-bar launch-only" role="note">
-  Launch price: <b>$39</b> instead of $59, for the first 92 buyers<span class="seats-inline"></span> — until 5 Oct.
-  <a href="#download" data-event="cta-launch-banner">Get it at $39</a>
-</div>
-
 <header class="nav">
   <div class="wrap nav-in">
     <a class="mark" href="#top"><span class="dot"></span>ScreenToast</a>
@@ -897,8 +952,9 @@
       <a href="#compare">Compare</a>
       <a href="#pricing">Pricing</a>
       <a href="#requests">Requests</a>
+      <a href="/blog">Blog</a>
     </nav>
-    <a class="btn btn-primary btn-sm" href="/ScreenToast-0.2.0.dmg" download data-event="download-nav">Download for Mac</a>
+    <a class="btn btn-primary btn-sm" href="/ScreenToast-0.2.2.dmg" download data-event="download-nav">Download for Mac</a>
   </div>
 </header>
 
@@ -908,19 +964,30 @@
   <div class="hero">
     <div class="wrap hero-in">
       <p class="eyebrow">Made for Mac</p>
-      <h1>Turn your Mac screen recording into a product demo. <em>Automatically.</em></h1>
+      <h1 class="rot">
+        <span class="sr">Show your real product working. Polished automatically.</span>
+        <span class="rot-stack" aria-hidden="true">
+          <span class="rot-line is-on">Show your real product working. <em>Polished automatically.</em></span>
+          <span class="rot-line">AI can fake the promo. <em>Not the product.</em></span>
+          <span class="rot-line">Real footage of your real product. <em>Edited for you.</em></span>
+          <span class="rot-line">The demo <em>AI can’t make for you.</em></span>
+          <span class="rot-line">Mock-ups get scrolled past. <em>Real demos get trusted.</em></span>
+          <span class="rot-line">Your app, actually working. <em>Looking like you hired an editor.</em></span>
+        </span>
+      </h1>
       <p class="lede">
-        ScreenToast is a Mac screen recorder that adds the zooms on your clicks,
-        calms the cursor, frames your camera and even drafts the narration — so
-        your demo looks edited without you ever opening an editor.
+        ScreenToast records your actual app on your Mac — real clicks, real data,
+        your own voice — and polishes it for you: zooms on every click, a calm
+        cursor, captions and narration. Proof a mock-up can't give.
       </p>
 
       <div class="cta-row">
-        <a class="btn btn-primary" href="/ScreenToast-0.2.0.dmg" download data-event="download-hero">Create your first demo — free</a>
+        <a class="btn btn-primary" href="/ScreenToast-0.2.2.dmg" download data-event="download-hero">Download free for Mac</a>
         <a class="btn btn-ghost" href="#how">See what it does</a>
       </div>
-      <p class="cta-note">macOS 14 or later · No account · Nothing leaves your Mac</p>
-      <p class="cta-note release-line">v0.2.0 · Released 3 Oct 2026 · <a href="/changelog">What's new</a></p>
+      <p class="cta-note"><b>Free to record and edit · Pro from $4.92/month to export</b></p>
+      <p class="cta-note">macOS 14 or later · Apple Silicon and Intel · Your recordings never leave your Mac</p>
+      <p class="cta-note release-line">v0.2.2 · Released 4 Oct 2026 · <a href="/changelog">What's new</a></p>
 
       <div class="stage">
         <button type="button" class="film-btn" data-film-open data-event="cta-launch-film" aria-haspopup="dialog">
@@ -962,13 +1029,31 @@
       </div>
 
       <div class="specs">
-        <div class="spec"><b>7.7&thinsp;MB</b><span>The whole app. It downloads before you finish reading this.</span></div>
+        <div class="spec"><b>Under 10&thinsp;MB</b><span>To download. A native Mac app that opens the moment you click it.</span></div>
         <div class="spec"><b>Up to 4K</b><span>As sharp as your screen recorded it, so every word stays readable.</span></div>
         <div class="spec"><b>No&nbsp;lag</b><span>The cursor stays calm without falling behind your clicks.</span></div>
-        <div class="spec"><b>Private</b><span>Everything stays on your Mac. Nothing is uploaded.</span></div>
+        <div class="spec"><b>Private</b><span>Recording, editing and export all happen on your Mac. Your video is never uploaded.</span></div>
       </div>
     </div>
   </div>
+
+  <!-- ═══ real vs generated ══════════════════════════ -->
+  <section id="real">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Why real footage</p>
+        <h2>AI videos are mock-ups. Buyers can tell.</h2>
+        <p class="lede">
+          Generated promos show screens that don't exist, flows nobody clicked and data
+          that isn't real. A ScreenToast demo is your actual app, your actual clicks and
+          your own voice — the proof a mock-up can't give. And if you're making an AI
+          video anyway, it still needs real footage to start from. Record it here.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
 
   <!-- ═══ who it's for ═══════════════════════════════ -->
   <section id="who">
@@ -1004,7 +1089,7 @@
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">The flow</p>
-        <h2>Four steps, and three of them happen without you.</h2>
+        <h2>Four steps. Two of them happen on their own.</h2>
         <p class="lede">
           Most screen recorders hand you a raw file and a timeline. ScreenToast hands you
           a finished demo, then lets you change your mind about any part of it.
@@ -1089,9 +1174,9 @@
             <p class="num">02 — CAMERA</p>
             <h3>Your face, framed for the platform you post to.</h3>
             <p>
-              Your camera sits in a neat circle wherever you want it, and can move during
-              the demo. For vertical video, ScreenToast stacks your face above the screen and
-              slides the screen along to keep the action in view.
+              Your camera sits in a neat circle wherever you want it — and when your cursor
+              heads its way, it slides to another corner so it never covers what you're
+              showing. For vertical video, ScreenToast can stack your face above the screen.
             </p>
             <ul class="points">
               <li><span><b>Eight spots to choose from</b> — any corner or edge — and you can resize it to taste.</span></li>
@@ -1109,8 +1194,8 @@
                 </div>
               </div>
             </div>
-            <span class="tag" style="left:14%; top:12%">SPLIT VERTICAL</span>
-            <video data-src="media/camera-split.mp4" muted loop playsinline preload="none" aria-label="Camera bubble placements and the vertical split layout"></video>
+            <span class="tag" style="left:14%; top:12%">STAYS OUT OF THE WAY</span>
+            <video data-src="media/camera-split.mp4" muted loop playsinline preload="none" aria-label="The camera bubble sliding to another corner as the cursor approaches"></video>
           </figure>
         </div>
 
@@ -1190,7 +1275,7 @@
               </svg>
               <div class="legend"><span><i></i>Raw</span><span class="on"><i></i>Smoothed</span></div>
             </div>
-            <video data-src="media/cursor-smoothing.mp4" muted loop playsinline preload="none" aria-label="Raw versus smoothed cursor path"></video>
+            <video data-src="media/cursor-smoothing.mp4" muted loop playsinline preload="none" aria-label="The same recorded pointer path, first as recorded, then smoothed by ScreenToast"></video>
           </figure>
         </div>
 
@@ -1316,7 +1401,7 @@
             <ul class="points">
               <li><span><b>Set how long each one lasts</b>, with its own colour and the way the text arrives.</span></li>
               <li><span><b>Point things out</b> with text and callouts on the recording itself, right where you put them.</span></li>
-              <li><span><b>No watermark</b> on anything you export. The preview shows a small badge until you buy; exporting is what the licence unlocks.</span></li>
+              <li><span><b>No watermark</b> on anything you export. The preview shows a small badge until you buy; exporting is what Pro unlocks.</span></li>
             </ul>
           </div>
           <figure class="demo">
@@ -1378,16 +1463,16 @@
         <div class="frow">
           <div class="frow-text">
             <p class="num">10 — VOICEOVER</p>
-            <h3>It writes the script from what you actually did.</h3>
+            <h3>Your own voice, captioned. Or a script it writes for you.</h3>
             <p>
-              ScreenToast looks at what you did on screen, writes narration that follows
-              along, and reads it aloud in a voice you choose. It's just text — rewrite
-              any of it before a single word is spoken.
+              Talk while you record and ScreenToast cleans up your mic and turns your words
+              into captions, word by word, on your Mac. Rather not talk? It writes narration
+              from what you did on screen and reads it aloud in a voice you choose.
             </p>
             <ul class="points">
               <li><span><b>It lands on the right moment.</b> Each line sits with the thing it's describing, and they never talk over each other.</span></li>
-              <li><span><b>Prefer your own voice?</b> Record it, and the music quietens itself underneath automatically.</span></li>
-              <li><span><b>AI voices come from ElevenLabs,</b> using your own API key. Drafting the script needs no key and runs on your Mac. <a href="/features/ai-voiceover">How it works</a></span></li>
+              <li><span><b>Captions from your voice</b> in four styles, karaoke included — transcribed on your Mac, nothing uploaded.</span></li>
+              <li><span><b>Free voices built into macOS</b> work offline with no key. For more lifelike ones, add your own ElevenLabs API key. Drafting the script needs no key and runs on your Mac. <a href="/features/ai-voiceover">How it works</a></span></li>
               <li><span><b>Cleans up your microphone</b>, so a laptop mic stops sounding like a laptop mic.</span></li>
             </ul>
           </div>
@@ -1407,8 +1492,8 @@
                 <u style="height:20%"></u><u style="height:36%"></u><u style="height:64%"></u><u style="height:30%"></u>
               </div>
             </div>
-            <span class="tag" style="left:12%; top:11%">SCRIPT DRAFTED</span>
-            <video data-src="media/voiceover.mp4" muted loop playsinline preload="none" aria-label="Narration drafted from the recording and spoken"></video>
+            <span class="tag" style="left:12%; top:11%">YOUR VOICE · CAPTIONS</span>
+            <video data-src="media/voiceover.mp4" muted loop playsinline preload="none" aria-label="The founder narrating a demo with word-by-word captions"></video>
           </figure>
         </div>
 
@@ -1423,8 +1508,8 @@
               demonstrating stays in shot.
             </p>
             <ul class="points">
-              <li><span><b>Ready-made settings</b> for YouTube, TikTok, Reels, LinkedIn, X and Product Hunt.</span></li>
-              <li><span><b>Save as an MP4</b>, or a ProRes master if you're taking it into another editor.</span></li>
+              <li><span><b>Ready-made settings</b> for YouTube, TikTok, Reels, LinkedIn, X, Product Hunt and the web.</span></li>
+              <li><span><b>MP4, HEVC, GIF</b>, or a ProRes master if you're taking it into another editor. Copy the result straight to your clipboard.</span></li>
               <li><span><b>Straight to your Mac.</b> No upload, no queue, no link that quietly expires.</span></li>
             </ul>
           </div>
@@ -1439,6 +1524,69 @@
           </figure>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ═══ new in 0.2 ═════════════════════════════════ -->
+  <section id="new">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow plain">New in 0.2</p>
+        <h2>Captions, transcript editing and automatic secret hiding.</h2>
+        <p class="lede">
+          The biggest update yet, free for everyone. <a href="/changelog" style="color:var(--rec)">Full changelog</a>
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="cell">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h11M4 18h7"/><path d="M17 15l4 4M21 15l-4 4"/></svg></div>
+          <h4>Edit by transcript</h4>
+          <p>Your words, transcribed on your Mac. Delete a word to cut it. Remove every "um" and tighten long pauses in one click.</p>
+        </div>
+        <div class="cell">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 14h4M13 14h4M7 10h10"/></svg></div>
+          <h4>Captions from your voice</h4>
+          <p>Four styles, karaoke included, revealed line by line or word by word. Save them as an .srt file too.</p>
+        </div>
+        <div class="cell">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div>
+          <h4>Hides secrets for you</h4>
+          <p>ScreenToast reads the recording for API keys, tokens, email addresses and card numbers and covers every one, even as it scrolls. You review what it found.</p>
+        </div>
+        <div class="cell">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>
+          <h4>Camera, cut out</h4>
+          <p>Remove the room behind you, on your Mac. Bubble, side by side or camera only — switch part-way through. Twelve colour looks, or your own LUT.</p>
+        </div>
+        <div class="cell">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></div>
+          <h4>Four kinds of zoom</h4>
+          <p>Auto from your clicks, Manual on one spot, Follow that travels with your pointer, and a Glass Loupe that magnifies just a lens.</p>
+        </div>
+        <div class="cell">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 9l4 3-4 3z"/></svg></div>
+          <h4>GIF, Web and clipboard</h4>
+          <p>Export a looping GIF, a Web MP4 that starts playing at once, or a file without audio — then copy it straight to your clipboard.</p>
+        </div>
+        <div class="cell">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h4l2-5 2 10 2-5h4"/></svg></div>
+          <h4>Speed up the dull parts</h4>
+          <p>Play every stretch of typing at 3× with one command, and drop the silences from your take entirely.</p>
+        </div>
+        <div class="cell">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
+          <h4>Device frames</h4>
+          <p>Put your recording inside a MacBook, iMac, iPhone, iPad or a browser window, with wallpapers and gradients behind it.</p>
+        </div>
+        <div class="cell">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M9 12h6"/></svg></div>
+          <h4>⌘K finds anything</h4>
+          <p>Every command in one search box — add a zoom, make captions, remove filler words — without hunting through panels.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1486,8 +1634,8 @@
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h13"/></svg></div>
-          <h4>Do Not Disturb</h4>
-          <p>Notifications go quiet and your desktop clutter disappears while you record, then everything comes back exactly as it was.</p>
+          <h4>Stays out of your shot</h4>
+          <p>ScreenToast's own windows never appear in your recording — or in a Zoom call or another app's screen share.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 4v10M8 10l4 4 4-4M5 19h14"/></svg></div>
@@ -1511,29 +1659,29 @@
       <div class="split">
         <div>
           <p class="eyebrow">Why native matters</p>
-          <h2 style="margin-top:16px">7.7 megabytes. Not four hundred and fifty-eight.</h2>
+          <h2 style="margin-top:16px">Under 10 MB to download. Not hundreds.</h2>
           <p class="lede" style="margin-top:16px">
-            Most screen recorders are really web pages in a costume — they bundle an
-            entire browser inside the app, which is why they're enormous and slow to
-            wake up. ScreenToast is built the way Apple builds its own apps.
+            Many popular recorders bundle a whole web browser inside the app, which is
+            why they're enormous and slow to wake up. ScreenToast is a native Mac app,
+            written with Apple's own tools.
           </p>
           <ul class="bullets">
             <li><span><b>It opens the moment you click it</b>, and sits quietly in the background until you need it.</span></li>
-            <li><span><b>Your recording never leaves your Mac.</b> No uploads, no account, and no record of what you recorded.</span></li>
-            <li><span><b>Exports are fast and quiet</b> — no roaring fans halfway through a 4K export.</span></li>
+            <li><span><b>Your recording never leaves your Mac.</b> No uploads, no sign-in, and no record of what you recorded.</span></li>
+            <li><span><b>Exports use your Mac's own video hardware</b>, so they finish fast.</span></li>
           </ul>
         </div>
         <figure class="weigh">
           <div class="bar-row">
-            <div class="bar-label"><span>ScreenToast</span><b>7.7 MB</b></div>
+            <div class="bar-label"><span>ScreenToast, installed</span><b>31 MB</b></div>
             <div class="bar"><span class="ours"></span></div>
           </div>
           <div class="bar-row">
-            <div class="bar-label"><span>A typical Mac screen recorder</span><b>458 MB</b></div>
+            <div class="bar-label"><span>A typical browser-based recorder, installed</span><b>458 MB</b></div>
             <div class="bar"><span class="theirs"></span></div>
           </div>
           <figcaption>
-            App sizes measured on a real Mac.<br>
+            Installed app sizes, measured on a real Mac.<br>
             The bars are to scale — the gap really is that wide.
           </figcaption>
         </figure>
@@ -1568,13 +1716,13 @@
           <tbody>
             <tr>
               <th scope="row">Price</th>
-              <td class="us">$59 once</td>
+              <td class="us">$4.92/month, billed yearly</td>
               <td>$79 once, typically</td>
               <td>$9–29 every month</td>
             </tr>
             <tr>
-              <th scope="row">App size</th>
-              <td class="us">7.7 MB</td>
+              <th scope="row">Download size</th>
+              <td class="us">Under 10 MB</td>
               <td>400–500 MB</td>
               <td>Runs in your browser</td>
             </tr>
@@ -1598,13 +1746,13 @@
             </tr>
             <tr>
               <th scope="row">Trial</th>
-              <td class="us">Free until you export</td>
+              <td class="us">Record and edit free; pay to export</td>
               <td>Limited free exports</td>
               <td>Time-limited</td>
             </tr>
             <tr>
               <th scope="row">Updates</th>
-              <td class="us">Free, for life</td>
+              <td class="us">Every release, included</td>
               <td>Usually for life</td>
               <td>While you keep paying</td>
             </tr>
@@ -1621,52 +1769,80 @@
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">Pricing</p>
-        <h2>Pay once. It stays yours.</h2>
+        <h2>Free to record. Pro when you export.</h2>
         <p class="lede">
-          No subscription, no seats, no renewal email in eleven months. Try it free for
-          as long as you like — the paywall is on export, so you only pay once you have
-          something you want to keep.
+          Record and edit as much as you like — no card, no sign-in, no trial clock.
+          Pro unlocks export, with every format, 4K and ProRes included. Pay by the
+          year for the lowest price, or month to month.
         </p>
       </div>
 
-      <div class="price-wrap">
-        <div class="price-card" id="download">
-          <p class="tagline"><span class="launch-only">Launch price · first 92 buyers</span><span class="regular-only">Lifetime licence</span></p>
-          <div class="amount launch-only"><b>$39</b><s>$59</s><span>one time, until 5 Oct</span></div>
-          <div class="amount regular-only"><b>$59</b><span>one time, all future updates included</span></div>
-          <div class="seats launch-only" hidden>
-            <div class="seats-row"><span><b class="seats-claimed">—</b> of <span class="seats-total">92</span> launch seats claimed</span><span>ends 5 Oct</span></div>
-            <div class="seats-bar"><i></i></div>
+      <!-- Checkout links: one Dodo subscription product per plan. Keep these in
+           step with Storefront.swift in the app. -->
+      <div class="plans" id="download">
+        <article class="plan plan-yearly">
+          <div class="plan-head">
+            <h3>Pro Yearly <span class="badge">Save 29%</span></h3>
+            <p>Full Pro access at the lowest monthly price.</p>
           </div>
-          <div class="code launch-only">
-            <span>Use code <kbd>EARLY39</kbd> at checkout</span>
-            <button type="button" data-copy="EARLY39">Copy</button>
+          <div class="plan-body">
+            <div class="plan-amount"><b>$4.92</b><span>/month</span></div>
+            <p class="plan-note">Billed $59 once a year</p>
+            <a class="btn btn-primary" href="https://checkout.dodopayments.com/buy/pdt_0Np0PlpWmx2zVWrn73Ldb?quantity=1" data-event="checkout-click-yearly">Get Pro Yearly</a>
+            <ul class="ticks">
+              <li><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Full access to every feature</li>
+              <li><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Every new release while you're Pro</li>
+            </ul>
           </div>
-          <ul class="incl">
-            <li><svg viewBox="0 0 24 24"><path d="M4 12.5l5.2 5L20 6.5"/></svg><span>Every feature. There is no Pro tier holding things back.</span></li>
-            <li><svg viewBox="0 0 24 24"><path d="M4 12.5l5.2 5L20 6.5"/></svg><span>Use it on up to 3 Macs you own.</span></li>
-            <li><svg viewBox="0 0 24 24"><path d="M4 12.5l5.2 5L20 6.5"/></svg><span>Free updates for life, not for a year.</span></li>
-            <li><svg viewBox="0 0 24 24"><path d="M4 12.5l5.2 5L20 6.5"/></svg><span>14-day refund, no questions asked.</span></li>
-            <li><svg viewBox="0 0 24 24"><path d="M4 12.5l5.2 5L20 6.5"/></svg><span>Every email answered personally by the person who built it.</span></li>
-          </ul>
-          <p class="next-up launch-only"><b>Captions from your own voice are next</b>, as a free update — and so is everything after them. You get them at either price. The $39 is what doesn't come back.</p>
-          <a class="btn btn-primary" href="https://checkout.dodopayments.com/buy/pdt_0NodymXnzeIYABi8tlcql?quantity=1" data-event="checkout-click-pricing"><span class="launch-only">Get ScreenToast — $39 with EARLY39</span><span class="regular-only">Get ScreenToast — $59</span></a>
-          <p class="cta-note" style="text-align:center">macOS 14 or later · Apple Silicon and Intel</p>
-        </div>
+        </article>
 
-        <div>
-          <h4 style="font-size:22px">Free until you export</h4>
-          <p class="lede" style="margin-top:12px; font-size:16px">
-            Download it, record as much as you want, and use the full editor. You are
-            only asked to pay when you go to export a finished demo — by which point
-            you know exactly what you are buying.
-          </p>
-          <p class="lede" style="margin-top:16px; font-size:16px">
-            No account to create, no card to enter, no trial clock running down while
-            you are busy with something else.
-          </p>
-          <div class="cta-row"><a class="btn btn-ghost" href="/ScreenToast-0.2.0.dmg" download data-event="download-pricing">Download for Mac</a></div>
-        </div>
+        <article class="plan plan-monthly">
+          <div class="plan-head">
+            <h3>Pro Monthly <span class="badge">Most flexible</span></h3>
+            <p>Full Pro access, with the freedom to pay month to month.</p>
+          </div>
+          <div class="plan-body">
+            <div class="plan-amount"><b>$7</b><span>/month</span></div>
+            <p class="plan-note">Billed monthly. Switch to yearly anytime.</p>
+            <a class="btn btn-ghost" href="https://checkout.dodopayments.com/buy/pdt_0Np0PTUBuyw6BXthFX42b?quantity=1" data-event="checkout-click-monthly">Get Pro Monthly</a>
+            <ul class="ticks">
+              <li><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Full access to every feature</li>
+              <li><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Cancel anytime</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <p class="plans-foot">
+        Both plans: 14-day refund, no questions asked · Your recordings stay yours if you cancel
+        <a href="/ScreenToast-0.2.2.dmg" download data-event="download-pricing">Download free for Mac</a>
+      </p>
+
+      <div class="pro-feats">
+        <p class="pro-feats-head">Everything in Pro</p>
+        <ul class="fgrid">
+          <li><svg viewBox="0 0 24 24"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16"/><circle cx="12" cy="12" r="3"/></svg>Screen, window &amp; area</li>
+          <li><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M10 7h4"/></svg>Record in any shape</li>
+          <li><svg viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 11l5-3v8l-5-3"/></svg>Camera, mic &amp; system audio</li>
+          <li><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8v6M8 11h6"/></svg>Auto zoom on clicks</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5.5 3.5l13 6.5-5.6 1.9-1.9 5.6z"/><path d="M13 13l5.5 5.5"/></svg>Smooth cursor</li>
+          <li><svg viewBox="0 0 24 24"><path d="M11 3l1.8 4.7 4.7 1.8-4.7 1.8L11 16l-1.8-4.7L4.5 9.5l4.7-1.8z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg>Auto Polish</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h9M4 18h6"/><path d="M15.5 19.5l1-3 4-4 2 2-4 4z"/></svg>Edit by transcript</li>
+          <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 12h3.5M13 12h4M7 15.5h7"/></svg>Captions from your voice</li>
+          <li><svg viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 6.1Q11.3 6 12 6c5 0 9 6 9 6a15.6 15.6 0 0 1-2.6 3.2M6.6 6.6C4.3 8.1 3 12 3 12s4 6 9 6c1.6 0 3-.4 4.3-1.1M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>Hides secrets for you</li>
+          <li><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>Drafted narration</li>
+          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg>Camera cut-out</li>
+          <li><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15.5l-5-5L6.5 20"/></svg>Custom backgrounds</li>
+          <li><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>Device frames</li>
+          <li><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2.5"/><path class="dots" d="M9 9h.01M12 9h.01M15 9h.01M9 12h.01M12 12h.01M15 12h.01M9 15h.01M12 15h.01M15 15h.01"/></svg>Privacy blur</li>
+          <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg>Intro &amp; outro cards</li>
+          <li><svg viewBox="0 0 24 24"><path d="M13 5l7 7-7 7M4 5l7 7-7 7"/></svg>Trim &amp; speed up</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/></svg>Cleaner audio</li>
+          <li><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="12" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="17" width="8" height="4" rx="1.5"/></svg>Social presets</li>
+          <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9v3.5h3.5M10 9v6M14 9v6M17 9l-3 3 3 3"/></svg>4K &amp; ProRes export</li>
+          <li><svg viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="16.5" rx="2"/><path d="M9 3h6v3H9zM9 11h6M9 15h4"/></svg>GIF, web &amp; clipboard</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3z"/></svg>⌘K finds anything</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -1742,7 +1918,7 @@
       </details>
       <details>
         <summary>What can it export?</summary>
-        <p>An MP4 in whatever shape you need. There are ready-made settings for YouTube, TikTok, Reels, LinkedIn, X and Product Hunt, plus a high-quality master if you're taking it into another editor — or pick your own size.</p>
+        <p>MP4, HEVC or GIF in whatever shape you need. There are ready-made settings for YouTube, TikTok, Reels, LinkedIn, X, Product Hunt and the web, plus a ProRes master if you're taking it into another editor — or pick your own size. Captions can be saved as an .srt file too.</p>
       </details>
       <details>
         <summary>Can I record system audio and my microphone at once?</summary>
@@ -1761,8 +1937,16 @@
         <p>macOS 14 or later, on any Mac from the last few years. ScreenToast asks permission to record your screen, and for your microphone and camera only if you switch them on.</p>
       </details>
       <details>
-        <summary>Can I use it on more than one Mac?</summary>
-        <p>Up to three Macs that you own, on the one licence. If you replace a machine, deactivate the old one from the app and the seat comes back.</p>
+        <summary>Can I export a test video before paying?</summary>
+        <p>Exporting is what Pro unlocks, so the first export is the paid one. Until then you can record and edit as much as you like, and the preview shows exactly what you'll get. If it still isn't right, there's a 14-day refund, no questions asked.</p>
+      </details>
+      <details>
+        <summary>What happens if I cancel?</summary>
+        <p>You keep everything. Videos you've already exported are ordinary files, and you can still record and edit in ScreenToast for free — only exporting new videos waits until you're Pro again. Cancel anytime, and Pro runs to the end of the period you've paid for.</p>
+      </details>
+      <details>
+        <summary>Does the voiceover cost extra?</summary>
+        <p>Not from us. The voices built into macOS are free and work offline. If you want ElevenLabs voices, they use your own ElevenLabs account, so any cost is between you and them — ScreenToast adds nothing on top.</p>
       </details>
     </div>
   </section>
@@ -1772,12 +1956,12 @@
     <div class="wrap">
       <div class="close-cta">
         <p class="eyebrow" style="justify-content:center">Ready when you are</p>
-        <h2 style="margin-top:16px">Your next demo is about twelve seconds of recording away.</h2>
+        <h2 style="margin-top:16px">Your next demo is one recording away.</h2>
         <p class="lede" style="text-align:center">
-          Record something today — it's free, and there's no account to make. Let it polish itself. Decide afterwards whether it is worth <span class="launch-only">$39</span><span class="regular-only">$59</span>.
+          Record something today — recording and editing are free. Let it polish itself. Decide afterwards whether it is worth $4.92 a month.
         </p>
-        <div class="cta-row"><a class="btn btn-primary" href="/ScreenToast-0.2.0.dmg" download data-event="download-final">Create your first demo — free</a></div>
-        <p class="cta-note">macOS 14 or later · No account required</p>
+        <div class="cta-row"><a class="btn btn-primary" href="/ScreenToast-0.2.2.dmg" download data-event="download-final">Download free for Mac</a></div>
+        <p class="cta-note">macOS 14 or later · Free to record and edit · Pro from $4.92/month to export</p>
 
         <p class="cta-note" style="margin-top:26px">
           Questions before you buy, or trouble after?
@@ -1822,6 +2006,7 @@
       </div>
       <div class="foot-col">
         <h5>Company</h5>
+        <a href="/blog">Blog</a>
         <a href="/changelog">Changelog</a>
         <a href="mailto:support@screentoast.com">Support</a>
         <a href="/privacy">Privacy</a>
@@ -1835,33 +2020,6 @@
     </div>
   </div>
 </footer>
-
-<script>
-  /* Launch offer. The count comes from Dodo through /api/seats; if that call
-     fails the offer still shows, just without a number — never a made-up one.
-     Sold out turns the launch price off the same way the date does. */
-  (function () {
-    var root = document.documentElement;
-    Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'), function (b) {
-      b.addEventListener('click', function () {
-        var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1600); };
-        if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.copy).then(done, function () {});
-      });
-    });
-    if (!root.classList.contains('launch') || !window.fetch) return;
-    fetch('/api/seats').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
-      if (!d || typeof d.left !== 'number' || typeof d.total !== 'number') return;
-      if (d.left <= 0 || d.expired) { root.classList.remove('launch'); return; }
-      var claimed = d.total - d.left;
-      Array.prototype.forEach.call(document.querySelectorAll('.seats-claimed'), function (e) { e.textContent = claimed; });
-      Array.prototype.forEach.call(document.querySelectorAll('.seats-total'), function (e) { e.textContent = d.total; });
-      Array.prototype.forEach.call(document.querySelectorAll('.seats-inline'), function (e) { e.textContent = claimed ? ' — ' + claimed + ' already claimed' : ''; });
-      Array.prototype.forEach.call(document.querySelectorAll('.seats'), function (e) { e.hidden = false; });
-      var bar = document.querySelector('.seats-bar i');
-      if (bar) bar.style.width = Math.max(2, Math.round(claimed / d.total * 100)) + '%';
-    }).catch(function () {});
-  })();
-</script>
 
 <script>
   /* Feature requests. Everything people type goes in through textContent,
@@ -2031,6 +2189,49 @@
     dlg.addEventListener('close', function () { video.pause(); });
   })();
 </script>
+<script>
+  /* Hero headline: one line every couple of seconds, revealed word by word.
+     The first line is in the markup, so without JS (or with reduced motion)
+     the page simply shows it. Pauses on hover and while the tab is hidden. */
+  (function () {
+    var lines = document.querySelectorAll('.rot-line');
+    if (lines.length < 2) return;
+    var n = 0;
+    function split(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (c) {
+        if (c.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          c.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var w = document.createElement('span');
+            w.className = 'w'; w.textContent = part; w.style.setProperty('--i', n++);
+            frag.appendChild(w);
+          });
+          node.replaceChild(frag, c);
+        } else if (c.nodeType === 1) split(c);
+      });
+    }
+    for (var i = 0; i < lines.length; i++) { n = 0; split(lines[i]); }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var HOLD = 2600;   // ~2 s fully readable after the words land
+    var at = 0, paused = false, timer = null;
+    function next() {
+      var cur = lines[at];
+      at = (at + 1) % lines.length;
+      cur.classList.remove('is-on'); cur.classList.add('is-out');
+      setTimeout(function () { cur.classList.remove('is-out'); }, 500);
+      lines[at].classList.add('is-on');
+    }
+    function tick() { if (!paused && !document.hidden) next(); timer = setTimeout(tick, HOLD); }
+    timer = setTimeout(tick, HOLD + 600);
+    var h1 = document.querySelector('h1.rot');
+    h1.addEventListener('mouseenter', function () { paused = true; });
+    h1.addEventListener('mouseleave', function () { paused = false; });
+  })();
+</script>
 <script src="/analytics.js" defer></script>
+<script src="/download-gate.js" defer></script>
 </body>
 </html>

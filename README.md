@@ -13,7 +13,7 @@ canonical URL, social tags and breadcrumbs. Edit the source in `pages/`, then:
 python3 pages/build.py
 ```
 
-The output (`screen-studio-alternative.html`, `features/*.html`, `guides/*.html`,
+The output (`features/*.html`, `guides/*.html`,
 `404.html`) is committed, so deploying still needs no build step. Add any new
 page's URL to `sitemap.xml`. Every claim about the app is checked against the
 code, and every claim about a competitor carries the date it was checked.
@@ -22,7 +22,7 @@ code, and every claim about a competitor carries the date it was checked.
 
 | File | Why it is here |
 |---|---|
-| `ScreenToast-0.1.1.dmg` | The download. Notarised and stapled. |
+| `ScreenToast-0.2.2.dmg` | The download (9.8 MB). Notarised and stapled. |
 | `appcast.xml` | The Sparkle feed. **Must** be served at the `SUFeedURL` the app was built with — `https://screentoast.com/appcast.xml`. |
 | `og.png` | 1200×630 social card. |
 
@@ -60,4 +60,4 @@ does not read it, the update feed will be served stale.
 The DMG lives in the repo so one deploy publishes both the site and the
 download. If releases get frequent, move the binaries to GitHub Releases and
 point `appcast.xml` and the download links there instead — git is a poor place
-to keep 7MB blobs forever.
+to keep 10 MB blobs forever.

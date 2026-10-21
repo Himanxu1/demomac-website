@@ -7,6 +7,7 @@
 //   POST /api/requests/:id/vote      +1, once per person
 //   GET  /api/requests/:id/moderate  approve/reject, from the link in the email
 //   POST /api/e                      the page's analytics beacon (analytics.js)
+//   POST /api/download               the email asked for before a DMG download, or a skip
 //
 // It also counts, from the requests themselves, the three numbers a static
 // site cannot see: DMG downloads, Sparkle delta downloads (updates applied)
@@ -38,6 +39,7 @@ export default {
     try {
       if (path === '/api/e' && request.method === 'POST') return await beacon(request, env);
       if (path === '/api/seats') return await seats(url, env, ctx);
+      if (path === '/api/download' && request.method === 'POST') return await downloader(request, env, ctx);
       if (path === '/api/requests') {
         if (request.method === 'GET') return await listRequests(env);
         if (request.method === 'POST') return await submitRequest(request, env, ctx);
@@ -48,9 +50,9 @@ export default {
       m = path.match(/^\/api\/requests\/(\d+)\/moderate$/);
       if (m) return await moderate(request, url, env, Number(m[1]));
       if (path.startsWith('/api/')) return json({ error: 'not found' }, 404);
-      // The comparison page was taken down; old links land on the home page.
+      // The old comparison page's links now land on the blog post that replaced it.
       if (path === '/screen-studio-alternative' || path === '/screen-studio-alternative.html') {
-        return Response.redirect(SITE + '/', 301);
+        return Response.redirect(SITE + '/blog/screen-studio-alternatives', 301);
       }
       if (path.startsWith('/media/') && request.headers.has('Range')) return await ranged(request, env);
       countFetch(request, path, env, ctx);
@@ -200,6 +202,46 @@ async function seats(url, env, ctx) {
   const res = json({ total, left: Math.max(0, total - used), expired }, 200, 'public, max-age=60');
   ctx.waitUntil(cache.put(key, res.clone()));
   return res;
+}
+
+// ── downloaders ─────────────────────────────────────────────────────────────
+//
+// download-gate.js asks for an email before any DMG link downloads. The DMG
+// itself stays a plain public file — this records who asked, it does not lock
+// anything, so the app's own update path and old direct links keep working.
+
+async function downloader(request, env, ctx) {
+  const body = await readJson(request);
+  if (!body) return json({ error: 'Send the form as JSON.' }, 400);
+  if (body.website) return json({ ok: true }, 200);  // honeypot, as in submitRequest
+
+  // "I don't need updates": counted so the dashboard can show downloads
+  // without an email, but nothing is stored about the person.
+  if (body.skip === true) {
+    ctx.waitUntil(record(request, env, 'skip-email', clean(body.page, 120), request.headers.get('Referer')).catch(() => {}));
+    return json({ ok: true }, 200);
+  }
+
+  const email = clean(body.email, 200).toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return json({ error: 'That email address looks off.' }, 400);
+  const source = clean(body.source, 64);
+  const pagePath = clean(body.page, 120);
+
+  const ip = await who(request, env);
+  const now = Date.now();
+  const { n } = await env.DB.prepare('SELECT COUNT(*) AS n FROM downloaders WHERE ip_hash = ? AND last_at > ?')
+    .bind(ip, now - 86400e3).first();
+  if (n >= 20) return json({ error: 'Too many addresses from here today. Try again tomorrow.' }, 429);
+
+  const country = (request.cf && request.cf.country) || '';
+  await env.DB.prepare(
+    `INSERT INTO downloaders (email, source, page, country, ip_hash, created_at, last_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?)
+     ON CONFLICT(email) DO UPDATE SET downloads = downloads + 1, last_at = excluded.last_at`
+  ).bind(email, source, pagePath, country, ip, now, now).run();
+
+  ctx.waitUntil(record(request, env, 'email-download', pagePath, request.headers.get('Referer')).catch(() => {}));
+  return json({ ok: true }, 200);
 }
 
 // ── feature requests ────────────────────────────────────────────────────────
