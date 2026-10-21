@@ -61,3 +61,18 @@ The DMG lives in the repo so one deploy publishes both the site and the
 download. If releases get frequent, move the binaries to GitHub Releases and
 point `appcast.xml` and the download links there instead — git is a poor place
 to keep 10 MB blobs forever.
+
+## Telling search engines about new pages
+
+Google: the sitemap is submitted in Search Console (property
+`https://screentoast.com/`, verified by the meta tag in `index.html`, so keep
+it). New URLs in `sitemap.xml` are picked up on Google's next read.
+
+Bing, Yandex and other IndexNow engines: after deploying new or changed pages,
+push every sitemap URL. The key file `266b504e4c928e79cc00f7fef06e77b8.txt`
+must stay at the site root.
+
+```sh
+python3 -c "import re,json;print(json.dumps({'host':'screentoast.com','key':'266b504e4c928e79cc00f7fef06e77b8','urlList':re.findall(r'<loc>(.*?)</loc>',open('sitemap.xml').read())}))" \
+  | curl -s -X POST https://api.indexnow.org/indexnow -H 'Content-Type: application/json' --data @-
+```
