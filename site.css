@@ -95,3 +95,34 @@ footer.bottom { border-top: 1px solid var(--line); margin-top: 72px; padding: 30
 footer.bottom .cols { display: flex; flex-wrap: wrap; gap: 10px 22px; }
 footer.bottom a { color: var(--bone-2); text-decoration: none; }
 footer.bottom a:hover { color: var(--rec); }
+
+/* Blog: post byline, cover, FAQ, and the /blog card grid. */
+.byline { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 0 0 18px;
+          font: 500 12.5px var(--mono); color: var(--bone-3); letter-spacing: .02em; }
+.tag { color: var(--rec); border: 1px solid rgba(255, 91, 4, .4); border-radius: 6px; padding: 1px 7px; }
+.cover { margin: 8px 0 34px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--ink-2); }
+.cover img { display: block; width: 100%; height: auto; }
+.faq details { border: 1px solid var(--line); border-radius: 10px; background: var(--ink-2); margin: 10px 0; padding: 0 16px; }
+.faq summary { cursor: pointer; padding: 14px 0; color: var(--bone); font-weight: 500; }
+.faq details p { margin: 0 0 16px; font-size: 15.5px; }
+.verdict { border: 1px solid var(--line); border-radius: 12px; background: var(--ink-2); padding: 18px 20px; margin: 24px 0; }
+.verdict p { margin: 0; }
+.verdict p + p { margin-top: 8px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; }
+.chip { font: 500 13px var(--mono); color: var(--bone-2); background: var(--ink-2); border: 1px solid var(--line);
+        border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+.chip:hover { color: var(--bone); border-color: var(--bone-3); }
+.chip.on { color: #160700; background: var(--rec); border-color: var(--rec); }
+.cards { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.card { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 14px; background: var(--ink-2);
+        overflow: hidden; padding: 0 0 18px; }
+.card[hidden] { display: none; }
+.card:hover { border-color: var(--bone-3); }
+.card-img img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--line); }
+.card .byline { margin: 16px 18px 8px; }
+.card h2 { font-size: 19px; line-height: 1.3; margin: 0 18px 8px; }
+.card h2 a { color: var(--bone); text-decoration: none; }
+.card h2 a:hover { color: var(--rec); }
+.card p { font-size: 15px; line-height: 1.55; margin: 0 18px 14px; }
+.card .more { margin: auto 18px 0; font: 600 14px var(--body); text-decoration: none; }

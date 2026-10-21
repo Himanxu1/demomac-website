@@ -1,0 +1,64 @@
+<!--
+{"path": "/blog/how-to-blur-screen-recording",
+ "title": "How to Blur Part of a Screen Recording on Mac",
+ "description": "How to blur part of a screen recording on Mac — emails, names, API keys — in iMovie, Final Cut and automatically, including blur that follows zooms.",
+ "headline": "How to blur part of a screen recording on Mac",
+ "blog": {"date": "2026-10-20", "order": 5, "category": "Guides",
+  "card": "How to blur part of a screen recording on Mac",
+  "excerpt": "Showed an email address or an API key? How to blur sensitive details in a screen recording — by hand, and automatically even as it scrolls.",
+  "image": "/media/blog/how-to-blur-screen-recording.jpg",
+  "alt": "Blur part of a screen recording: privacy blur over an email address in ScreenToast",
+  "cover": {"title": "How to *blur* part of a screen recording", "shot": "poster-privacy-blur.jpg"},
+  "keywords": ["blur part of screen recording", "how to blur screen recording mac", "blur sensitive information in video", "hide api key in screen recording"],
+  "related": ["screen-recording-tips", "how-to-make-a-tutorial-video-on-mac", "best-screen-recorder-for-product-demos"]},
+ "faq": [
+  ["Can iMovie blur part of a video?", "Not directly. iMovie has no blur tool for a region; a workaround is a picture-in-picture overlay of a blurred or solid image. Final Cut Pro, DaVinci Resolve and dedicated recorders can blur regions."],
+  ["How do I blur something that moves in a screen recording?", "Use a tracker in Final Cut or Resolve, or a recorder whose blur is anchored to the recording, so it stays put when the picture zooms or pans. ScreenToast's automatic secret hiding follows text as it scrolls."],
+  ["Is blur enough to hide sensitive text?", "Use strong blur. Light blur can sometimes be reversed or read. For passwords and keys, choose a strength that makes the text completely unreadable — or rotate the key after recording."]
+ ]}
+-->
+<h1>How to blur part of a screen recording on Mac</h1>
+<p class="lede">It happens to everyone: you record a great take, then notice a customer's email, your API key or a private Slack message in the corner. You don't need to re-record. Here's <strong>how to blur part of a screen recording</strong> on a Mac — by hand, with a tracker, and automatically.</p>
+{{COVER}}
+
+<h2>Before recording: avoid the problem</h2>
+<ul>
+  <li><strong>Use demo accounts and fake data.</strong> Nothing to blur beats a perfect blur.</li>
+  <li><strong>Hide desktop icons</strong> and close unrelated apps and tabs.</li>
+  <li><strong>Turn on Do Not Disturb</strong> — notification banners are the most common leak.</li>
+  <li><strong>Record a window or an area,</strong> not the whole display.</li>
+</ul>
+<p>ScreenToast can hide desktop icons and silence notifications for you while you record.</p>
+
+<h2>Method 1: Final Cut Pro or DaVinci Resolve</h2>
+<ol class="steps">
+  <li>Add a blur effect (Gaussian) to the clip.</li>
+  <li>Add a <strong>shape mask</strong> to limit the blur to a rectangle over the sensitive area.</li>
+  <li>If the area moves, use the <strong>tracker</strong> to follow it, or keyframe the mask.</li>
+  <li>Check every frame where the info appears — including zoomed-in moments.</li>
+</ol>
+
+<h2>Method 2: iMovie (workaround)</h2>
+<p>iMovie has no region blur. Take a screenshot of the frame, blur or cover the sensitive area in Preview, then lay it over the clip as a <strong>picture-in-picture</strong> overlay sized to the area. It works for static content only.</p>
+
+<h2>Method 3: ScreenToast — manual and automatic</h2>
+<h3>Automatic: hide secrets</h3>
+<p>ScreenToast reads the recording for <strong>API keys, tokens, email addresses and card numbers</strong> and covers every one — even as they scroll. You review what it found and keep or remove each blur.</p>
+<h3>Manual: privacy blur</h3>
+<ol class="steps">
+  <li>Open the <strong>Privacy</strong> tool.</li>
+  <li>Drag a blur box over the area on the preview; resize it from its handles.</li>
+  <li>Set the strength, from a light frost to completely unreadable.</li>
+  <li>Add as many as you need.</li>
+</ol>
+<p>The blur is anchored to the recording itself, so <strong>when a zoom moves the picture, the blur moves with it</strong> — the classic mistake of a blur box that slides off its target during a zoom can't happen.</p>
+
+<h2>Blur strength: how much is enough?</h2>
+<p>A light blur is fine for a background notification. For passwords, keys and personal data, use full strength — lightly blurred text can sometimes be read. If a live API key was ever visible, even briefly, the safe move is to rotate the key.</p>
+
+<h2>Final check</h2>
+<p>Before publishing, scrub through at normal speed <em>and</em> frame by frame around every blur. Watch the zoomed-in parts and the first and last frames — leaks hide there.</p>
+
+{{FAQ}}
+{{CTA}}
+{{RELATED}}

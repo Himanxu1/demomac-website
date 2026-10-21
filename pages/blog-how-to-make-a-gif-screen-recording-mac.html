@@ -1,0 +1,66 @@
+<!--
+{"path": "/blog/how-to-make-a-gif-screen-recording-mac",
+ "title": "How to Make a GIF Screen Recording on Mac",
+ "description": "How to make a GIF screen recording on Mac: record, trim and export a small, sharp looping GIF for GitHub, docs, Slack and tweets — free and paid ways.",
+ "headline": "How to make a GIF screen recording on Mac",
+ "blog": {"date": "2026-10-20", "order": 3, "category": "Guides",
+  "card": "How to make a GIF screen recording on Mac",
+  "excerpt": "Record, trim and export a small, sharp, looping GIF for a pull request, your docs or a tweet — plus when an MP4 is the better choice.",
+  "image": "/media/blog/how-to-make-a-gif-screen-recording-mac.jpg",
+  "alt": "GIF screen recording on Mac: GIF export option in ScreenToast",
+  "cover": {"title": "How to make a *GIF screen recording* on Mac", "shot": "poster-export.jpg"},
+  "keywords": ["screen record gif mac", "how to make a gif of screen mac", "screen recording to gif", "gif screen capture mac"],
+  "related": ["how-to-screen-record-on-mac", "quicktime-screen-recording-alternatives", "screen-recording-tips"]},
+ "faq": [
+  ["Can a Mac record a GIF directly?", "The built-in recorder saves .mov only. Convert it with a tool, or use a recorder with GIF export such as ScreenToast or CleanShot X."],
+  ["Why is my GIF file so big?", "GIFs store every frame with a limited palette, so long, large or busy recordings get huge. Keep it short, small and at a lower frame rate — or use an MP4 where the platform allows."],
+  ["How do I convert a screen recording to GIF for free?", "With ffmpeg in Terminal: ffmpeg -i in.mov -vf \"fps=12,scale=800:-1:flags=lanczos\" out.gif — or use a free converter app."]
+ ]}
+-->
+<h1>How to make a GIF screen recording on Mac</h1>
+<p class="lede">A short looping GIF is the perfect way to show a feature in a pull request, a README, a help article, Slack or a tweet — it plays instantly and needs no play button. Here's <strong>how to make a GIF screen recording on a Mac</strong> that's small, sharp and loops cleanly.</p>
+{{COVER}}
+
+<h2>Rules for a good GIF</h2>
+<ul>
+  <li><strong>Short:</strong> 3–10 seconds. One action.</li>
+  <li><strong>Small area:</strong> record just the part of the screen that matters, not your whole display.</li>
+  <li><strong>Loops cleanly:</strong> end where you started, so the jump back isn't jarring.</li>
+  <li><strong>Lower frame rate:</strong> 10–15 fps is plenty for UI and keeps the file small.</li>
+  <li><strong>No sound:</strong> GIFs don't have audio.</li>
+</ul>
+
+<h2>Method 1: built-in recorder + ffmpeg (free)</h2>
+<ol class="steps">
+  <li>Press <kbd>Shift</kbd>-<kbd>Command</kbd>-<kbd>5</kbd> → <strong>Record Selected Portion</strong>, and drag a tight box around the action.</li>
+  <li>Record, stop, and trim in the thumbnail preview.</li>
+  <li>Install ffmpeg (for example with Homebrew: <code>brew install ffmpeg</code>).</li>
+  <li>Convert with a palette for better colours:
+    <p><code>ffmpeg -i in.mov -vf "fps=12,scale=800:-1:flags=lanczos,split[a][b];[a]palettegen[p];[b][p]paletteuse" out.gif</code></p>
+  </li>
+</ol>
+<p>Change <code>800</code> for the width and <code>12</code> for the frame rate.</p>
+
+<h2>Method 2: export a GIF from ScreenToast</h2>
+<ol class="steps">
+  <li>Record an <strong>Area</strong> around the action.</li>
+  <li>Trim to the moment. Auto Polish's zoom and smooth cursor make even a small GIF easy to follow; delete the zoom if the area is already tight.</li>
+  <li>Press <kbd>⌘E</kbd> and choose <strong>GIF</strong>.</li>
+  <li>Copy the result <strong>straight to your clipboard</strong> and paste it into GitHub, Slack or your docs.</li>
+</ol>
+<p>CleanShot X also records straight to GIF, if you mostly need quick clips.</p>
+
+<h2>GIF or MP4?</h2>
+<div class="table"><table>
+  <thead><tr><th>Use a GIF for…</th><th>Use an MP4 for…</th></tr></thead>
+  <tbody>
+    <tr><td>GitHub READMEs and pull requests</td><td>Your website (smaller and sharper)</td></tr>
+    <tr><td>Email, where video won't play</td><td>Anything longer than ~10 seconds</td></tr>
+    <tr><td>Docs tools without video embeds</td><td>Anything with sound</td></tr>
+  </tbody>
+</table></div>
+<p>For websites, ScreenToast's <strong>Web</strong> preset makes an MP4 that starts playing at once, which loops like a GIF at a fraction of the size.</p>
+
+{{FAQ}}
+{{CTA}}
+{{RELATED}}

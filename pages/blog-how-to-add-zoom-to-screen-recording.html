@@ -1,0 +1,74 @@
+<!--
+{"path": "/blog/how-to-add-zoom-to-screen-recording",
+ "title": "How to Add Zoom Effects to a Screen Recording",
+ "description": "How to add zoom effects to a screen recording: by hand in iMovie or any editor, and automatically on every click — with tips on timing and zoom level.",
+ "headline": "How to add zoom effects to a screen recording",
+ "blog": {"date": "2026-10-20", "order": 9, "category": "Guides",
+  "card": "How to add zoom effects to a screen recording",
+  "excerpt": "Zooming in is what makes a screen recording readable. How to do it by hand in any editor, automatically on your clicks, and how to time it well.",
+  "image": "/media/blog/how-to-add-zoom-to-screen-recording.jpg",
+  "alt": "Add zoom effect to screen recording: a zoom following the cursor in ScreenToast",
+  "cover": {"title": "How to add *zoom effects* to a screen recording", "shot": "poster-follow-cursor.jpg"},
+  "keywords": ["add zoom effect to screen recording", "zoom in on screen recording", "how to zoom in screen recording mac", "screen recording zoom effect"],
+  "related": ["auto-zoom-screen-recorders", "screen-recording-tips", "how-to-make-a-tutorial-video-on-mac"],
+  "links": [["/features/auto-zoom", "Auto zoom screen recorder", "Zooms that land on your clicks"]]},
+ "faq": [
+  ["How do I zoom in on part of a screen recording?", "In an editor, add a scale (or crop) keyframe before the moment, scale up to about 1.5–2× centred on the spot, and add another keyframe to zoom back out. A recorder with auto zoom does this for every click."],
+  ["Can iMovie zoom in on a screen recording?", "Yes, with the Crop tool's Ken Burns setting: set the start and end frames. It's crude — fixed duration and linear movement — but it works."],
+  ["How much should I zoom in?", "1.5× to 2× for most interfaces. Higher zooms make viewers lose their place."]
+ ]}
+-->
+<h1>How to add zoom effects to a screen recording</h1>
+<p class="lede">A full-screen recording watched on a laptop — or worse, a phone — is a wall of tiny text. Zooming in on what you're clicking is the single biggest upgrade you can make. Here's <strong>how to add zoom effects to a screen recording</strong>: by hand in any editor, and automatically.</p>
+{{COVER}}
+
+<h2>What a good zoom looks like</h2>
+<ul>
+  <li><strong>Starts just before the action</strong>, so the viewer arrives as you click — not after.</li>
+  <li><strong>Eases in and out</strong> rather than moving linearly.</li>
+  <li><strong>1.5–2×</strong>, enough to read, not so much that the viewer loses context.</li>
+  <li><strong>Holds</strong> while there's something to read, then zooms back out.</li>
+  <li><strong>Never shows past the edge</strong> of the recording (no black bars).</li>
+</ul>
+
+<h2>Method 1: by hand, in any video editor</h2>
+<p>The technique is the same in Final Cut Pro, Premiere, DaVinci Resolve, ScreenFlow or Camtasia:</p>
+<ol class="steps">
+  <li>Move the playhead about half a second before the click.</li>
+  <li>Add a keyframe for <strong>scale</strong> and <strong>position</strong> at 100%.</li>
+  <li>Move forward ~0.5 s. Set scale to 150–200% and position so the click target is centred.</li>
+  <li>Move to where the action finishes and add a hold keyframe.</li>
+  <li>Move forward ~0.5 s and return to 100%.</li>
+  <li>Set the keyframes to ease in/out.</li>
+</ol>
+<p>Repeat for every click worth showing. For a 2-minute demo, that's often 15–20 zooms — about an hour.</p>
+
+<h3>In iMovie</h3>
+<p>Select the clip → <strong>Crop</strong> → <strong>Ken Burns</strong>. Set the Start frame to the full screen and the End frame around your target. Split the clip so the zoom only covers the moment you want. It's limited (linear movement, whole-clip duration), but free.</p>
+
+<h2>Method 2: automatically, on every click</h2>
+<p>Recorders with auto zoom log your clicks while you record and place the zooms for you. In ScreenToast:</p>
+<ol class="steps">
+  <li>Record as normal. Click deliberately, with a short pause before each important click.</li>
+  <li>Stop. Auto Polish has already placed zooms on the clicks that matter and merged quick bursts into one smooth move.</li>
+  <li>On the timeline, drag a zoom block to move it, drag its ends to retime it, or delete it. Set level and easing in the Zoom tool.</li>
+  <li>Need one Auto missed? Press <strong>Add at playhead</strong> for a manual zoom on a spot.</li>
+</ol>
+<p>Two extra zoom types solve the cases that are hardest by hand:</p>
+<ul>
+  <li><strong>Follow</strong> — the zoom travels with your pointer while you drag a slider, move a card or scroll. It switches on by itself when you drag.</li>
+  <li><strong>Glass Loupe</strong> — magnifies just a lens around the cursor while the rest of the screen stays put.</li>
+</ul>
+<p>Read more about <a href="/features/auto-zoom">how ScreenToast places zooms</a>, or compare <a href="/blog/auto-zoom-screen-recorders">other auto zoom recorders</a>.</p>
+
+<h2>Common zoom mistakes</h2>
+<ul>
+  <li><strong>Zooming on every click.</strong> Opening a menu doesn't need a zoom; the result does.</li>
+  <li><strong>Zooming late.</strong> If the zoom starts on the click, the viewer misses it.</li>
+  <li><strong>Bouncing.</strong> Zoom in, out, in, out in three seconds makes people seasick. Merge nearby zooms.</li>
+  <li><strong>Moving while zoomed</strong> without following the cursor — the action leaves the frame.</li>
+</ul>
+
+{{FAQ}}
+{{CTA}}
+{{RELATED}}

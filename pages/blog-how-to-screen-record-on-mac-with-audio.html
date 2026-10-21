@@ -1,0 +1,59 @@
+<!--
+{"path": "/blog/how-to-screen-record-on-mac-with-audio",
+ "title": "How to Screen Record on Mac With Internal Audio",
+ "description": "How to screen record on Mac with internal (system) audio and your microphone: the free BlackHole method step by step, and the one-toggle way.",
+ "headline": "How to screen record on Mac with internal audio",
+ "blog": {"date": "2026-10-20", "order": 11, "category": "Guides",
+  "card": "How to screen record on Mac with internal audio",
+  "excerpt": "macOS still won't record the sound your apps make. Here's the free BlackHole workaround, step by step, and the one-toggle alternative.",
+  "image": "/media/blog/how-to-screen-record-on-mac-with-audio.jpg",
+  "alt": "Screen record on Mac with audio: separate voice and system audio tracks in ScreenToast",
+  "cover": {"title": "How to screen record on Mac with *internal audio*", "shot": "poster-voiceover.jpg"},
+  "keywords": ["screen record mac with audio", "screen record with internal audio mac", "how to record system audio mac", "quicktime record screen with sound"],
+  "related": ["how-to-screen-record-on-mac", "mac-screen-recording-not-working", "quicktime-screen-recording-alternatives"]},
+ "faq": [
+  ["Why is my Mac screen recording silent?", "The built-in recorder only records a microphone, and only if you choose one under Options. It never records system audio — the sound from apps, videos or calls."],
+  ["Is BlackHole safe?", "BlackHole is a widely used open-source virtual audio driver. Install it from its official source, and remember to switch your sound output back after recording."],
+  ["Can I record system audio and my mic at the same time?", "Yes. With BlackHole, create an Aggregate Device that combines BlackHole and your mic. Recorders like ScreenToast record both directly, on separate tracks."],
+  ["Will I hear the audio while recording with BlackHole?", "Only if you use a Multi-Output Device that sends sound to both BlackHole and your speakers or headphones."]
+ ]}
+-->
+<h1>How to screen record on Mac with internal audio</h1>
+<p class="lede">You recorded a video playing in your browser, or a demo of an app with sound, and the result is silent. That's because macOS's built-in recorder <strong>doesn't capture internal (system) audio</strong> — only a microphone. Here's how to <strong>screen record on a Mac with audio</strong>: the free workaround, and the simpler way.</p>
+{{COVER}}
+
+<h2>Why the Mac doesn't record internal audio</h2>
+<p>The Screenshot toolbar (<kbd>Shift</kbd>-<kbd>Command</kbd>-<kbd>5</kbd>) and QuickTime let you pick a microphone under <strong>Options</strong>, and that's it. There's no "system audio" option. Third-party apps can capture system audio through Apple's ScreenCaptureKit, which is why dedicated recorders can do what the built-in one can't.</p>
+
+<h2>Option 1: the free way, with BlackHole</h2>
+<p>BlackHole is a free, open-source virtual audio device. You send your Mac's sound into it, and the recorder listens to it like a microphone.</p>
+<ol class="steps">
+  <li><strong>Install BlackHole 2ch</strong> from its official site and restart if asked.</li>
+  <li>Open <strong>Audio MIDI Setup</strong> (in Applications → Utilities).</li>
+  <li>Click <strong>+</strong> → <strong>Create Multi-Output Device</strong>. Tick <strong>BlackHole 2ch</strong> and your speakers or headphones, so you can still hear.</li>
+  <li><em>Optional, for your voice too:</em> click <strong>+</strong> → <strong>Create Aggregate Device</strong> and tick BlackHole 2ch and your microphone.</li>
+  <li>In <strong>System Settings → Sound → Output</strong>, choose the <strong>Multi-Output Device</strong>.</li>
+  <li>Press <kbd>Shift</kbd>-<kbd>Command</kbd>-<kbd>5</kbd> → <strong>Options</strong> → choose <strong>BlackHole 2ch</strong> (system audio only) or your <strong>Aggregate Device</strong> (system audio + mic).</li>
+  <li>Record. Afterwards, switch your sound output back to your speakers.</li>
+</ol>
+<div class="note"><p><strong>Gotchas:</strong> you can't change the volume of a Multi-Output Device with the keyboard; mic and system audio end up mixed into one track, so you can't level them separately later; and forgetting to switch back leaves your Mac "silent".</p></div>
+
+<h2>Option 2: a recorder with system audio built in</h2>
+<p>Apps that use ScreenCaptureKit record system audio directly, with no drivers. In ScreenToast:</p>
+<ol class="steps">
+  <li>Open ScreenToast and choose what to record: Display, Window or Area.</li>
+  <li>Switch on <strong>System audio</strong> and, if you're narrating, <strong>Mic</strong>.</li>
+  <li>Record, then stop with <kbd>⌘⇧2</kbd>.</li>
+</ol>
+<p>Your voice and the system sound land on <strong>separate tracks</strong>, so you can mute the app sound, turn your voice up, or add music that ducks under your voice automatically. Your mic is also cleaned up — recorded through the same voice processing FaceTime uses, with noise reduction afterwards.</p>
+<p>Other apps that record system audio: CleanShot X, Screen Studio, Cap, and OBS Studio (add a macOS audio capture source).</p>
+
+<h2>Permissions</h2>
+<p>On recent macOS, the permission is <strong>System Settings → Privacy &amp; Security → Screen &amp; System Audio Recording</strong>. If your recording has video but no system audio, check the app is listed and switched on there, then quit and reopen it.</p>
+
+<h2>Recording calls: a word on consent</h2>
+<p>If you record a video call, tell the other people first. In many places recording a conversation without consent is illegal.</p>
+
+{{FAQ}}
+{{CTA}}
+{{RELATED}}
