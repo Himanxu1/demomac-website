@@ -17,6 +17,26 @@
 /og.png
   Cache-Control: public, max-age=86400
 
+# Self-hosted fonts: a new font means a new file name, so cache for good.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Clips, posters and blog covers keep their names when re-shot, so a week,
+# then revalidate in the background. Re-encoding a clip shows up within days.
+/media/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# Shared stylesheet and scripts are not versioned; an hour keeps repeat
+# visits fast without stranding a fix for long.
+/site.css
+  Cache-Control: public, max-age=3600
+/fonts.css
+  Cache-Control: public, max-age=86400
+/analytics.js
+  Cache-Control: public, max-age=3600
+/download-gate.js
+  Cache-Control: public, max-age=3600
+
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin

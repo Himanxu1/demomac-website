@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mac Screen Recorder for Product Demos – ScreenToast</title>
-<meta name="description" content="Show your real product working, polished automatically. ScreenToast is a Mac screen recorder for product demos: auto zoom on clicks, a smooth cursor, captions and narration. Free to record and edit.">
+<meta name="description" content="ScreenToast is a Mac screen recorder for product demos: auto zoom on clicks, a smooth cursor, captions and narration. Free to record and edit.">
 <meta name="google-site-verification" content="CwfukQa9jB6Wfc5FXKD0zsX6wCnP_tHihkgH-wHQvdA">
 <meta property="og:site_name" content="ScreenToast">
 <meta property="og:title" content="Mac Screen Recorder for Product Demos – ScreenToast">
@@ -34,7 +34,18 @@
    "@type": "WebSite",
    "@id": "https://screentoast.com/#website",
    "url": "https://screentoast.com/",
-   "name": "ScreenToast"
+   "name": "ScreenToast",
+   "alternateName": "ScreenToast for Mac",
+   "publisher": { "@id": "https://screentoast.com/#org" }
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://screentoast.com/#org",
+   "name": "ScreenToast",
+   "url": "https://screentoast.com/",
+   "logo": "https://screentoast.com/logo.png",
+   "email": "support@screentoast.com",
+   "description": "Makers of ScreenToast, a native Mac screen recorder for product demos."
   },
   {
    "@type": "SoftwareApplication",
@@ -184,9 +195,9 @@
  ]
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="preload" href="/fonts/IBMPlexSans-400-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Archivo-500-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts.css">
 
 <style>
   :root {
@@ -920,7 +931,7 @@
   /* ── footer ──────────────────────────────────────── */
 
   footer { border-top: 1px solid var(--line); padding-block: 48px 40px; margin-top: clamp(48px, 7vw, 88px); }
-  .foot-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 32px; }
+  .foot-grid { display: grid; grid-template-columns: 1.6fr repeat(4, 1fr); gap: 32px; }
   @media (max-width: 800px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
   .foot-about p { color: var(--bone-4); font-size: 13.5px; margin-top: 12px; max-width: 34ch; line-height: 1.6; }
   .foot-badges { margin-top: 20px; }
@@ -2004,6 +2015,16 @@
         <a href="/features/ai-voiceover">AI voiceover</a>
         <a href="/guides/how-to-make-a-product-demo-video-on-mac">Make a product demo</a>
         <a href="#faq">FAQ</a>
+      </div>
+      <div class="foot-col">
+        <h5>Compare</h5>
+        <a href="/blog/screen-studio-vs-screentoast">vs Screen Studio</a>
+        <a href="/blog/screen-studio-alternatives">Screen Studio alternatives</a>
+        <a href="/blog/loom-alternatives-mac">Loom alternatives</a>
+        <a href="/blog/screen-studio-vs-cleanshot-x">Screen Studio vs CleanShot X</a>
+        <a href="/blog/obs-alternatives-mac">OBS alternatives</a>
+        <a href="/blog/camtasia-alternatives-mac">Camtasia alternatives</a>
+        <a href="/blog/best-screen-recorders-for-mac">Best Mac recorders</a>
       </div>
       <div class="foot-col">
         <h5>Company</h5>

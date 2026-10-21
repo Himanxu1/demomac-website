@@ -62,9 +62,9 @@ HEAD = """<!doctype html>
 <meta name="twitter:image" content="{image}">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="preload" href="/fonts/IBMPlexSans-400-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Archivo-500-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts.css">
 <link rel="stylesheet" href="/site.css">
 {schema}</head>
 <body>
@@ -94,6 +94,15 @@ FOOT = """</div></main>
     <a href="/privacy">Privacy</a>
     <a href="/terms">Terms</a>
     <a href="mailto:support@screentoast.com">Support</a>
+  </div>
+  <div class="cols compare"><span>Compare</span>
+    <a href="/blog/screen-studio-vs-screentoast">vs Screen Studio</a>
+    <a href="/blog/screen-studio-alternatives">Screen Studio alternatives</a>
+    <a href="/blog/loom-alternatives-mac">Loom alternatives</a>
+    <a href="/blog/screen-studio-vs-cleanshot-x">Screen Studio vs CleanShot X</a>
+    <a href="/blog/obs-alternatives-mac">OBS alternatives</a>
+    <a href="/blog/camtasia-alternatives-mac">Camtasia alternatives</a>
+    <a href="/blog/best-screen-recorders-for-mac">Best Mac recorders</a>
   </div>
   <p>© 2026 ScreenToast · Made for macOS 14 or later</p>
 </div></footer>
@@ -130,6 +139,11 @@ def read_meta(src: pathlib.Path):
     return meta, text[m.end():]
 
 
+def webp(jpg: str, width: int = 0) -> str:
+    """/media/blog/x.jpg → /media/blog/x.webp, or x-600.webp; drawn by covers.py."""
+    return jpg.removesuffix(".jpg") + (f"-{width}" if width else "") + ".webp"
+
+
 def read_minutes(body: str) -> int:
     words = len(re.sub(r"<[^>]+>", " ", body).split())
     return max(1, math.ceil(words / 230))
@@ -149,7 +163,8 @@ def blog_parts(meta, body, posts):
 
     cover = (f'<p class="byline"><span class="tag">{html.escape(b["category"])}</span>'
              f'<time datetime="{b["date"]}">{nice_date(b["date"])}</time> · {mins} min read</p>\n'
-             f'<figure class="cover"><img src="{b["image"]}" width="1200" height="630" '
+             f'<figure class="cover"><img src="{webp(b["image"])}" srcset="{webp(b["image"], 600)} 600w, {webp(b["image"])} 1200w" '
+             f'sizes="(max-width: 760px) 100vw, 700px" width="1200" height="630" '
              f'alt="{html.escape(b["alt"])}" fetchpriority="high"></figure>')
 
     faq_html, faq = "", meta.get("faq") or []
@@ -243,7 +258,7 @@ def blog_index(posts, minutes) -> tuple[dict, str]:
     for slug, m in ordered:
         b = m["blog"]
         cards.append(f"""  <article class="card" data-cat="{html.escape(b['category'])}">
-    <a class="card-img" href="/blog/{slug}" tabindex="-1" aria-hidden="true"><img src="{b['image']}" width="1200" height="630" alt="" loading="lazy"></a>
+    <a class="card-img" href="/blog/{slug}" tabindex="-1" aria-hidden="true"><img src="{webp(b['image'], 600)}" srcset="{webp(b['image'], 600)} 600w, {webp(b['image'])} 1200w" sizes="(max-width: 700px) 100vw, 330px" width="600" height="315" alt="" loading="lazy"></a>
     <p class="byline"><span class="tag">{html.escape(b['category'])}</span><time datetime="{b['date']}">{nice_date(b['date'])}</time> · {minutes[slug]} min read</p>
     <h2><a href="/blog/{slug}">{html.escape(b['card'])}</a></h2>
     <p>{html.escape(b['excerpt'])}</p>

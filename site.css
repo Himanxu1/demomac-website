@@ -126,3 +126,5 @@ footer.bottom a:hover { color: var(--rec); }
 .card h2 a:hover { color: var(--rec); }
 .card p { font-size: 15px; line-height: 1.55; margin: 0 18px 14px; }
 .card .more { margin: auto 18px 0; font: 600 14px var(--body); text-decoration: none; }
+footer.bottom .compare { margin-top: 14px; }
+footer.bottom .compare span { color: var(--bone-3); font: 500 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; align-self: center; }

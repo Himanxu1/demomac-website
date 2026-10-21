@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Draws the 1200×630 cover for every blog post into media/blog/<slug>.jpg.
+"""Draws the 1200×630 cover for every blog post into media/blog/<slug>.jpg,
+plus <slug>.webp and a 600px <slug>-600.webp for the page itself.
 
 Each post's JSON header names its cover: a short title (words between *stars*
 come out orange) and one of the real ScreenToast frames in media/poster-*.jpg.
@@ -96,7 +97,10 @@ def render(slug, category, title, shot):
     d.text((64, 548), "screentoast.com", font=font("IBMPlexSans-Medium.ttf", 22, "Medium"), fill=BONE3)
 
     OUT.mkdir(parents=True, exist_ok=True)
+    # JPEG for og:image (every social card reads it); WebP at two sizes for the page.
     img.save(OUT / f"{slug}.jpg", quality=84, optimize=True, progressive=True)
+    img.save(OUT / f"{slug}.webp", quality=80, method=6)
+    img.resize((600, 315), Image.LANCZOS).save(OUT / f"{slug}-600.webp", quality=80, method=6)
 
 
 def split_stars(title):

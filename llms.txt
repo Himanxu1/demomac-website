@@ -1,0 +1,34 @@
+# ScreenToast
+
+> ScreenToast is a native macOS screen recorder for product demos. It records your screen, then polishes the take automatically: zooms on the clicks that matter, a smoothed cursor, a background and padding, captions transcribed on the Mac, and an optional narration script written from what you did on screen. Recording and editing are free; ScreenToast Pro ($59/year or $7/month) unlocks export. Requires macOS 14 or later, Apple silicon or Intel. Under 10 MB to download. Recordings never leave the Mac.
+
+Key facts:
+- Records a display, a window, or an area locked to 16:9, 9:16, 1:1, 4:5 or 4:3, with camera, microphone and system audio on separate tracks.
+- Four zoom types: automatic from clicks, manual, follow-cursor, and a glass loupe. Every zoom is editable on the timeline.
+- Edit by transcript, one-click filler-word removal, captions in four styles (including karaoke) and .srt export, all on-device.
+- Automatically finds and blurs API keys, tokens, email addresses and card numbers in the recording.
+- Camera bubble, side-by-side or camera-only layouts, background removal, colour looks.
+- Exports MP4, HEVC, GIF or ProRes, with presets for YouTube, TikTok, Reels, LinkedIn, X, Product Hunt and the web.
+- No Windows version. No cloud upload or share links; exports are files.
+
+## Product
+- [Home and pricing](https://screentoast.com/): features, pricing, FAQ
+- [Auto zoom](https://screentoast.com/features/auto-zoom): how zooms are placed on clicks
+- [Vertical screen recording](https://screentoast.com/features/vertical-screen-recording): recording 9:16 on a Mac
+- [AI voiceover](https://screentoast.com/features/ai-voiceover): narration drafted from the recording
+- [Changelog](https://screentoast.com/changelog)
+
+## Comparisons
+- [Screen Studio alternatives](https://screentoast.com/blog/screen-studio-alternatives)
+- [Screen Studio vs ScreenToast](https://screentoast.com/blog/screen-studio-vs-screentoast)
+- [Best screen recorders for Mac](https://screentoast.com/blog/best-screen-recorders-for-mac)
+- [Loom alternatives for Mac](https://screentoast.com/blog/loom-alternatives-mac)
+
+## Guides
+- [How to make a product demo video on Mac](https://screentoast.com/guides/how-to-make-a-product-demo-video-on-mac)
+- [How to screen record on Mac](https://screentoast.com/blog/how-to-screen-record-on-mac)
+- [How to screen record on Mac with internal audio](https://screentoast.com/blog/how-to-screen-record-on-mac-with-audio)
+- [All articles](https://screentoast.com/blog)
+
+## Contact
+- support@screentoast.com
