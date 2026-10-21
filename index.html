@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mac Screen Recorder for Product Demos – ScreenToast</title>
+<title>ScreenToast – Mac Screen Recorder for Product Demos</title>
 <meta name="description" content="ScreenToast is a Mac screen recorder for product demos: auto zoom on clicks, a smooth cursor, captions and narration. Free to record and edit.">
 <meta name="google-site-verification" content="CwfukQa9jB6Wfc5FXKD0zsX6wCnP_tHihkgH-wHQvdA">
 <meta property="og:site_name" content="ScreenToast">
-<meta property="og:title" content="Mac Screen Recorder for Product Demos – ScreenToast">
+<meta property="og:title" content="ScreenToast – Mac Screen Recorder for Product Demos">
 <meta property="og:description" content="AI can fake the promo. Not the product. Record your real app on your Mac — ScreenToast polishes it automatically.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://screentoast.com/">
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="ScreenToast — turn your screen recording into a product demo">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Mac Screen Recorder for Product Demos – ScreenToast">
+<meta name="twitter:title" content="ScreenToast – Mac Screen Recorder for Product Demos">
 <meta name="twitter:description" content="AI can fake the promo. Not the product. Record your real app on your Mac — ScreenToast polishes it automatically.">
 <meta name="twitter:image" content="https://screentoast.com/og.png">
 <meta name="twitter:image:alt" content="ScreenToast — turn your screen recording into a product demo">
@@ -216,7 +216,7 @@
     --bone:     #f2efe9;
     --bone-2:   #b5b0a8;
     --bone-3:   #8e8a84;
-    --bone-4:   #605c57;
+    --bone-4:   #8a857e;
 
     --display: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -256,7 +256,7 @@
   }
   h2 { font-size: clamp(30px, 4.2vw, 48px); }
   h3 { font-size: clamp(23px, 2.6vw, 30px); letter-spacing: -0.025em; }
-  h4 { font-size: 18px; letter-spacing: -0.015em; line-height: 1.25; font-weight: 700; }
+  h4, .h4 { font-size: 18px; letter-spacing: -0.015em; line-height: 1.25; font-weight: 700; }
 
   p { margin: 0; }
   a { color: inherit; }
@@ -589,7 +589,7 @@
     padding: 26px 24px 28px;
   }
   .who-card .role { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--rec); }
-  .who-card h4 { margin-top: 12px; }
+  .who-card .h4 { margin-top: 12px; }
   .who-card p { margin-top: 10px; color: var(--bone-3); font-size: 14.5px; line-height: 1.6; }
   @media (max-width: 880px) { .who { grid-template-columns: 1fr; } }
 
@@ -608,7 +608,7 @@
   }
   .step:nth-child(4)::before { background: var(--line-2); }
   .step .t { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; color: var(--bone-4); margin-bottom: 8px; }
-  .step h4 { font-size: 19px; }
+  .step .h4 { font-size: 19px; }
   .step p { color: var(--bone-3); font-size: 14.5px; margin-top: 7px; line-height: 1.55; }
   @media (max-width: 860px) {
     .pipe { grid-template-columns: 1fr 1fr; }
@@ -931,12 +931,12 @@
   /* ── footer ──────────────────────────────────────── */
 
   footer { border-top: 1px solid var(--line); padding-block: 48px 40px; margin-top: clamp(48px, 7vw, 88px); }
-  .foot-grid { display: grid; grid-template-columns: 1.6fr repeat(4, 1fr); gap: 32px; }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr repeat(5, 1fr); gap: 28px; }
   @media (max-width: 800px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
   .foot-about p { color: var(--bone-4); font-size: 13.5px; margin-top: 12px; max-width: 34ch; line-height: 1.6; }
   .foot-badges { margin-top: 20px; }
   .foot-badges img { display: block; max-width: 100%; height: auto; }
-  .foot-col h5 { font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--bone-4); margin: 0 0 14px; font-weight: 500; }
+  .foot-col .foot-h { font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--bone-4); margin: 0 0 14px; font-weight: 500; }
   .foot-col a { display: block; text-decoration: none; color: var(--bone-3); font-size: 14px; padding: 4px 0; }
   .foot-col a:hover { color: var(--bone); }
   .foot-base { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--bone-4); }
@@ -1077,17 +1077,17 @@
       <div class="who">
         <div class="who-card">
           <p class="role">Founders</p>
-          <h4>Show it instead of pitching it</h4>
+          <h3 class="h4">Show it instead of pitching it</h3>
           <p>A demo you can put in the launch post, the investor update and the top of your homepage. Record it between meetings and it still looks like you hired someone.</p>
         </div>
         <div class="who-card">
           <p class="role">Video editors</p>
-          <h4>Skip the hour of keyframing</h4>
+          <h3 class="h4">Skip the hour of keyframing</h3>
           <p>The zooms, the cursor and the framing are already done before you import. Export a ProRes master and spend your time on the parts that actually need you.</p>
         </div>
         <div class="who-card">
           <p class="role">Product launchers</p>
-          <h4>One recording, every channel</h4>
+          <h3 class="h4">One recording, every channel</h3>
           <p>The same take becomes the launch video, the vertical clip and the square post — each one properly framed, not squeezed into a shape it was never shot for.</p>
         </div>
       </div>
@@ -1110,22 +1110,22 @@
       <div class="pipe">
         <div class="step">
           <p class="t">01 — YOU</p>
-          <h4>Record</h4>
+          <h3 class="h4">Record</h3>
           <p>Whole display, one window, or an area locked to the shape you publish in. Camera, mic and system audio if you want them.</p>
         </div>
         <div class="step">
           <p class="t">02 — AUTO</p>
-          <h4>Polish</h4>
+          <h3 class="h4">Polish</h3>
           <p>The zooms get placed where you clicked, a flurry of clicks becomes one smooth move, and the cursor stops jittering.</p>
         </div>
         <div class="step">
           <p class="t">03 — AUTO</p>
-          <h4>Narrate</h4>
+          <h3 class="h4">Narrate</h3>
           <p>ScreenToast writes a script from what you did on screen and reads it aloud in a voice you choose. Or use your own.</p>
         </div>
         <div class="step">
           <p class="t">04 — YOU</p>
-          <h4>Publish</h4>
+          <h3 class="h4">Publish</h3>
           <p>One recording, every shape you need. Wide, vertical or square, saved straight to your Mac.</p>
         </div>
       </div>
@@ -1556,47 +1556,47 @@
       <div class="grid">
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h11M4 18h7"/><path d="M17 15l4 4M21 15l-4 4"/></svg></div>
-          <h4>Edit by transcript</h4>
+          <h3 class="h4">Edit by transcript</h3>
           <p>Your words, transcribed on your Mac. Delete a word to cut it. Remove every "um" and tighten long pauses in one click.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 14h4M13 14h4M7 10h10"/></svg></div>
-          <h4>Captions from your voice</h4>
+          <h3 class="h4">Captions from your voice</h3>
           <p>Four styles, karaoke included, revealed line by line or word by word. Save them as an .srt file too.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div>
-          <h4>Hides secrets for you</h4>
+          <h3 class="h4">Hides secrets for you</h3>
           <p>ScreenToast reads the recording for API keys, tokens, email addresses and card numbers and covers every one, even as it scrolls. You review what it found.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>
-          <h4>Camera, cut out</h4>
+          <h3 class="h4">Camera, cut out</h3>
           <p>Remove the room behind you, on your Mac. Bubble, side by side or camera only — switch part-way through. Twelve colour looks, or your own LUT.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></div>
-          <h4>Four kinds of zoom</h4>
+          <h3 class="h4">Four kinds of zoom</h3>
           <p>Auto from your clicks, Manual on one spot, Follow that travels with your pointer, and a Glass Loupe that magnifies just a lens.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 9l4 3-4 3z"/></svg></div>
-          <h4>GIF, Web and clipboard</h4>
+          <h3 class="h4">GIF, Web and clipboard</h3>
           <p>Export a looping GIF, a Web MP4 that starts playing at once, or a file without audio — then copy it straight to your clipboard.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h4l2-5 2 10 2-5h4"/></svg></div>
-          <h4>Speed up the dull parts</h4>
+          <h3 class="h4">Speed up the dull parts</h3>
           <p>Play every stretch of typing at 3× with one command, and drop the silences from your take entirely.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
-          <h4>Device frames</h4>
+          <h3 class="h4">Device frames</h3>
           <p>Put your recording inside a MacBook, iMac, iPhone, iPad or a browser window, with wallpapers and gradients behind it.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M9 12h6"/></svg></div>
-          <h4>⌘K finds anything</h4>
+          <h3 class="h4">⌘K finds anything</h3>
           <p>Every command in one search box — add a zoom, make captions, remove filler words — without hunting through panels.</p>
         </div>
       </div>
@@ -1616,47 +1616,47 @@
       <div class="grid">
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <h4>Pause and resume</h4>
+          <h3 class="h4">Pause and resume</h3>
           <p>Stop to gather your thoughts mid-demo. The pause never shows up in the finished video — it just isn't there.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></div>
-          <h4>Know if a take went wrong</h4>
+          <h3 class="h4">Know if a take went wrong</h3>
           <p>ScreenToast tells you straight away if a recording hit trouble, so you find out while you can still redo it — not an hour later.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
-          <h4>Crash recovery</h4>
+          <h3 class="h4">Crash recovery</h3>
           <p>If your Mac crashes or the battery dies, your recording is still waiting for you when you open ScreenToast again.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h3M14 10h3M7 14h10"/></svg></div>
-          <h4>Keyboard shortcuts</h4>
+          <h3 class="h4">Keyboard shortcuts</h3>
           <p>Stop or pause from anywhere with ⌘⇧2 and ⌘⇧1, so your demo doesn't end with you hunting for a button.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 12h3l3-7 4 14 3-7h3"/></svg></div>
-          <h4>Better sounding audio</h4>
+          <h3 class="h4">Better sounding audio</h3>
           <p>ScreenToast cleans up room hiss on your microphone and quietens the music by itself whenever someone is speaking.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="10" rx="2"/><rect x="8" y="10" width="14" height="10" rx="2"/></svg></div>
-          <h4>Multiple displays</h4>
+          <h3 class="h4">Multiple displays</h3>
           <p>Record any screen, any window, or just a corner of one. Move your mouse and ScreenToast highlights whatever you're about to pick.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h13"/></svg></div>
-          <h4>Stays out of your shot</h4>
+          <h3 class="h4">Stays out of your shot</h3>
           <p>ScreenToast's own windows never appear in your recording — or in a Zoom call or another app's screen share.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 4v10M8 10l4 4 4-4M5 19h14"/></svg></div>
-          <h4>Projects you can reopen</h4>
+          <h3 class="h4">Projects you can reopen</h3>
           <p>Your recording and every change you made are saved together. Open it next month and adjust anything — nothing is locked in.</p>
         </div>
         <div class="cell">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 14L4 9l5-5"/><path d="M4 9h11a5 5 0 010 10h-3"/></svg></div>
-          <h4>Undo that behaves</h4>
+          <h3 class="h4">Undo that behaves</h3>
           <p>One change is one step back. Nothing you do in ScreenToast is a one-way door.</p>
         </div>
       </div>
@@ -2001,7 +2001,7 @@
         </div>
       </div>
       <div class="foot-col">
-        <h5>Product</h5>
+        <p class="foot-h">Product</p>
         <a href="#record">Recording</a>
         <a href="#polish">Auto Polish</a>
         <a href="#editor">Editor</a>
@@ -2009,15 +2009,29 @@
         <a href="#pricing">Pricing</a>
       </div>
       <div class="foot-col">
-        <h5>Learn</h5>
+        <p class="foot-h">Learn</p>
         <a href="/features/auto-zoom">Auto zoom recorder</a>
         <a href="/features/vertical-screen-recording">Vertical screen recording</a>
         <a href="/features/ai-voiceover">AI voiceover</a>
+        <a href="/features/captions">Auto captions</a>
+        <a href="/features/edit-by-transcript">Edit by transcript</a>
+        <a href="/features/hide-sensitive-info">Hide sensitive info</a>
+        <a href="/features/screen-and-webcam">Screen and webcam</a>
+        <a href="/features/gif-export">GIF and export</a>
         <a href="/guides/how-to-make-a-product-demo-video-on-mac">Make a product demo</a>
         <a href="#faq">FAQ</a>
       </div>
       <div class="foot-col">
-        <h5>Compare</h5>
+        <p class="foot-h">Made for</p>
+        <a href="/for/founders">Founders</a>
+        <a href="/for/marketers">Marketers</a>
+        <a href="/for/developers">Developers</a>
+        <a href="/for/youtubers">YouTubers</a>
+        <a href="/for/educators">Educators</a>
+        <a href="/for/sales-teams">Sales teams</a>
+      </div>
+      <div class="foot-col">
+        <p class="foot-h">Compare</p>
         <a href="/blog/screen-studio-vs-screentoast">vs Screen Studio</a>
         <a href="/blog/screen-studio-alternatives">Screen Studio alternatives</a>
         <a href="/blog/loom-alternatives-mac">Loom alternatives</a>
@@ -2027,7 +2041,7 @@
         <a href="/blog/best-screen-recorders-for-mac">Best Mac recorders</a>
       </div>
       <div class="foot-col">
-        <h5>Company</h5>
+        <p class="foot-h">Company</p>
         <a href="/blog">Blog</a>
         <a href="/changelog">Changelog</a>
         <a href="mailto:support@screentoast.com">Support</a>

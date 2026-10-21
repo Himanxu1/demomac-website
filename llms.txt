@@ -16,6 +16,14 @@ Key facts:
 - [Auto zoom](https://screentoast.com/features/auto-zoom): how zooms are placed on clicks
 - [Vertical screen recording](https://screentoast.com/features/vertical-screen-recording): recording 9:16 on a Mac
 - [AI voiceover](https://screentoast.com/features/ai-voiceover): narration drafted from the recording
+- [Auto captions](https://screentoast.com/features/captions): on-device captions, four styles, .srt export
+- [Edit by transcript](https://screentoast.com/features/edit-by-transcript): cut video by deleting words
+- [Hide sensitive info](https://screentoast.com/features/hide-sensitive-info): auto-blur API keys, tokens, emails
+- [Screen and webcam](https://screentoast.com/features/screen-and-webcam): camera layouts, background removal
+- [GIF and export](https://screentoast.com/features/gif-export): GIF, web MP4, ProRes, platform presets
+
+## Use cases
+- [Founders](https://screentoast.com/for/founders) · [Marketers](https://screentoast.com/for/marketers) · [Developers](https://screentoast.com/for/developers) · [YouTubers](https://screentoast.com/for/youtubers) · [Educators](https://screentoast.com/for/educators) · [Sales teams](https://screentoast.com/for/sales-teams)
 - [Changelog](https://screentoast.com/changelog)
 
 ## Comparisons
