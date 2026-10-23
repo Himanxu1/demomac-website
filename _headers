@@ -38,6 +38,7 @@
   Cache-Control: public, max-age=3600
 
 /*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   # No framing: the checkout is a link out to Dodo, and nothing here should

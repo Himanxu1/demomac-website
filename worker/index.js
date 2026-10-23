@@ -31,6 +31,11 @@ import { EmailMessage } from 'cloudflare:email';
 
 const DODO = 'https://live.dodopayments.com';
 const SITE = 'https://screentoast.com';
+// Retired post → the post its content now lives in.
+const MERGED = {
+  '/blog/cheap-screen-studio-alternatives': '/blog/screen-studio-alternatives',
+  '/blog/top-5-screen-recording-apps-mac': '/blog/best-screen-recorders-for-mac',
+};
 
 export default {
   async fetch(request, env, ctx) {
@@ -54,6 +59,13 @@ export default {
       if (path === '/screen-studio-alternative' || path === '/screen-studio-alternative.html') {
         return Response.redirect(SITE + '/blog/screen-studio-alternatives', 301);
       }
+      // Posts merged into a fuller one keep their links working.
+      const merged = MERGED[path.replace(/\/$/, '')];
+      if (merged) return Response.redirect(SITE + merged, 301);
+      // One URL per page. Cloudflare's own clean-up of /index.html, *.html and
+      // trailing slashes answers 307 (temporary); search engines want 301.
+      const clean = canonicalPath(path);
+      if (clean !== path) return Response.redirect(SITE + clean + url.search, 301);
       if (path.startsWith('/media/') && request.headers.has('Range')) return await ranged(request, env);
       countFetch(request, path, env, ctx);
     } catch (e) {
@@ -63,6 +75,14 @@ export default {
     return env.ASSETS.fetch(request);
   },
 };
+
+/** /index.html → /, /blog/ → /blog, /terms.html → /terms. Other paths pass. */
+function canonicalPath(path) {
+  if (path === '/index.html') return '/';
+  if (path.length > 1 && path.endsWith('/')) return path.replace(/\/+$/, '') || '/';
+  if (path.endsWith('.html')) return path.slice(0, -5).replace(/\/index$/, '') || '/';
+  return path;
+}
 
 // ── analytics ─────────────────────────────────────────────────────────────────
 //

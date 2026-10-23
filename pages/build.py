@@ -95,6 +95,7 @@ FOOT = """</div></main>
     <a href="/features/gif-export">GIF and export</a>
     <a href="/guides/how-to-make-a-product-demo-video-on-mac">Make a product demo</a>
     <a href="/blog">Blog</a>
+    <a href="/about">About</a>
     <a href="/changelog">Changelog</a>
     <a href="/privacy">Privacy</a>
     <a href="/terms">Terms</a>
@@ -109,7 +110,6 @@ FOOT = """</div></main>
     <a href="/blog/camtasia-alternatives-mac">Camtasia alternatives</a>
     <a href="/blog/screenflow-alternatives">ScreenFlow alternatives</a>
     <a href="/blog/best-screen-recorders-for-mac">Best Mac recorders</a>
-    <a href="/blog/top-5-screen-recording-apps-mac">Top 5 Mac recording apps</a>
   </div>
   <div class="cols compare"><span>Made for</span>
     <a href="/for/founders">Founders</a>
@@ -139,6 +139,28 @@ CTA = """<div class="final">
 </div>"""
 
 ORG = {"@type": "Organization", "name": "ScreenToast", "url": SITE + "/"}
+# Posts are credited to the person who writes them; /about is the bio page.
+AUTHOR = {"@type": "Person", "name": "Himanshu Singh", "url": SITE + "/about"}
+
+# Non-blog pages end on links to the posts that go deeper on the same job.
+# Every slug must exist; the build stops on a typo.
+PAGE_POSTS = {
+    "/features/auto-zoom": ["auto-zoom-screen-recorders", "how-to-add-zoom-to-screen-recording", "screen-studio-alternatives"],
+    "/features/vertical-screen-recording": ["how-to-make-a-product-hunt-launch-video", "how-to-screen-record-on-mac", "screen-recording-tips"],
+    "/features/ai-voiceover": ["how-to-screen-record-on-mac-with-audio", "how-to-make-a-tutorial-video-on-mac", "best-screen-recorder-for-youtube-tutorials"],
+    "/features/captions": ["how-to-add-captions-to-screen-recording", "how-to-make-a-tutorial-video-on-mac", "best-screen-recorder-for-youtube-tutorials"],
+    "/features/edit-by-transcript": ["how-to-make-a-tutorial-video-on-mac", "screen-recording-tips", "how-to-add-captions-to-screen-recording"],
+    "/features/hide-sensitive-info": ["how-to-blur-screen-recording", "screen-recording-tips", "best-screen-recorder-for-product-demos"],
+    "/features/screen-and-webcam": ["how-to-record-screen-and-webcam-mac", "how-to-record-a-presentation-on-mac", "loom-alternatives-mac"],
+    "/features/gif-export": ["how-to-make-a-gif-screen-recording-mac", "screen-recorder-mac-no-watermark", "best-free-screen-recorders-mac"],
+    "/for/founders": ["best-screen-recorder-for-product-demos", "how-to-make-a-product-hunt-launch-video", "screen-studio-vs-screentoast"],
+    "/for/marketers": ["how-to-make-a-product-hunt-launch-video", "how-to-add-captions-to-screen-recording", "best-screen-recorders-for-mac"],
+    "/for/developers": ["how-to-blur-screen-recording", "how-to-make-a-gif-screen-recording-mac", "obs-alternatives-mac", "mac-screen-recording-not-working"],
+    "/for/youtubers": ["best-screen-recorder-for-youtube-tutorials", "how-to-make-a-tutorial-video-on-mac", "camtasia-alternatives-mac"],
+    "/for/educators": ["how-to-record-a-presentation-on-mac", "how-to-make-a-tutorial-video-on-mac", "screenflow-alternatives"],
+    "/for/sales-teams": ["loom-alternatives-mac", "how-to-record-screen-and-webcam-mac", "quicktime-screen-recording-alternatives"],
+    "/guides/how-to-make-a-product-demo-video-on-mac": ["best-screen-recorder-for-product-demos", "how-to-make-a-product-hunt-launch-video", "screen-recording-tips"],
+}
 PUBLISHER = dict(ORG, logo={"@type": "ImageObject", "url": SITE + "/logo.png"})
 
 
@@ -169,6 +191,21 @@ def nice_date(iso: str) -> str:
     return f"{d.day} {d.strftime('%B %Y')}"
 
 
+def post_links(path, posts) -> str:
+    """The "Keep reading" block a feature, use-case or guide page ends on."""
+    items = []
+    for slug in PAGE_POSTS.get(path, []):
+        other = posts.get(slug)
+        if not other:
+            raise SystemExit(f"{path}: PAGE_POSTS names missing post {slug!r}")
+        b = other["blog"]
+        items.append(f'<li><a href="/blog/{slug}">{html.escape(b["card"])}<span>{html.escape(b["excerpt"])}</span></a></li>')
+    if not items:
+        return ""
+    return ('\n<nav class="related" aria-label="Related articles">\n  <h2>Read more on the blog</h2>\n  <ul>\n    '
+            + "\n    ".join(items) + "\n  </ul>\n</nav>\n")
+
+
 def blog_parts(meta, body, posts):
     """Fills a post's placeholders and returns (body, crumbs, schema)."""
     b, path = meta["blog"], meta["path"]
@@ -177,7 +214,7 @@ def blog_parts(meta, body, posts):
     mins = read_minutes(body)
 
     cover = (f'<p class="byline"><span class="tag">{html.escape(b["category"])}</span>'
-             f'<time datetime="{b["date"]}">{nice_date(b["date"])}</time> · {mins} min read</p>\n'
+             f'By <a href="/about">{AUTHOR["name"]}</a> · <time datetime="{b["date"]}">{nice_date(b["date"])}</time> · {mins} min read</p>\n'
              f'<figure class="cover"><img src="{webp(b["image"])}" srcset="{webp(b["image"], 600)} 600w, {webp(b["image"])} 1200w" '
              f'sizes="(max-width: 760px) 100vw, 700px" width="1200" height="630" '
              f'alt="{html.escape(b["alt"])}" fetchpriority="high"></figure>')
@@ -209,7 +246,7 @@ def blog_parts(meta, body, posts):
         "@type": "BlogPosting", "headline": meta.get("headline", b["card"]),
         "description": meta["description"], "image": image,
         "datePublished": b["date"], "dateModified": b.get("modified", b["date"]),
-        "author": ORG, "publisher": PUBLISHER, "mainEntityOfPage": url,
+        "author": AUTHOR, "publisher": PUBLISHER, "mainEntityOfPage": url,
         "articleSection": b["category"], "keywords": ", ".join(b.get("keywords", [])),
     }]
     if faq:
@@ -228,6 +265,8 @@ def build(meta, body, posts) -> str:
     image = SITE + meta.get("image", "/og.png")
     if "blog" in meta:
         body, crumbs_meta, schema, image, _ = blog_parts(meta, body, posts)
+    else:
+        body = body.rstrip() + "\n" + post_links(path, posts)
 
     # Breadcrumbs: visible trail, plus the same trail as BreadcrumbList.
     crumbs = [["ScreenToast", "/"]] + crumbs_meta
@@ -317,6 +356,15 @@ def write_sitemap(posts):
     path.write_text("\n".join(lines[:end] + blog + lines[end:]) + "\n")
 
 
+def write_llms(posts):
+    """Regenerates the article list at the end of llms.txt, after its marker."""
+    path = ROOT / "llms.txt"
+    head = path.read_text().split("## All articles")[0].rstrip()
+    ordered = sorted(posts.items(), key=lambda kv: (kv[1]["blog"]["category"], kv[0]))
+    lines = [f"- [{m['blog']['card']}]({SITE}/blog/{s}): {m['description']}" for s, m in ordered]
+    path.write_text(head + "\n\n## All articles\n" + "\n".join(lines) + "\n")
+
+
 def main():
     sources = {src: read_meta(src) for src in sorted((ROOT / "pages").glob("*.html"))}
     posts = {m["path"].removeprefix("/blog/"): m for m, _ in sources.values() if "blog" in m}
@@ -332,6 +380,7 @@ def main():
         meta, body = blog_index(posts, minutes)
         (ROOT / "blog.html").write_text(build(meta, body, posts))
         write_sitemap(posts)
+        write_llms(posts)
         print(f"{'(index of ' + str(len(posts)) + ' posts)':44} → blog.html, sitemap.xml")
 
 

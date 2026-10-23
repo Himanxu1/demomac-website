@@ -59,6 +59,16 @@
    "url": "https://screentoast.com/",
    "downloadUrl": "https://screentoast.com/ScreenToast-0.2.2.dmg",
    "image": "https://screentoast.com/og.png",
+   "screenshot": "https://screentoast.com/media/poster-hero.jpg",
+   "publisher": { "@id": "https://screentoast.com/#org" },
+   "featureList": [
+    "Automatic zooms on clicks, plus manual, follow-cursor and loupe zooms",
+    "Cursor smoothing",
+    "Captions transcribed on the Mac, and edit by transcript",
+    "Automatic blurring of API keys, tokens, email addresses and card numbers",
+    "Narration script drafted from what you did on screen",
+    "Export to MP4, HEVC, GIF or ProRes with presets for YouTube, TikTok, Reels, LinkedIn, X and Product Hunt"
+   ],
    "offers": [
     {
      "@type": "Offer",
@@ -246,7 +256,7 @@
     padding-inline: var(--gutter);
   }
 
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, .hero-title {
     font-family: var(--display);
     font-weight: 800;
     letter-spacing: -0.03em;
@@ -359,12 +369,12 @@
     pointer-events: none;
   }
   .hero-in { position: relative; }
-  .hero h1 { font-size: clamp(38px, 6.4vw, 76px); margin-top: 20px; max-width: 17ch; }
-  .hero h1 em { font-style: normal; color: var(--rec); }
+  .hero .hero-title { font-size: clamp(38px, 6.4vw, 76px); margin-top: 20px; max-width: 17ch; }
+  .hero .hero-title em { font-style: normal; color: var(--rec); }
   /* Rotating headline. Every line shares one grid cell, so the hero keeps the
      height of the tallest and nothing below it jumps. */
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .hero h1.rot { max-width: 19ch; }
+  .hero .hero-title.rot { max-width: 19ch; }
   .rot-stack { display: grid; }
   .rot-line { grid-area: 1 / 1; visibility: hidden; }
   .rot-line.is-on, .rot-line.is-out { visibility: visible; }
@@ -976,8 +986,11 @@
   <div class="hero">
     <div class="wrap hero-in">
       <p class="eyebrow">Made for Mac</p>
-      <h1 class="rot">
-        <span class="sr">Show your real product working. Polished automatically.</span>
+      <!-- The h1 is only the visually-hidden line: the rotating taglines are
+           decoration, and inside the h1 they turned the page's main heading
+           into six slogans with no mention of what the product is. -->
+      <div class="hero-title rot">
+        <h1 class="sr">Mac screen recorder for product demos. Show your real product working, polished automatically.</h1>
         <span class="rot-stack" aria-hidden="true">
           <span class="rot-line is-on">Show your real product working. <em>Polished automatically.</em></span>
           <span class="rot-line">AI can fake the promo. <em>Not the product.</em></span>
@@ -986,7 +999,7 @@
           <span class="rot-line">Mock-ups get scrolled past. <em>Real demos get trusted.</em></span>
           <span class="rot-line">Your app, actually working. <em>Looking like you hired an editor.</em></span>
         </span>
-      </h1>
+      </div>
       <p class="lede">
         ScreenToast records your actual app on your Mac — real clicks, real data,
         your own voice — and polishes it for you: zooms on every click, a calm
@@ -1222,7 +1235,7 @@
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">Auto Polish</p>
-        <h2>The part that normally takes an hour in an editor.</h2>
+        <h2>Auto zoom and a smooth cursor, without an hour in an editor.</h2>
         <p class="lede">
           ScreenToast pays attention to what you did, not just what the screen looked
           like. Every click, every pause, every drag — that's how it knows where the
@@ -1671,7 +1684,7 @@
       <div class="split">
         <div>
           <p class="eyebrow">Why native matters</p>
-          <h2 style="margin-top:16px">Under 10 MB to download. Not hundreds.</h2>
+          <h2 style="margin-top:16px">A Mac screen recorder under 10 MB. Not hundreds.</h2>
           <p class="lede" style="margin-top:16px">
             Many popular recorders bundle a whole web browser inside the app, which is
             why they're enormous and slow to wake up. ScreenToast is a native Mac app,
@@ -1712,6 +1725,7 @@
         <p class="lede">
           Most options are either a huge app you buy once or a website you rent
           forever. ScreenToast is the first kind, and deliberately not the second.
+          For a named, dated price check, see <a href="/blog/screen-studio-vs-screentoast">Screen Studio vs ScreenToast</a>.
         </p>
       </div>
 
@@ -1996,7 +2010,7 @@
         <p>A native macOS product-demo studio. Record, polish, narrate, publish — without opening an editor.</p>
         <div class="foot-badges">
           <a href="https://www.trymacapps.com" target="_blank" rel="noopener">
-            <img src="https://www.trymacapps.com/badge.png" alt="Featured on TryMacApps" width="200" height="67" loading="lazy">
+            <img src="/media/trymacapps-badge.png" alt="Featured on TryMacApps" width="200" height="67" loading="lazy">
           </a>
         </div>
       </div>
@@ -2043,6 +2057,7 @@
       <div class="foot-col">
         <p class="foot-h">Company</p>
         <a href="/blog">Blog</a>
+        <a href="/about">About</a>
         <a href="/changelog">Changelog</a>
         <a href="mailto:support@screentoast.com">Support</a>
         <a href="/privacy">Privacy</a>
@@ -2262,9 +2277,9 @@
     }
     function tick() { if (!paused && !document.hidden) next(); timer = setTimeout(tick, HOLD); }
     timer = setTimeout(tick, HOLD + 600);
-    var h1 = document.querySelector('h1.rot');
-    h1.addEventListener('mouseenter', function () { paused = true; });
-    h1.addEventListener('mouseleave', function () { paused = false; });
+    var title = document.querySelector('.hero-title.rot');
+    title.addEventListener('mouseenter', function () { paused = true; });
+    title.addEventListener('mouseleave', function () { paused = false; });
   })();
 </script>
 <script src="/analytics.js" defer></script>
