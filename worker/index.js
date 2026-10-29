@@ -8,6 +8,8 @@
 //   GET  /api/requests/:id/moderate  approve/reject, from the link in the email
 //   POST /api/e                      the page's analytics beacon (analytics.js)
 //   POST /api/download               the email asked for before a DMG download, or a skip
+//   POST /api/account                the app's subscription screen: plan, renewal,
+//                                    cancel/resume, switch plan, billing portal
 //
 // It also counts, from the requests themselves, the three numbers a static
 // site cannot see: DMG downloads, Sparkle delta downloads (updates applied)
@@ -45,6 +47,7 @@ export default {
       if (path === '/api/e' && request.method === 'POST') return await beacon(request, env);
       if (path === '/api/seats') return await seats(url, env, ctx);
       if (path === '/api/download' && request.method === 'POST') return await downloader(request, env, ctx);
+      if (path === '/api/account' && request.method === 'POST') return await account(request, env);
       if (path === '/api/requests') {
         if (request.method === 'GET') return await listRequests(env);
         if (request.method === 'POST') return await submitRequest(request, env, ctx);
@@ -222,6 +225,116 @@ async function seats(url, env, ctx) {
   const res = json({ total, left: Math.max(0, total - used), expired }, 200, 'public, max-age=60');
   ctx.waitUntil(cache.put(key, res.clone()));
   return res;
+}
+
+// ── account ─────────────────────────────────────────────────────────────────
+//
+// The app holds only a licence key and its activation id; the secret API key
+// that can read and change subscriptions stays here. Knowing both the key and
+// an activation of it is the proof of ownership: the activation is looked up
+// first and its key must match the one sent, so a guessed activation id gets
+// nothing.
+//
+// Body: { license_key, instance_id, action? }
+//   action  (none)          → the subscription, as the app shows it
+//           "cancel"        → cancel at the end of the paid period
+//           "resume"        → undo that, before the period ends
+//           "switch"        → { plan: "yearly" | "monthly" }. To yearly is charged
+//                             now, prorated; to monthly starts at renewal.
+//           "portal"        → a one-time link to Dodo's billing portal (card,
+//                             invoices, billing address)
+
+// The same products as Storefront.swift in the app.
+const PLANS = {
+  yearly: 'pdt_0Np0PlpWmx2zVWrn73Ldb',
+  monthly: 'pdt_0Np0PTUBuyw6BXthFX42b',
+};
+
+async function dodo(env, method, path, body) {
+  const r = await fetch(DODO + path, {
+    method,
+    headers: { Authorization: `Bearer ${env.DODO_API_KEY}`, 'Content-Type': 'application/json' },
+    body: body === undefined ? undefined : JSON.stringify(body),
+  });
+  const text = await r.text();
+  let data = null;
+  try { data = text ? JSON.parse(text) : null; } catch { /* not JSON */ }
+  if (!r.ok) console.error('dodo', method, path, r.status, text.slice(0, 300));
+  return { ok: r.ok, status: r.status, data };
+}
+
+function sameString(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}
+
+function describe(sub, licence) {
+  const plan = Object.keys(PLANS).find(k => PLANS[k] === sub.product_id) || null;
+  return {
+    plan,
+    status: sub.status,
+    cancel_at_period_end: !!sub.cancel_at_next_billing_date,
+    next_billing_date: sub.next_billing_date || null,
+    amount: typeof sub.recurring_pre_tax_amount === 'number' ? sub.recurring_pre_tax_amount : null,
+    currency: sub.currency || null,
+    email: sub.customer?.email || null,
+    macs_used: licence.instances_count ?? null,
+    macs_limit: licence.activations_limit ?? null,
+  };
+}
+
+async function account(request, env) {
+  if (!env.DODO_API_KEY) return json({ error: 'unavailable' }, 503);
+  const body = await readJson(request);
+  const key = clean(body?.license_key, 100);
+  const instance = clean(body?.instance_id, 100);
+  if (!key || !/^[A-Za-z0-9_-]+$/.test(instance)) return json({ error: 'invalid' }, 400);
+
+  const inst = await dodo(env, 'GET', `/license_key_instances/${instance}`);
+  if (!inst.ok) return json({ error: inst.status === 404 ? 'not_found' : 'unavailable' }, inst.status === 404 ? 404 : 502);
+  const lic = await dodo(env, 'GET', `/license_keys/${encodeURIComponent(inst.data.license_key_id)}`);
+  if (!lic.ok) return json({ error: 'unavailable' }, 502);
+  if (!sameString(lic.data.key, key)) return json({ error: 'not_found' }, 404);
+  const subID = lic.data.subscription_id;
+  if (!subID) return json({ error: 'no_subscription' }, 404);
+  const sid = encodeURIComponent(subID);
+
+  const action = clean(body?.action, 20);
+  if (action === 'cancel' || action === 'resume') {
+    const patch = action === 'cancel'
+      ? { cancel_at_next_billing_date: true, cancel_reason: 'cancelled_by_customer' }
+      : { cancel_at_next_billing_date: false };
+    const r = await dodo(env, 'PATCH', `/subscriptions/${sid}`, patch);
+    if (!r.ok) return json({ error: 'failed' }, 502);
+  } else if (action === 'switch') {
+    const to = clean(body?.plan, 10);
+    if (!PLANS[to]) return json({ error: 'invalid' }, 400);
+    const toYearly = to === 'yearly';
+    const r = await dodo(env, 'POST', `/subscriptions/${sid}/change-plan`, {
+      product_id: PLANS[to],
+      quantity: 1,
+      proration_billing_mode: toYearly ? 'prorated_immediately' : 'do_not_bill',
+      effective_at: toYearly ? 'immediately' : 'next_billing_date',
+      on_payment_failure: 'prevent_change',
+    });
+    if (!r.ok) return json({ error: 'failed' }, 502);
+    // A card that needs confirming (3-D Secure) comes back as a link to pay.
+    if (r.data?.payment_link) return json({ payment_link: r.data.payment_link });
+  } else if (action === 'portal') {
+    const customer = lic.data.customer_id;
+    const r = await dodo(env, 'POST',
+      `/customers/${encodeURIComponent(customer)}/customer-portal/session`);
+    if (!r.ok || !r.data?.link) return json({ error: 'failed' }, 502);
+    return json({ link: r.data.link });
+  } else if (action) {
+    return json({ error: 'invalid' }, 400);
+  }
+
+  const sub = await dodo(env, 'GET', `/subscriptions/${sid}`);
+  if (!sub.ok) return json({ error: 'unavailable' }, 502);
+  return json(describe(sub.data, lic.data));
 }
 
 // ── downloaders ─────────────────────────────────────────────────────────────

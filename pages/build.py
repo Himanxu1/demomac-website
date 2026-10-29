@@ -37,7 +37,7 @@ import re
 SITE = "https://screentoast.com"
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 # Keep in step with the homepage's download links; release flow bumps both.
-DMG = "/ScreenToast-0.2.2.dmg"
+DMG = "/ScreenToast-0.2.3.dmg"
 
 HEAD = """<!doctype html>
 <html lang="en">

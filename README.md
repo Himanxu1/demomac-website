@@ -22,7 +22,7 @@ code, and every claim about a competitor carries the date it was checked.
 
 | File | Why it is here |
 |---|---|
-| `ScreenToast-0.2.2.dmg` | The download (9.8 MB). Notarised and stapled. |
+| `ScreenToast-0.2.3.dmg` | The download. Notarised and stapled. |
 | `appcast.xml` | The Sparkle feed. **Must** be served at the `SUFeedURL` the app was built with — `https://screentoast.com/appcast.xml`. |
 | `og.png` | 1200×630 social card. |
 

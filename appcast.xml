@@ -3,6 +3,21 @@
     <channel>
         <title>ScreenToast</title>
         <item>
+            <title>0.2.3</title>
+            <pubDate>Thu, 29 Oct 2026 14:04:36 +0530</pubDate>
+            <sparkle:version>6</sparkle:version>
+            <sparkle:shortVersionString>0.2.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://screentoast.com/ScreenToast-0.2.3.dmg" length="12767404" type="application/octet-stream" sparkle:edSignature="wwxT7DtBgScx+2sBqzTBQ922MM1a1pW3OFLPEJ2yn4tTpr6+tv/vj2lODCq2agHxshQKfMKEATSE/r2+gcf5AA=="/>
+            <sparkle:deltas>
+                <enclosure url="https://screentoast.com/ScreenToast6-5.delta" sparkle:deltaFrom="5" length="3849182" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="QacuOvSn1p3GWXS98an6TBkQWeHzPHk8yvW8kmU/XvLxeqV7aFujLlCzfIJVMyuqyy1G5dzK1fP+N3SrwhzNDg=="/>
+                <enclosure url="https://screentoast.com/ScreenToast6-4.delta" sparkle:deltaFrom="4" length="3848046" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="iucjAittmrvI2zEu6ivwqvGdHrUZHfy6mJqCDLXwVygOMLFoB+/aL3fYkWKlxzj7n92kYp5wvLW0Ayv+BUJQBw=="/>
+                <enclosure url="https://screentoast.com/ScreenToast6-3.delta" sparkle:deltaFrom="3" length="3897918" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="i8fjyFWtNckBT7XCACtahR8W2rEe1Rg94YXUTXnWtRjLALIzGGkWm5tFa3f/z7noblrRFQWjrPcm471/fmrBCA=="/>
+                <enclosure url="https://screentoast.com/ScreenToast6-2.delta" sparkle:deltaFrom="2" length="5529506" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="JAsUZdrN7dVprM7iCEjzK6aEFGUKSotpv9HJPpg9Q+IJzXqBnv6INkqgxWpzXsCxwHXtUdzbiCttW3BYXkWQDQ=="/>
+                <enclosure url="https://screentoast.com/ScreenToast6-1.delta" sparkle:deltaFrom="1" length="5559582" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="UWhpNpV9ONI1XbuZfRGK6S1njfUyGpKbVwLClmweYuyo0ACioEPmjaFrkwyzpfwg1eaAVms52xIAs2JUBCeiCg=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.2.2</title>
             <pubDate>Sun, 04 Oct 2026 17:45:37 +0530</pubDate>
             <sparkle:version>5</sparkle:version>
@@ -27,18 +42,6 @@
                 <enclosure url="https://screentoast.com/ScreenToast4-3.delta" sparkle:deltaFrom="3" length="954834" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="naFn+fsSfTs9+8ypTnxqUmaYPajt98L906drJjT0EDqZi1swMqgy+UmBMHtxfk0VD06l9cxcH9xH2vQNyUSPAA=="/>
                 <enclosure url="https://screentoast.com/ScreenToast4-2.delta" sparkle:deltaFrom="2" length="3419502" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="LF1fYyI34i+e7C1Vot90HluiSao923hf3EBQH+mpSguM6HG2iP7o9uwS0lx1xbSYVn6c4CXrk7PQ9EWYT8ueCA=="/>
                 <enclosure url="https://screentoast.com/ScreenToast4-1.delta" sparkle:deltaFrom="1" length="3451714" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="ZaaUAz6gkd0wzsUxMbawwdFGZ8CzAGOsUkT/EWguMB1mEluUfMK7031oFgydnvBexLGRsplLQ59FvnFUtDWVAQ=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>0.2.0</title>
-            <pubDate>Sat, 03 Oct 2026 12:44:13 +0530</pubDate>
-            <sparkle:version>3</sparkle:version>
-            <sparkle:shortVersionString>0.2.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://screentoast.com/ScreenToast-0.2.0.dmg" length="9727737" type="application/octet-stream" sparkle:edSignature="Ived3ZRddKNrSx63jfme+P0pem8iAZubohXskYtms5g/VNZudWXsQHzK7NoZP0UKdlfw8qGFD1K/m35pc146BQ=="/>
-            <sparkle:deltas>
-                <enclosure url="https://screentoast.com/ScreenToast3-2.delta" sparkle:deltaFrom="2" length="3358130" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="jk4Bpo8SrRMUt1fAcLW8lxkwfPfUR0crcMxT/JZPLdpmRh/AmRPL5hnV36KlXbyKEpg27EtdNu6gR6nadslHBw=="/>
-                <enclosure url="https://screentoast.com/ScreenToast3-1.delta" sparkle:deltaFrom="1" length="3416194" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976432" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="r6s22FHjdxg23FC/dfoZS2cYpVavz+MU6Xh20Ep7mWOfePli42NuVvY7n7ZDM1BM1s68X63zw8QdWvBjBZEtCQ=="/>
             </sparkle:deltas>
         </item>
     </channel>
