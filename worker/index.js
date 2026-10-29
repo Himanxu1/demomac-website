@@ -285,6 +285,34 @@ function describe(sub, licence) {
   };
 }
 
+// The licence record does not always carry its subscription (Dodo is moving
+// keys to entitlements), so fall back to the payment that created the key, and
+// then to the customer's own ScreenToast subscriptions. Logs which path found
+// it — ids only, never the key.
+async function findSubscription(env, lic) {
+  const plans = Object.values(PLANS);
+  let via = 'licence';
+  let id = lic.subscription_id || null;
+  if (!id && lic.payment_id) {
+    const pay = await dodo(env, 'GET', `/payments/${encodeURIComponent(lic.payment_id)}`);
+    if (pay.ok && pay.data?.subscription_id) { id = pay.data.subscription_id; via = 'payment'; }
+  }
+  if (!id && lic.customer_id) {
+    const list = await dodo(env, 'GET',
+      `/subscriptions?customer_id=${encodeURIComponent(lic.customer_id)}&page_size=100`);
+    const mine = (list.data?.items || []).filter(x => plans.includes(x.product_id));
+    const rank = x => ({ active: 0, on_hold: 1, past_due: 1, paused: 2 }[x.status] ?? 3);
+    mine.sort((a, b) => rank(a) - rank(b)
+      || Date.parse(b.created_at || 0) - Date.parse(a.created_at || 0));
+    if (mine[0]) { id = mine[0].subscription_id; via = 'customer'; }
+  }
+  console.log('account lookup', JSON.stringify({
+    via: id ? via : 'none', product: lic.product_id || null, source: lic.source || null,
+    has_subscription: !!lic.subscription_id, has_payment: !!lic.payment_id,
+  }));
+  return id;
+}
+
 async function account(request, env) {
   if (!env.DODO_API_KEY) return json({ error: 'unavailable' }, 503);
   const body = await readJson(request);
@@ -297,7 +325,7 @@ async function account(request, env) {
   const lic = await dodo(env, 'GET', `/license_keys/${encodeURIComponent(inst.data.license_key_id)}`);
   if (!lic.ok) return json({ error: 'unavailable' }, 502);
   if (!sameString(lic.data.key, key)) return json({ error: 'not_found' }, 404);
-  const subID = lic.data.subscription_id;
+  const subID = await findSubscription(env, lic.data);
   if (!subID) return json({ error: 'no_subscription' }, 404);
   const sid = encodeURIComponent(subID);
 
